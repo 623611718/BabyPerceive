@@ -16,6 +16,14 @@ import android.widget.Toast;
 import com.example.lz.babyperceive.R;
 import com.example.lz.babyperceive.Utils.Utils;
 
+import net.sourceforge.pinyin4j.PinyinHelper;
+import net.sourceforge.pinyin4j.format.HanyuPinyinCaseType;
+import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat;
+import net.sourceforge.pinyin4j.format.HanyuPinyinToneType;
+import net.sourceforge.pinyin4j.format.HanyuPinyinVCharType;
+import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination;
+
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
@@ -23,13 +31,15 @@ import java.util.Random;
 public class SpeakingActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Random random;
-    private TextView chinese_tv;
+    private TextView chinese_tv,chineseSpell_tv;
     private int random_number;
     private String text;    //3500常用汉字
     private String chinses;  //单个汉字
     private String previous_number = "";//上一个汉字
     private TextToSpeech tts;  //文字转语音类
     private Button previous_bt,next_bt,play_bt;
+    private String[] spell = new String[0];
+    private String chineseSpell = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +52,40 @@ public class SpeakingActivity extends AppCompatActivity implements View.OnClickL
         TextToSpeech(); //文字转语音
         //   List
 
-
     }
 
+    private String getChineseSpell(String chinese){
+        String[] pyStrs = PinyinHelper.toHanyuPinyinStringArray('重');
+
+        for (String s : pyStrs) {
+            System.out.println(s);
+        }
+//-------------------指定格式转换----------------------------
+        HanyuPinyinOutputFormat format = new HanyuPinyinOutputFormat();
+
+// UPPERCASE：大写  (ZHONG)
+// LOWERCASE：小写  (zhong)
+        format.setCaseType(HanyuPinyinCaseType.LOWERCASE);//输出大写
+
+// WITHOUT_TONE：无音标  (zhong)
+// WITH_TONE_NUMBER：1-4数字表示音标  (zhong4)
+// WITH_TONE_MARK：直接用音标符（必须WITH_U_UNICODE否则异常）  (zhòng)
+        format.setToneType(HanyuPinyinToneType.WITH_TONE_MARK);
+
+// WITH_V：用v表示ü  (nv)
+// WITH_U_AND_COLON：用"u:"表示ü  (nu:)
+// WITH_U_UNICODE：直接用ü (nü)
+        format.setVCharType(HanyuPinyinVCharType.WITH_U_UNICODE);
+
+        try {
+            char c = chinese.charAt(0);
+            spell = PinyinHelper.toHanyuPinyinStringArray(c, format);
+        } catch (BadHanyuPinyinOutputFormatCombination badHanyuPinyinOutputFormatCombination) {
+            badHanyuPinyinOutputFormatCombination.printStackTrace();
+        }
+        String s = Arrays.toString(spell); //
+        return s;
+    }
     private void TextToSpeech() {
         tts = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
             @Override
@@ -88,9 +129,11 @@ public class SpeakingActivity extends AppCompatActivity implements View.OnClickL
         text = utils.getTextHanzi();
         Log.i("test", "位置:" + random_number);
         Log.i("test", "长度:" + text.length());
-        chinses = text.substring(random_number - 1, random_number);
-        Log.i("test", "内容:" + chinses);
+        chinses = text.substring(random_number - 1, random_number);      //随机获取的汉字
+        chineseSpell = getChineseSpell(chinses);                          //获取拼音
+        Log.i("test", "内容:" + chinses+"拼音:"+chineseSpell);
         chinese_tv.setText(chinses);
+        chineseSpell_tv.setText(chineseSpell);
     }
 
     /**
@@ -99,11 +142,13 @@ public class SpeakingActivity extends AppCompatActivity implements View.OnClickL
     private void initData(String name) {
         chinses = name;
         chinese_tv.setText(chinses);
+        chineseSpell_tv.setText(chineseSpell);
     }
 
     private void initView() {
         chinese_tv = (TextView) findViewById(R.id.chinese_tv);
         chinese_tv.setOnClickListener(this);
+        chineseSpell_tv = (TextView) findViewById(R.id.chineseSpell_tv);
         previous_bt = (Button) findViewById(R.id.previous_bt);
         previous_bt.setOnClickListener(this);
         next_bt = (Button) findViewById(R.id.next_bt);
@@ -121,9 +166,11 @@ public class SpeakingActivity extends AppCompatActivity implements View.OnClickL
             case R.id.next_bt:
                 previous_number = chinses;
                 initData();
+                tts.speak(chinses, TextToSpeech.QUEUE_FLUSH, null);
                 break;
             case R.id.previous_bt:
                 initData(previous_number);
+                tts.speak(chinses, TextToSpeech.QUEUE_FLUSH, null);
                 break;
             case R.id.play_bt:
                 tts.speak(chinses, TextToSpeech.QUEUE_FLUSH, null);

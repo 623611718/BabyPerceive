@@ -9,7 +9,15 @@
     <com.example.lz.babyperceive.View.TitleView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"></com.example.lz.babyperceive.View.TitleView>
-
+<TextView
+    android:id="@+id/chineseSpell_tv"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textColor="@color/navy"
+    android:layout_centerHorizontal="true"
+    android:layout_above="@+id/chinese_tv"
+    android:textSize="20sp"
+    android:text="111"/>
     <TextView
         android:id="@+id/chinese_tv"
         android:layout_width="wrap_content"
