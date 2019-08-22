@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="200dp"
+    android:background="#8D000000"
+    android:layout_gravity="center"
+    android:layout_height="150dp"
+    android:orientation="horizontal">
+<ImageView
+    android:layout_width="90dp"
+    android:layout_height="90dp"
+    android:layout_gravity="center"
+    android:background="@drawable/speakingrecord"/>
+    <ImageView
+        android:id="@+id/signal_iv"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/signal1"/>
+
+</LinearLayout>

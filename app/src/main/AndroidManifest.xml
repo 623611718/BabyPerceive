@@ -39,7 +39,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.SpeakingActivity"></activity>
+        <activity android:name=".Activity.SpeakingActivity" />
+        <activity android:name=".Activity.TestActivity" />
+        <activity android:name=".Activity.EnglishSpeakingActivity"></activity>
     </application>
 
 </manifest>

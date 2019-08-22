@@ -4,6 +4,7 @@ package com.example.lz.babyperceive.View;
  * Created by lz on 2019/8/19.
  */
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -24,6 +25,7 @@ public class TitleView extends LinearLayout {
     private TextView title_tv;
     private Button more_bt, back_bt;
     private int height, width;
+    private LinearLayout layout;
     //private AndroiodScreenProperty androiodScreenProperty;
     private ClickListener clickListener;
 
@@ -43,6 +45,7 @@ public class TitleView extends LinearLayout {
         more_bt.setOnClickListener(new TitleClistener());
         back_bt.setOnClickListener(new TitleClistener());
         title_tv.setOnClickListener(new TitleClistener());
+        layout = (LinearLayout) findViewById(R.id.layout);
 
     }
 
@@ -56,11 +59,13 @@ public class TitleView extends LinearLayout {
         }
     }
 
+    @SuppressLint("ResourceAsColor")
     public void setTitleView(int tag) {
         if (tag == 1) {
             more_bt.setVisibility(GONE);
             back_bt.setBackgroundResource(android.R.drawable.ic_delete);
             title_tv.setVisibility(GONE);
+            //layout.setBackgroundColor(R.color.white);
         } else if (tag == 0) {
             more_bt.setVisibility(VISIBLE);
             back_bt.setBackgroundResource(R.drawable.back);
