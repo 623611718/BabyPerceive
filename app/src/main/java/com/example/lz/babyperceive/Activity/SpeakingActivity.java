@@ -41,10 +41,7 @@ public class SpeakingActivity extends AppCompatActivity implements View.OnClickL
     private Button previous_bt,next_bt,play_bt;
     private String[] spell = new String[0];
     private String chineseSpell = "";
-<<<<<<< HEAD
     private TitleView titleView;
-=======
->>>>>>> 3741aa1b355fb6f410f8eca6bbca581709f05bcd
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
