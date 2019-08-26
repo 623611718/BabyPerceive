@@ -1,7 +1,10 @@
 package com.example.lz.babyperceive.Utils;
 
+import android.content.Context;
+import android.os.Build;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
+import android.view.View;
 
 import net.sourceforge.pinyin4j.PinyinHelper;
 import net.sourceforge.pinyin4j.format.HanyuPinyinCaseType;

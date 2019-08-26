@@ -1,9 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.lz.babyperceive.Activity.EnglishSpeakingActivity">
+    android:background="@drawable/baby1"
+    tools:context="com.example.lz.babyperceive.Activity.SpeakingActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <com.example.lz.babyperceive.View.TitleView
+        android:id="@+id/titleview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></com.example.lz.babyperceive.View.TitleView>
+
+    <TextView
+        android:id="@+id/chineseSpell_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/navy"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/framelayout"
+        android:textSize="20sp"
+        android:text="111"/>
+    <FrameLayout
+        android:id="@+id/framelayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/tian"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true">
+        <TextView
+            android:id="@+id/chinese_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:text="111"
+            android:textColor="@color/black"
+            android:textSize="100sp" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/framelayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/previous_bt"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/previous1" />
+
+        <Button
+            android:id="@+id/play_bt"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/play1"
+            android:layout_marginLeft="30dp"/>
+
+        <Button
+            android:id="@+id/next_bt"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/next1"
+            android:layout_marginLeft="30dp"/>
+    </LinearLayout>
+</RelativeLayout>
