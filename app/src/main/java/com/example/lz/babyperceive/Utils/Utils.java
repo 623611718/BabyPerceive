@@ -29,7 +29,7 @@ public class Utils {
     private String englishtext = "";
     public Utils() {
         this.text = getTextHanzi();
-        this.text = getTextEnglish();
+        this.englishtext = getTextEnglish();
     }
 
     public String getTextHanzi(){
@@ -76,7 +76,7 @@ public class Utils {
         int position = getRandomNumber();
         Log.i("test", "位置:" + position);
         Log.i("test", "长度:" + text.length());
-        String chinses = text.substring(position - 1, position);      //随机获取的汉字
+        String chinses = text.substring(position, position+1);      //随机获取的汉字
         String chineseSpell = getChineseSpell(chinses);                          //获取拼音
         Log.i("test", "内容:" + chinses+"拼音:"+chineseSpell);
         return chinses;

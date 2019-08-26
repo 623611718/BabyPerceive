@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lz.babyperceive.R;
+import com.example.lz.babyperceive.Utils.Speek;
 import com.example.lz.babyperceive.Utils.Utils;
 import com.example.lz.babyperceive.View.TitleView;
 
@@ -37,7 +38,7 @@ public class SpeakingActivity extends AppCompatActivity implements View.OnClickL
     private String text;    //3500常用汉字
     private String chinses;  //单个汉字
     private String previous_number = "";//上一个汉字
-    private TextToSpeech tts;  //文字转语音类
+    private Speek speek;  //文字转语音类
     private Button previous_bt,next_bt,play_bt;
     private String[] spell = new String[0];
     private String chineseSpell = "";
@@ -51,7 +52,7 @@ public class SpeakingActivity extends AppCompatActivity implements View.OnClickL
         changeStatusBarTextColor(true);
         initView();
         initData();
-        TextToSpeech(); //文字转语音
+        speek = new Speek(this);
         //   List
 
     }
@@ -88,26 +89,7 @@ public class SpeakingActivity extends AppCompatActivity implements View.OnClickL
         String s = Arrays.toString(spell); //
         return s;
     }
-    private void TextToSpeech() {
-        tts = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
-            @Override
-            public void onInit(int status) {
-// 判断是否转化成功
-                if (status == TextToSpeech.SUCCESS) {
-                    //默认设定语言为中文，原生的android貌似不支持中文。
-                    int result = tts.setLanguage(Locale.CHINESE);
-                    if (result == TextToSpeech.LANG_MISSING_DATA ||
-                            result == TextToSpeech.LANG_NOT_SUPPORTED) {
-                        // Toast.makeText(this, R.string.notAvailable, Toast.LENGTH_SHORT).show();
-                    } else {
-                        //不支持中文就将语言设置为英文
-                        tts.setLanguage(Locale.US);
-                    }
-                }
-            }
-        });
-        tts.setSpeechRate(0.7f);
-    }
+
 
     /**
      * 获取随机数
@@ -176,19 +158,19 @@ public class SpeakingActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.chinese_tv:
-                tts.speak(chinses, TextToSpeech.QUEUE_FLUSH, null);
+                speek.Speeking(chinses);
                 break;
             case R.id.next_bt:
                 previous_number = chinses;
                 initData();
-                tts.speak(chinses, TextToSpeech.QUEUE_FLUSH, null);
+                speek.Speeking(chinses);
                 break;
             case R.id.previous_bt:
                 initData(previous_number);
-                tts.speak(chinses, TextToSpeech.QUEUE_FLUSH, null);
+                speek.Speeking(chinses);
                 break;
             case R.id.play_bt:
-                tts.speak(chinses, TextToSpeech.QUEUE_FLUSH, null);
+                speek.Speeking(chinses);
                 break;
         }
     }

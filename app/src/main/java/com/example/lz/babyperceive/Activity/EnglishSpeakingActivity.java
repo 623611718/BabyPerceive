@@ -12,6 +12,8 @@ import android.widget.TextView;
 import com.example.lz.babyperceive.Bean.English;
 import com.example.lz.babyperceive.Bean.EnglishAsrJson;
 import com.example.lz.babyperceive.R;
+import com.example.lz.babyperceive.Utils.AudioUtils;
+import com.example.lz.babyperceive.Utils.Speek;
 import com.example.lz.babyperceive.Utils.Utils;
 import com.example.lz.babyperceive.View.TitleView;
 
@@ -24,12 +26,12 @@ public class EnglishSpeakingActivity extends AppCompatActivity implements View.O
     private List<English> englishList = new ArrayList<>();
     private Utils utils;
     private int random_number;
-    private TextToSpeech tts;   //文字转语音
     private TitleView titleView;
     private TextView chinese_tv, chineseSpell_tv;
     private Button previous_bt, next_bt, play_bt;
     private String english, chinese;
     private int previous_number = 0;//上一个随机数
+    private Speek speek;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +42,9 @@ public class EnglishSpeakingActivity extends AppCompatActivity implements View.O
         initEnglishData();   //初始化英语单词数据
         initRandom();
         initView();
-        TextToSpeech();
+        initData(0);
+        speek = new Speek(this);
+        speek.Speeking(english);
     }
 
     private void initView() {
@@ -91,26 +95,6 @@ public class EnglishSpeakingActivity extends AppCompatActivity implements View.O
         englishList = englishAsrJson.parseJSONenglish(jsondata);
     }
 
-    private void TextToSpeech() {
-        tts = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
-            @Override
-            public void onInit(int status) {
-// 判断是否转化成功
-                if (status == TextToSpeech.SUCCESS) {
-                    //默认设定语言为中文，原生的android貌似不支持中文。
-                    int result = tts.setLanguage(Locale.CHINESE);
-                    if (result == TextToSpeech.LANG_MISSING_DATA ||
-                            result == TextToSpeech.LANG_NOT_SUPPORTED) {
-                        // Toast.makeText(this, R.string.notAvailable, Toast.LENGTH_SHORT).show();
-                    } else {
-                        //不支持中文就将语言设置为英文
-                        tts.setLanguage(Locale.US);
-                    }
-                }
-            }
-        });
-        tts.setSpeechRate(0.7f);
-    }
 
     /**
      * \
@@ -130,20 +114,20 @@ public class EnglishSpeakingActivity extends AppCompatActivity implements View.O
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.chinese_tv:
-                tts.speak(english, TextToSpeech.QUEUE_FLUSH, null);
+                speek.Speeking(english);
                 break;
             case R.id.next_bt:
                 previous_number = random_number;
                 initRandom();
                 initData(random_number);
-                tts.speak(english, TextToSpeech.QUEUE_FLUSH, null);
+                speek.Speeking(english);
                 break;
             case R.id.previous_bt:
                 initData(previous_number);
-                tts.speak(english, TextToSpeech.QUEUE_FLUSH, null);
+                speek.Speeking(english);
                 break;
             case R.id.play_bt:
-                tts.speak(english, TextToSpeech.QUEUE_FLUSH, null);
+                speek.Speeking(english);
                 break;
         }
     }
