@@ -198,9 +198,9 @@ public class TestActivity extends AppCompatActivity implements EventListener, Vi
         }
         Log.i(TAG,"chinses:"+chinses);
         Log.i(TAG,"final_result:"+final_result);
-        if (chinses.equals(final_result)){
+        if (utils.getChineseSpell(chinses).equals(utils.getChineseSpell(final_result))){
             setRight_iv(true);
-        }else if (!chinses.equals(final_result)){
+        }else if (!utils.getChineseSpell(chinses).equals(utils.getChineseSpell(final_result))){
             setRight_iv(false);
         }
     }

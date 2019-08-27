@@ -48,6 +48,12 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/test"/>
+    <Button
+        android:id="@+id/idiom_bt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/idiom"/>
 </LinearLayout>
 
 </RelativeLayout>

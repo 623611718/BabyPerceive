@@ -33,9 +33,6 @@ public class TitleView extends LinearLayout {
         super(context, attrs);
         LayoutInflater.from(context).inflate(R.layout.title_view, this);
         initView();
-       /* androiodScreenProperty = new AndroiodScreenProperty(context);
-        height = androiodScreenProperty.getAndroiodScreenPropertyHeight();
-        width = androiodScreenProperty.getAndroiodScreenPropertyWidth();*/
     }
 
     private void initView() {

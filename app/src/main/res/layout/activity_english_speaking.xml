@@ -44,27 +44,12 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/framelayout"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="50dp"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/previous_bt"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/previous1" />
-
-        <Button
-            android:id="@+id/play_bt"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/play1"
-            android:layout_marginLeft="30dp"/>
-
-        <Button
-            android:id="@+id/next_bt"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/next1"
-            android:layout_marginLeft="30dp"/>
+        <com.example.lz.babyperceive.View.ButtonView
+            android:id="@+id/buttonview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"></com.example.lz.babyperceive.View.ButtonView>
     </LinearLayout>
 </RelativeLayout>

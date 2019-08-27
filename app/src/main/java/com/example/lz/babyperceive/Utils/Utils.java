@@ -25,11 +25,14 @@ import java.util.Random;
  */
 
 public class Utils {
-    private  String text ="";
+    private  String Chinesetext ="";
     private String englishtext = "";
+    private String IdiomText;
     public Utils() {
-        this.text = getTextHanzi();
+        this.Chinesetext = getTextHanzi();
         this.englishtext = getTextEnglish();
+        this.IdiomText = getTextIdiom();
+
     }
 
     public String getTextHanzi(){
@@ -68,6 +71,26 @@ public class Utils {
         }
         return null;
     }
+    public String getTextIdiom(){
+        try {
+            InputStream is = this.getClass().getClassLoader().getResourceAsStream("assets/" + "idiom.txt");
+            byte[] buffer = new byte[is.available()];
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            int length = 1;
+            while((length = is.read(buffer))!= -1 ){
+                stream.write(buffer, 0, length);
+            }
+            String text = stream.toString();
+            stream.close();
+            is.close();
+            return text;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
     /**
      * 获取3500常用汉字随机一个
      * @return
@@ -75,8 +98,8 @@ public class Utils {
     public String getChinese(){
         int position = getRandomNumber();
         Log.i("test", "位置:" + position);
-        Log.i("test", "长度:" + text.length());
-        String chinses = text.substring(position, position+1);      //随机获取的汉字
+        Log.i("test", "长度:" + Chinesetext.length());
+        String chinses = Chinesetext.substring(position, position+1);      //随机获取的汉字
         String chineseSpell = getChineseSpell(chinses);                          //获取拼音
         Log.i("test", "内容:" + chinses+"拼音:"+chineseSpell);
         return chinses;
@@ -105,7 +128,7 @@ public class Utils {
      * @param chinese
      * @return
      */
-    private String getChineseSpell(String chinese){
+    public String getChineseSpell(String chinese){
         String[] spell = new String[0];
         String[] pyStrs = PinyinHelper.toHanyuPinyinStringArray('重');
 
@@ -136,7 +159,7 @@ public class Utils {
             badHanyuPinyinOutputFormatCombination.printStackTrace();
         }
         String s = Arrays.toString(spell); //
-        return s;
+        return spell[0];
     }
 
 }

@@ -14,6 +14,7 @@ import android.widget.Button;
 
 import com.baidu.speech.EventManager;
 import com.example.lz.babyperceive.Activity.EnglishSpeakingActivity;
+import com.example.lz.babyperceive.Activity.IdiomSpeakingActivity;
 import com.example.lz.babyperceive.Activity.SpeakingActivity;
 import com.example.lz.babyperceive.Activity.TestActivity;
 import com.example.lz.babyperceive.Utils.Utils;
@@ -26,7 +27,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private String text;
-    private Button speaking_bt,english_bt,object_bt,test_bt;
+    private Button speaking_bt,english_bt,object_bt,test_bt,idiom_bt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,10 +84,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         english_bt = (Button) findViewById(R.id.english_bt);
         object_bt = (Button) findViewById(R.id.object_bt);
         test_bt = (Button) findViewById(R.id.test_bt);
+        idiom_bt = (Button) findViewById(R.id.idiom_bt);
         speaking_bt.setOnClickListener(this);
         english_bt.setOnClickListener(this);
         object_bt.setOnClickListener(this);
         test_bt.setOnClickListener(this);
+        idiom_bt.setOnClickListener(this);
+
     }
     /**
      * 初始化数据 获取常用汉字
@@ -112,6 +116,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.test_bt:
                 Intent intent1 = new Intent(this, TestActivity.class);
                 startActivity(intent1);
+                break;
+            case R.id.idiom_bt:
+                Intent intent2 = new Intent(this, IdiomSpeakingActivity.class);
+                startActivity(intent2);
                 break;
         }
     }

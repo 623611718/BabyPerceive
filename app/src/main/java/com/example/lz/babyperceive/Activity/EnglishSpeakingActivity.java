@@ -1,5 +1,6 @@
 package com.example.lz.babyperceive.Activity;
 
+import android.content.Context;
 import android.os.Build;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
@@ -10,35 +11,39 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.lz.babyperceive.Bean.English;
-import com.example.lz.babyperceive.Bean.EnglishAsrJson;
+import com.example.lz.babyperceive.Bean.AsrJson;
 import com.example.lz.babyperceive.R;
 import com.example.lz.babyperceive.Utils.AudioUtils;
 import com.example.lz.babyperceive.Utils.Speek;
 import com.example.lz.babyperceive.Utils.Utils;
+import com.example.lz.babyperceive.View.ButtonView;
 import com.example.lz.babyperceive.View.TitleView;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class EnglishSpeakingActivity extends AppCompatActivity implements View.OnClickListener {
+public class EnglishSpeakingActivity extends BaseActivity  {
 
     private List<English> englishList = new ArrayList<>();
     private Utils utils;
     private int random_number;
     private TitleView titleView;
     private TextView chinese_tv, chineseSpell_tv;
-    private Button previous_bt, next_bt, play_bt;
     private String english, chinese;
     private int previous_number = 0;//上一个随机数
-    private Speek speek;
+    private Speek speek; //百度语音合成
+    private ButtonView buttonView;
+
+    @Override
+    public void widgetClick(View v) {
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_english_speaking);
-        getSupportActionBar().hide();//隐藏掉整个ActionBar，包括下面的Tabs
-        changeStatusBarTextColor(true);
+        //  setContentView(R.layout.activity_english_speaking);
         initEnglishData();   //初始化英语单词数据
         initRandom();
         initView();
@@ -48,16 +53,7 @@ public class EnglishSpeakingActivity extends AppCompatActivity implements View.O
     }
 
     private void initView() {
-        chinese_tv = (TextView) findViewById(R.id.chinese_tv);
         chinese_tv.setOnClickListener(this);
-        chineseSpell_tv = (TextView) findViewById(R.id.chineseSpell_tv);
-        previous_bt = (Button) findViewById(R.id.previous_bt);
-        previous_bt.setOnClickListener(this);
-        next_bt = (Button) findViewById(R.id.next_bt);
-        next_bt.setOnClickListener(this);
-        play_bt = (Button) findViewById(R.id.play_bt);
-        play_bt.setOnClickListener(this);
-        titleView = (TitleView) findViewById(R.id.titleview);
         titleView.setTitleView(1);   //1代表标题栏 显示 X
         titleView.setCustomOnClickListener(new TitleView.ClickListener() {
             @Override
@@ -69,17 +65,62 @@ public class EnglishSpeakingActivity extends AppCompatActivity implements View.O
                 }
             }
         });
+        buttonView.setCustomOnClickListener(new ButtonView.ClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()) {
+                    case R.id.chinese_tv:
+                        speek.Speeking(english);
+                        Log.i("test","!!!!!1");
+                        break;
+                    case R.id.next_bt:
+                        Log.i("test","!!!!!1");
+                        previous_number = random_number;
+                        initRandom();
+                        initData(random_number);
+                        speek.Speeking(english);
+                        break;
+                    case R.id.previous_bt:
+                        Log.i("test","!!!!!1");
+                        initData(previous_number);
+                        speek.Speeking(english);
+                        break;
+                    case R.id.play_bt:
+                        Log.i("test","!!!!!1");
+                        speek.Speeking(english);
+                        break;
+                }
+            }
+        });
     }
 
-    //改变状态栏字体颜色
-    private void changeStatusBarTextColor(boolean isBlack) {
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
-            if (isBlack) {
-                getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);//设置状态栏黑色字体
-            } else {
-                getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);//恢复状态栏白色字体
-            }
-        }
+
+    @Override
+    public void initParms(Bundle parms) {
+
+    }
+
+    @Override
+    public View bindView() {
+        return null;
+    }
+
+    @Override
+    public int bindLayout() {
+        return R.layout.activity_english_speaking;
+    }
+
+    @Override
+    public void initView(View view) {
+        chinese_tv = $(R.id.chinese_tv);
+        chineseSpell_tv = $(R.id.chineseSpell_tv);
+        titleView = $(R.id.titleview);
+        buttonView = $(R.id.buttonview);
+    }
+
+    @Override
+    public void setListener() {
+
     }
 
     private void initRandom() {
@@ -91,14 +132,13 @@ public class EnglishSpeakingActivity extends AppCompatActivity implements View.O
     private void initEnglishData() {
         utils = new Utils();
         String jsondata = utils.getTextEnglish();
-        EnglishAsrJson englishAsrJson = new EnglishAsrJson();
+        AsrJson englishAsrJson = new AsrJson();
         englishList = englishAsrJson.parseJSONenglish(jsondata);
     }
 
 
     /**
      * \
-     *
      */
     private void initData(int random_number) {
         //  chinses = text.substring(random_number - 1, random_number);      //随机获取的汉字
@@ -111,24 +151,7 @@ public class EnglishSpeakingActivity extends AppCompatActivity implements View.O
     }
 
     @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.chinese_tv:
-                speek.Speeking(english);
-                break;
-            case R.id.next_bt:
-                previous_number = random_number;
-                initRandom();
-                initData(random_number);
-                speek.Speeking(english);
-                break;
-            case R.id.previous_bt:
-                initData(previous_number);
-                speek.Speeking(english);
-                break;
-            case R.id.play_bt:
-                speek.Speeking(english);
-                break;
-        }
+    public void doBusiness(Context mContext) {
+
     }
 }
