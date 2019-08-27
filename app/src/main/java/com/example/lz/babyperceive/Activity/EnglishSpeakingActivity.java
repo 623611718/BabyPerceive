@@ -45,7 +45,7 @@ public class EnglishSpeakingActivity extends BaseActivity  {
         super.onCreate(savedInstanceState);
         //  setContentView(R.layout.activity_english_speaking);
         initEnglishData();   //初始化英语单词数据
-        initRandom();
+        setData();
         initView();
         initData(0);
         speek = new Speek(this);
@@ -76,7 +76,7 @@ public class EnglishSpeakingActivity extends BaseActivity  {
                     case R.id.next_bt:
                         Log.i("test","!!!!!1");
                         previous_number = random_number;
-                        initRandom();
+                        setData();
                         initData(random_number);
                         speek.Speeking(english);
                         break;
@@ -123,7 +123,7 @@ public class EnglishSpeakingActivity extends BaseActivity  {
 
     }
 
-    private void initRandom() {
+    private void setData() {
         random_number = utils.getRandomNumber(5);
         chinese = englishList.get(random_number).getChinese();
         english = englishList.get(random_number).getEnglish();

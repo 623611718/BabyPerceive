@@ -5,57 +5,67 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/baby1"
-    tools:context="com.example.lz.babyperceive.Activity.SpeakingActivity">
+    tools:context="com.example.lz.babyperceive.Activity.SpeakingActivity"
+    android:orientation="vertical">
 
     <com.example.lz.babyperceive.View.TitleView
         android:id="@+id/titleview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></com.example.lz.babyperceive.View.TitleView>
-
-    <TextView
-        android:id="@+id/paraphrase_tv"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/navy"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@+id/framelayout"
-        android:textSize="30sp"
-        android:text="111"/>
-    <FrameLayout
-        android:id="@+id/framelayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_centerVertical="true">
-        <TextView
-            android:id="@+id/idiom_tv"
-            android:layout_width="wrap_content"
+        android:layout_marginTop="20dp"></com.example.lz.babyperceive.View.TitleView>
+     <LinearLayout
+            android:id="@+id/framelayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="111"
-            android:textColor="@color/black"
-            android:textSize="100sp" />
-        <TextView
-            android:id="@+id/story_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|bottom"
-            android:text="111"
-            android:textColor="@color/black"
-            />
-    </FrameLayout>
-
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="30dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/paraphrase_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/navy"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:textSize="20sp"
+                android:ellipsize="marquee"
+                android:maxLines="2"
+                android:text="111"/>
+            <TextView
+                android:id="@+id/idiom_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="111"
+                android:textColor="@color/black"
+                android:textSize="80sp" />
+            <TextView
+                android:id="@+id/story_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="111"
+                android:ellipsize="marquee"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:maxLines="3"
+                android:textColor="@color/black"
+                />
+        </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/framelayout"
+        android:layout_gravity="center"
+        android:layout_below="@id/framelayout"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:orientation="horizontal">
 
-       <com.example.lz.babyperceive.View.ButtonView
-           android:id="@+id/buttonview"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"></com.example.lz.babyperceive.View.ButtonView>
+        <com.example.lz.babyperceive.View.ButtonView
+            android:id="@+id/buttonview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"></com.example.lz.babyperceive.View.ButtonView>
     </LinearLayout>
+
 </RelativeLayout>

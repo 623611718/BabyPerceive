@@ -1,6 +1,7 @@
 package com.example.lz.babyperceive.Activity;
 
 import android.content.Context;
+import android.graphics.Rect;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,13 +24,14 @@ public class IdiomSpeakingActivity extends BaseActivity {
 
     private Utils utils;
     private TitleView titleView;
-    private TextView paraphrase_tv,idiom_tv,story_tv;
+    private TextView paraphrase_tv, idiom_tv, story_tv;
     private ButtonView buttonView;
-    private String idiom,story,paraphrase;
+    private String idiom, story, paraphrase;
     private int id;
     private List<Idiom> idiomList = new ArrayList<>();
     private int random_number;  //随机数
     private Speek speek; //百度语音合成
+    private int previous_number = 0;//上一个随机数
 
     @Override
     public void widgetClick(View v) {
@@ -39,49 +41,68 @@ public class IdiomSpeakingActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // setContentView(R.layout.activity_idiom_speaking);
         initData();
         initView1();
         setData();
-
     }
+
     private void setData() {
         random_number = utils.getRandomNumber(5);
         idiom = idiomList.get(random_number).getIdiom();
         story = idiomList.get(random_number).getStory();
         paraphrase = idiomList.get(random_number).getParaphrase();
-        Log.i("test","/////////////////:"+idiomList.get(random_number).toString());
         paraphrase_tv.setText(paraphrase);
         story_tv.setText(story);
         idiom_tv.setText(idiom);
-        speek.Speeking(idiom);
+      //  speek.Speeking(idiom);
     }
 
     private void initData() {
         utils = new Utils();
         AsrJson asrJson = new AsrJson();
-        Log.i("test","!!!!!"+utils.getTextIdiom());
+        Log.i("test", "!!!!!" + utils.getTextIdiom());
         idiomList = asrJson.parseJSONidiom(utils.getTextIdiom());
         speek = new Speek(this);
-
+        speek.Speeking(idiom);
     }
-
+    /**
+     * \
+     */
+    private void initData(int random_number) {
+        idiom = idiomList.get(random_number).getIdiom();
+        paraphrase = idiomList.get(random_number).getParaphrase();
+        story = idiomList.get(random_number).getStory();
+        paraphrase_tv.setText(paraphrase);
+        story_tv.setText(story);
+        idiom_tv.setText(idiom);
+    }
     private void initView1() {
         buttonView.setCustomOnClickListener(new ButtonView.ClickListener() {
             @Override
             public void onClick(View v) {
-                switch (v.getId()){
+                switch (v.getId()) {
                     case R.id.previous_bt:
-                        Log.i("test","!!!!!1");
+                        initData(previous_number);
+                        speek.Speeking(idiom);
                         break;
                     case R.id.play_bt:
-                        Log.i("test","!!!!!1");
+
                         speek.Speeking(idiom);
                         break;
                     case R.id.next_bt:
-                        Log.i("test","!!!!!1");
+                        previous_number = random_number;
+                        setData();
+                        initData(random_number);
+                        speek.Speeking(idiom);
                         break;
                 }
+            }
+        });
+        titleView.setTitleView(1);
+        titleView.setCustomOnClickListener(new TitleView.ClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }
@@ -103,11 +124,11 @@ public class IdiomSpeakingActivity extends BaseActivity {
 
     @Override
     public void initView(View view) {
-        titleView=$(R.id.titleview);
-        buttonView=$(R.id.buttonview);
-        paraphrase_tv=$(R.id.paraphrase_tv);
-        idiom_tv=$(R.id.idiom_tv);
-        story_tv=$(R.id.story_tv);
+        titleView = $(R.id.titleview);
+        buttonView = $(R.id.buttonview);
+        paraphrase_tv = $(R.id.paraphrase_tv);
+        idiom_tv = $(R.id.idiom_tv);
+        story_tv = $(R.id.story_tv);
     }
 
     @Override
