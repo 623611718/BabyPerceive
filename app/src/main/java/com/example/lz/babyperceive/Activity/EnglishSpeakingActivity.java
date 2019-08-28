@@ -130,8 +130,8 @@ public class EnglishSpeakingActivity extends BaseActivity  {
     }
 
     private void initEnglishData() {
-        utils = new Utils();
-        String jsondata = utils.getTextEnglish();
+        utils = new Utils(this);
+        String jsondata = utils.getAsstesTxt("english.txt");
         AsrJson englishAsrJson = new AsrJson();
         englishList = englishAsrJson.parseJSONenglish(jsondata);
     }

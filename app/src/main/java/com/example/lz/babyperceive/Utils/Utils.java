@@ -1,6 +1,11 @@
 package com.example.lz.babyperceive.Utils;
 
 import android.content.Context;
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
@@ -28,52 +33,18 @@ public class Utils {
     private  String Chinesetext ="";
     private String englishtext = "";
     private String IdiomText;
-    public Utils() {
-        this.Chinesetext = getTextHanzi();
-        this.englishtext = getTextEnglish();
-        this.IdiomText = getTextIdiom();
+    private Context context;
+    public Utils(Context context) {
+        this.context=context;
+     //   this.Chinesetext = getTextHanzi();
+     //   this.englishtext = getTextEnglish();
+      //  this.IdiomText = getTextIdiom();
 
     }
 
-    public String getTextHanzi(){
+    public String getAsstesTxt(String filename){
         try {
-            InputStream is = this.getClass().getClassLoader().getResourceAsStream("assets/" + "hanzi.txt");
-            byte[] buffer = new byte[is.available()];
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            int length = 1;
-            while((length = is.read(buffer))!= -1 ){
-                stream.write(buffer, 0, length);
-            }
-            String text = stream.toString();
-            stream.close();
-            is.close();
-            return text;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-    public String getTextEnglish(){
-        try {
-            InputStream is = this.getClass().getClassLoader().getResourceAsStream("assets/" + "english.txt");
-            byte[] buffer = new byte[is.available()];
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            int length = 1;
-            while((length = is.read(buffer))!= -1 ){
-                stream.write(buffer, 0, length);
-            }
-            String text = stream.toString();
-            stream.close();
-            is.close();
-            return text;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-    public String getTextIdiom(){
-        try {
-            InputStream is = this.getClass().getClassLoader().getResourceAsStream("assets/" + "idiom.txt");
+            InputStream is = this.getClass().getClassLoader().getResourceAsStream("assets/" + filename);
             byte[] buffer = new byte[is.available()];
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             int length = 1;
@@ -90,6 +61,18 @@ public class Utils {
         return null;
     }
 
+    public Drawable getAssectImage(String filename){
+        AssetManager assetManager=context.getAssets();
+        try {
+            InputStream inputStream =assetManager.open("image/"+filename);
+            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+            Drawable drawable = new BitmapDrawable(bitmap);
+            return drawable;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+            return null;
+    }
 
     /**
      * 获取3500常用汉字随机一个

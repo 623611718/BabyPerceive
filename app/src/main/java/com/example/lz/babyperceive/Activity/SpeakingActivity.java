@@ -109,8 +109,8 @@ public class SpeakingActivity extends AppCompatActivity implements View.OnClickL
      */
     private void initData() {
         getRandomNumber();
-        Utils utils = new Utils();
-        text = utils.getTextHanzi();
+        Utils utils = new Utils(this);
+        text = utils.getAsstesTxt("hanzi.txt");
         Log.i("test", "位置:" + random_number);
         Log.i("test", "长度:" + text.length());
         chinses = text.substring(random_number - 1, random_number);      //随机获取的汉字

@@ -35,4 +35,15 @@ public class AsrJson {
         }
         return applist;
     }
+    public List<Object> parseJSONobject(String jsondata){
+        Gson gson =new Gson();
+        List<Object> applist = gson.fromJson(jsondata,new TypeToken<List<Object>>(){
+        }.getType());
+        for (Object object : applist){
+            Log.i("AsrJson","object name is:"+object.getName());
+            Log.i("AsrJson","object object is:"+object.getObject());
+            Log.i("AsrJson","object imageId is:"+object.getImageId());
+        }
+        return applist;
+    }
 }

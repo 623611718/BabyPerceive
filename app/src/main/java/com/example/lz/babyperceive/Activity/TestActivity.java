@@ -48,7 +48,7 @@ public class TestActivity extends AppCompatActivity implements EventListener, Vi
         getSupportActionBar().hide();//隐藏掉整个ActionBar，包括下面的Tabs
         changeStatusBarTextColor(true);
         initEventManager();
-        utils = new Utils();
+        utils = new Utils(this);
         chinses = utils.getChinese();
         initView();
     }

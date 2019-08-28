@@ -58,10 +58,10 @@ public class IdiomSpeakingActivity extends BaseActivity {
     }
 
     private void initData() {
-        utils = new Utils();
+        utils = new Utils(this);
         AsrJson asrJson = new AsrJson();
-        Log.i("test", "!!!!!" + utils.getTextIdiom());
-        idiomList = asrJson.parseJSONidiom(utils.getTextIdiom());
+        Log.i("test", "!!!!!" + utils.getAsstesTxt("idiom.txt"));
+        idiomList = asrJson.parseJSONidiom(utils.getAsstesTxt("idiom.txt"));
         speek = new Speek(this);
         speek.Speeking(idiom);
     }

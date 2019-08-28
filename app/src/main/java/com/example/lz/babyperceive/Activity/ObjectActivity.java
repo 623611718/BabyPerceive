@@ -17,7 +17,6 @@ import com.example.lz.babyperceive.Utils.Utils;
 import java.util.ArrayList;
 
 public class ObjectActivity extends AppCompatActivity implements View.OnClickListener {
-    private String text;
     private Button animal_bt,fruit_bt,vegetables_bt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +25,6 @@ public class ObjectActivity extends AppCompatActivity implements View.OnClickLis
         getSupportActionBar().hide();//隐藏掉整个ActionBar，包括下面的Tabs
         changeStatusBarTextColor(true);
         initPermission();  //初始化权限
-        initData();//初始化常用汉子  3500字
         initView();//初始化View
     }
     //改变状态栏字体颜色
@@ -78,24 +76,20 @@ public class ObjectActivity extends AppCompatActivity implements View.OnClickLis
         fruit_bt.setOnClickListener(this);
         fruit_bt.setOnClickListener(this);
     }
-    /**
-     * 初始化数据 获取常用汉字
-     */
-    private void initData(){
-        Utils utils = new Utils();
-        text = utils.getTextHanzi();
-    }
+
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.animal_bt:
                 Intent intent = new Intent(this, AnimalActivity.class);
+                intent.putExtra("data","animal.txt");
                 startActivity(intent);
                 break;
             case R.id.fruit_bt:
-                Intent intent_english = new Intent(this, EnglishSpeakingActivity.class);
-                startActivity(intent_english);
+                Intent intent_fruit = new Intent(this, AnimalActivity.class);
+                intent_fruit.putExtra("data","fruit.txt");
+                startActivity(intent_fruit);
                 break;
             case R.id.vegetables_bt:
                 break;

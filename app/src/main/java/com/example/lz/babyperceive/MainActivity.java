@@ -27,7 +27,6 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private String text;
     private Button speaking_bt,english_bt,object_bt,test_bt,idiom_bt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +35,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         getSupportActionBar().hide();//隐藏掉整个ActionBar，包括下面的Tabs
         changeStatusBarTextColor(true);
         initPermission();  //初始化权限
-        initData();//初始化常用汉子  3500字
         initView();//初始化View
     }
     //改变状态栏字体颜色
@@ -93,14 +91,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         idiom_bt.setOnClickListener(this);
 
     }
-    /**
-     * 初始化数据 获取常用汉字
-     */
-    private void initData(){
-        Utils utils = new Utils();
-        text = utils.getTextHanzi();
-    }
-
     @Override
     public void onClick(View v) {
         switch (v.getId()){

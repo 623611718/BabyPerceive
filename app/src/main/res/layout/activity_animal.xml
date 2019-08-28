@@ -24,7 +24,7 @@
         android:background="@drawable/bg_exam_line">
 
         <ImageView
-            android:id="@+id/image_animal"
+            android:id="@+id/image"
             android:layout_width="250dp"
             android:layout_height="162dp"
             android:layout_gravity="center"
@@ -32,7 +32,7 @@
     </FrameLayout>
 
     <TextView
-        android:id="@+id/content_tv"
+        android:id="@+id/introduction_tv"
         android:layout_width="275dp"
         android:layout_height="95dp"
         android:layout_below="@id/iamage_layout"
@@ -46,13 +46,13 @@
         android:id="@+id/name_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/content_tv"
+        android:layout_below="@id/introduction_tv"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/titletpell_tv"
+            android:id="@+id/namespell_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -60,7 +60,7 @@
             android:gravity="center"></TextView>
 
         <TextView
-            android:id="@+id/title_tv"
+            android:id="@+id/name_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
