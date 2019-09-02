@@ -7,19 +7,19 @@
         android:id="@+id/previous_bt"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:background="@drawable/previous1" />
+        android:background="@drawable/ico_play_pre_n" />
 
     <Button
         android:id="@+id/play_bt"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:background="@drawable/play1"
+        android:background="@drawable/ico_pre_big_n"
         android:layout_marginLeft="30dp"/>
 
     <Button
         android:id="@+id/next_bt"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:background="@drawable/next1"
+        android:background="@drawable/ico_play_next_n"
         android:layout_marginLeft="30dp"/>
 </LinearLayout>

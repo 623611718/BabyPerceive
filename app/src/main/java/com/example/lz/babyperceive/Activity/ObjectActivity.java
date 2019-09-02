@@ -13,11 +13,13 @@ import android.widget.Button;
 
 import com.example.lz.babyperceive.R;
 import com.example.lz.babyperceive.Utils.Utils;
+import com.example.lz.babyperceive.View.TitleView;
 
 import java.util.ArrayList;
 
 public class ObjectActivity extends AppCompatActivity implements View.OnClickListener {
     private Button animal_bt,fruit_bt,vegetables_bt;
+    private TitleView titleView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,9 +74,17 @@ public class ObjectActivity extends AppCompatActivity implements View.OnClickLis
         animal_bt = (Button) findViewById(R.id.animal_bt);
         fruit_bt = (Button) findViewById(R.id.fruit_bt);
         vegetables_bt = (Button) findViewById(R.id.vegetables_bt);
+        titleView = (TitleView) findViewById(R.id.titleview);
         animal_bt.setOnClickListener(this);
         fruit_bt.setOnClickListener(this);
         fruit_bt.setOnClickListener(this);
+        titleView.setTitleView(1);
+        titleView.setCustomOnClickListener(new TitleView.ClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
 

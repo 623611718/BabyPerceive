@@ -1,6 +1,6 @@
-[{"id":"1","english":"window","chinese":"窗口"},
-{"id":"2","english":"door","chinese":"门"},
-{"id":"3","english":"down","chinese":"向下"},
-{"id":"4","english":"floor","chinese":"地板"},
-{"id":"5","english":"cat","chinese":"猫"},
-{"id":"6","english":"happy","chinese":"高兴"}]
+[{"id":"1","object":"window","name":"窗口","imageId":"bg_dotted_line.png","introduction":"!!!"},
+{"id":"2","object":"door","name":"门","imageId":"bg_dotted_line.png","introduction":"!!!"},
+{"id":"3","object":"down","name":"向下","imageId":"bg_dotted_line.png","introduction":"!!!"},
+{"id":"4","object":"floor","name":"地板","imageId":"bg_dotted_line.png","introduction":"!!!"},
+{"id":"5","object":"cat","name":"猫","imageId":"bg_dotted_line.png","introduction":"!!!"},
+{"id":"6","object":"happy","name":"高兴","imageId":"bg_dotted_line.png","introduction":"!!!"}]

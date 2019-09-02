@@ -19,23 +19,22 @@
         android:textColor="@color/navy"
         android:layout_centerHorizontal="true"
         android:layout_above="@+id/framelayout"
-        android:textSize="20sp"
+        android:textSize="30sp"
         android:text="111"/>
     <FrameLayout
         android:id="@+id/framelayout"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:background="@drawable/tian"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:background="@drawable/bg_read_text"
         android:layout_centerInParent="true"
         android:layout_centerVertical="true">
         <TextView
             android:id="@+id/chinese_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_centerVertical="true"
             android:layout_gravity="center"
             android:text="111"
+            android:gravity="center"
             android:textColor="@color/black"
             android:textSize="100sp" />
     </FrameLayout>
@@ -52,20 +51,20 @@
             android:id="@+id/previous_bt"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:background="@drawable/previous1" />
+            android:background="@drawable/ico_play_pre_n" />
 
         <Button
             android:id="@+id/play_bt"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:background="@drawable/play1"
+            android:background="@drawable/ico_pre_big_n"
             android:layout_marginLeft="30dp"/>
 
         <Button
             android:id="@+id/next_bt"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:background="@drawable/next1"
+            android:background="@drawable/ico_play_next_n"
             android:layout_marginLeft="30dp"/>
     </LinearLayout>
 </RelativeLayout>

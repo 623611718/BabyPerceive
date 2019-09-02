@@ -26,18 +26,13 @@ import com.google.gson.Gson;
 
 import org.json.JSONObject;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Random;
 
-import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
-import io.reactivex.ObservableOnSubscribe;
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
-import io.reactivex.schedulers.Schedulers;
 
 public class TestActivity extends AppCompatActivity implements View.OnClickListener {
     private String TAG = "TestActivity";
@@ -50,8 +45,6 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     private int score;   //用于测试的分数计算
     private ImageView right_iv;  //显示正确或者错误的Imageview
     private Voiceparsing voiceparsing;
-    private Observable<String> observable;
-    private Observer<String> observer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -184,4 +177,5 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     private void initChinese_tv(String chinses) {
         chinese_tv.setText(chinses);
     }
+
 }
