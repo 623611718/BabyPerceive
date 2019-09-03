@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.lz.babyperceive.Activity.SpeakingActivity">
+
+    <com.example.lz.babyperceive.View.TitleView
+        android:id="@+id/titleview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"></com.example.lz.babyperceive.View.TitleView>
+
+
+    <FrameLayout
+        android:id="@+id/iamage_layout"
+        android:layout_width="275dp"
+        android:layout_height="185dp"
+        android:layout_below="@id/titleview"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/bg_exam_line">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="250dp"
+            android:layout_height="162dp"
+            android:layout_gravity="center"
+            android:background="@drawable/dog" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="105dp"
+        android:layout_height="55dp"
+        android:layout_below="@id/iamage_layout"
+        android:layout_centerHorizontal="false"
+        android:layout_marginLeft="63dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_read_text"
+        android:gravity="center"
+        android:text="这是一个"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/tv2"
+        android:layout_width="105dp"
+        android:layout_height="55dp"
+        android:layout_toRightOf="@id/tv1"
+        android:layout_below="@id/iamage_layout"
+        android:layout_centerHorizontal="false"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_read_text"
+        android:gravity="center"
+        android:text="这是一个"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/tv3"
+        android:layout_width="105dp"
+        android:layout_height="55dp"
+
+        android:layout_below="@id/tv1"
+        android:layout_centerHorizontal="false"
+        android:layout_marginLeft="63dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_read_text"
+        android:gravity="center"
+        android:text="这是一个"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/tv4"
+        android:layout_width="105dp"
+        android:layout_height="55dp"
+        android:layout_toRightOf="@id/tv1"
+        android:layout_below="@id/tv1"
+        android:layout_centerHorizontal="false"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_read_text"
+        android:gravity="center"
+        android:text="这是一个"
+        android:textSize="20sp" />
+</RelativeLayout>
