@@ -8,21 +8,14 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.baidu.speech.EventManager;
-import com.example.lz.babyperceive.Activity.EnglishSpeakingActivity;
-import com.example.lz.babyperceive.Activity.IdiomSpeakingActivity;
+import com.example.lz.babyperceive.Activity.AnimalActivity;
 import com.example.lz.babyperceive.Activity.ObjectActivity;
 import com.example.lz.babyperceive.Activity.SpeakingActivity;
 import com.example.lz.babyperceive.Activity.TestActivity;
-import com.example.lz.babyperceive.Utils.Utils;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -99,7 +92,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.english_bt:
-                Intent intent_english = new Intent(this, EnglishSpeakingActivity.class);
+                Intent intent_english = new Intent(this, AnimalActivity.class);
+                intent_english.putExtra("data","english.txt");
                 startActivity(intent_english);
                 break;
             case R.id.object_bt:
@@ -111,8 +105,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent1);
                 break;
             case R.id.idiom_bt:
-                Intent intent2 = new Intent(this, IdiomSpeakingActivity.class);
-                startActivity(intent2);
+                Intent intent_idiom= new Intent(this, AnimalActivity.class);
+                intent_idiom.putExtra("data","idiom.txt");
+                startActivity(intent_idiom);
                 break;
         }
     }

@@ -26,34 +26,19 @@
         android:orientation="vertical">
         <Button
             android:id="@+id/animal_bt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/MainButton"
             android:layout_gravity="center"
             android:text="@string/animal" />
         <Button
             android:id="@+id/fruit_bt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/MainButton"
             android:layout_gravity="center"
             android:text="@string/fruit"/>
         <Button
             android:id="@+id/vegetables_bt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/MainButton"
             android:layout_gravity="center"
             android:text="@string/vegetables"/>
-        <Button
-            android:id="@+id/test_bt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/test"/>
-        <Button
-            android:id="@+id/idiom_bt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/idiom"/>
 
     </LinearLayout>
 

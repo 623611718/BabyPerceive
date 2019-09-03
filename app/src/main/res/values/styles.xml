@@ -21,4 +21,12 @@
         <item name="android:backgroundDimEnabled">true</item>
         <!--模糊-->
     </style>
+    <style name="MainButton">
+        <item name="android:background">@drawable/shape_button</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_width">200dp</item>
+        <item name="android:layout_marginTop">15dp</item>
+    </style>
 </resources>

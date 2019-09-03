@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="top"></com.example.lz.babyperceive.View.TitleView>
     <ImageView
+        android:id="@+id/imageview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/titleview"
@@ -19,6 +20,7 @@
         android:background="@drawable/ico_logo"/>
 <LinearLayout
     android:id="@+id/main_layout"
+    android:layout_below="@+id/imageview"
     android:layout_centerHorizontal="true"
     android:layout_centerVertical="true"
     android:layout_width="wrap_content"
@@ -26,33 +28,28 @@
     android:orientation="vertical">
     <Button
         android:id="@+id/speaking_bt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@drawable/bg_btn_read_n" />
+        style="@style/MainButton"
+        android:text="@string/speaking"/>
     <Button
         android:id="@+id/english_bt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_gravity="center"
+        style="@style/MainButton"
         android:text="@string/english"/>
     <Button
         android:id="@+id/object_bt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_gravity="center"
+        style="@style/MainButton"
         android:text="@string/object"/>
     <Button
         android:id="@+id/test_bt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_gravity="center"
+        style="@style/MainButton"
         android:text="@string/test"/>
     <Button
         android:id="@+id/idiom_bt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_gravity="center"
+        style="@style/MainButton"
         android:text="@string/idiom"/>
 
 </LinearLayout>
