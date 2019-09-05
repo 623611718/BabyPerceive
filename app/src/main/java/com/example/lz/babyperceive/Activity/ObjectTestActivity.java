@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,9 +22,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ObjectTestActivity extends BaseActivity {
+    private static  final String TAG = "ObjectTest";
     private List<Object> objectList = new ArrayList<>();
     private Utils utils;
-    private ImageView imageView;
+    private ImageView imageView,image_answer;
     private TextView tv1, tv2, tv3, tv4;
     private TitleView titleView;
     private int random_number;  //随机数
@@ -31,10 +33,28 @@ public class ObjectTestActivity extends BaseActivity {
     private String object, name, introduction, imageId, namespell;
     private List<String> allOptionsList = new ArrayList<>();
     private List<String> optionsList = new ArrayList<>();
+    private Button next_bt;
 
     @Override
     public void widgetClick(View v) {
-
+        switch (v.getId()){
+            case R.id.tv1:
+                setImageView_answer(tv1.getText().toString());
+                break;
+            case R.id.tv2:
+                setImageView_answer(tv2.getText().toString());
+                break;
+            case R.id.tv3:
+                setImageView_answer(tv3.getText().toString());
+                break;
+            case R.id.tv4:
+                setImageView_answer(tv4.getText().toString());
+                break;
+            case R.id.next_bt:
+                image_answer.setVisibility(View.GONE);
+                setData();
+                break;
+        }
     }
 
     @Override
@@ -45,6 +65,16 @@ public class ObjectTestActivity extends BaseActivity {
         setData();
     }
 
+    private void setImageView_answer(String s){
+        Log.i("test","选择的答案。。。"+s);
+        Log.i("test","正确的答案。。。"+name);
+        if (name.equals(s)){
+            image_answer.setBackgroundResource(R.drawable.ico_exam_correct);
+        }else {
+            image_answer.setBackgroundResource(R.drawable.ico_exam_error);
+        }
+        image_answer.setVisibility(View.VISIBLE);
+    }
     @SuppressLint("NewApi")
     private void setData() {
         int max = objectList.size() - 1;
@@ -75,7 +105,7 @@ public class ObjectTestActivity extends BaseActivity {
             allOptionsList.add(object.getName());
         }
         int index = allOptionsList.indexOf(name);   // 获取答案在所有选项中的位置
-        int index_option = utils.getRandomNumber(4);  //设置答案在4个显示的选项中的位置
+        int index_option = utils.getRandomNumber(3);  //设置答案在4个显示的选项中的位置
         int index_error = utils.getRandomNumber(max);
         //optionsList.add(index_option,allOptionsList.get(index));
        // for (int i = 0; i < 4; i++) {
@@ -84,10 +114,11 @@ public class ObjectTestActivity extends BaseActivity {
             } else {*/
            //如果没有就加入
         while (optionsList.size()<4) {
+            Log.i("test"," 加载。。。"+optionsList.indexOf(allOptionsList.get(index_error)));
             if (optionsList.indexOf(allOptionsList.get(index_error)) == -1) {
                 optionsList.add(allOptionsList.get(index_error));
-                index_error = utils.getRandomNumber(max);
             }
+            index_error = utils.getRandomNumber(max);
         }
 
            // }
@@ -136,6 +167,9 @@ public class ObjectTestActivity extends BaseActivity {
         tv4 = $(R.id.tv4);
         imageView = $(R.id.image);
         titleView = $(R.id.titleview);
+        image_answer = $(R.id.image_answer);
+        image_answer.setVisibility(View.GONE);
+        next_bt = $(R.id.next_bt);
         titleView.setCustomOnClickListener(new TitleView.ClickListener() {
             @Override
             public void onClick(View v) {
@@ -143,6 +177,11 @@ public class ObjectTestActivity extends BaseActivity {
             }
         });
         titleView.setTitleView(1);
+        tv1.setOnClickListener(this);
+        tv2.setOnClickListener(this);
+        tv3.setOnClickListener(this);
+        tv4.setOnClickListener(this);
+        next_bt.setOnClickListener(this);
 
     }
 

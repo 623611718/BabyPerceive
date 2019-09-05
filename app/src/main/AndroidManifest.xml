@@ -32,7 +32,7 @@
             android:name="com.baidu.speech.VoiceRecognitionService"
             android:exported="false" />
 
-        <activity android:name=".Activity.ObjectTestActivity">
+        <activity android:name=".Activity.EnglishTestActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -43,7 +43,8 @@
         <activity android:name=".Activity.TestActivity" />
         <activity android:name=".Activity.ObjectActivity" />
         <activity android:name=".Activity.AnimalActivity" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".Activity.ObjectTestActivity"></activity>
     </application>
 
 </manifest>
