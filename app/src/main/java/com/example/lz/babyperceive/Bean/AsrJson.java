@@ -10,6 +10,7 @@ import java.util.List;
 
 /**
  * Created by lz on 2019/8/22.
+ * 事物的JSON解析
  */
 
 public class AsrJson {

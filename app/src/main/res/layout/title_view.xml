@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/layout"
     android:layout_width="match_parent"
-    android:layout_height="66dp"
-    android:orientation="horizontal">
+    android:layout_height="66dp">
 
     <Button
         android:id="@+id/back_bt"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:layout_gravity="center"
+        android:layout_gravity="left|center_vertical"
         android:layout_marginLeft="16dp"
         android:background="@drawable/back" />
 
@@ -17,10 +16,8 @@
         android:id="@+id/title_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:layout_gravity="center"
-        android:layout_marginLeft="10dp"
-        android:gravity="left"
+        android:gravity="center"
         android:text="@string/back"
         android:textColor="#333333"
         android:textSize="20sp" />
@@ -29,7 +26,8 @@
         android:id="@+id/mote_bt"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:layout_gravity="center"
+        android:layout_gravity="right|center_vertical"
         android:layout_marginRight="16dp"
+        android:layout_toRightOf="@id/title_tv"
         android:background="@drawable/more" />
-</LinearLayout>
+</FrameLayout>

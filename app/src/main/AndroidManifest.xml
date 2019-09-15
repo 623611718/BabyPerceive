@@ -9,6 +9,12 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <!-- begin: baidu speech sdk  权限 -->
     <application
@@ -32,19 +38,56 @@
             android:name="com.baidu.speech.VoiceRecognitionService"
             android:exported="false" />
 
-        <activity android:name=".Activity.EnglishTestActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.SpeakingActivity" />
-        <activity android:name=".Activity.TestActivity" />
-        <activity android:name=".Activity.ObjectActivity" />
+        <activity
+            android:name=".Activity.SpeakingActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activity.TestActivity1"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activity.ObjectActivity"
+            android:screenOrientation="landscape" />
         <activity android:name=".Activity.AnimalActivity" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".Activity.ObjectTestActivity"></activity>
+        <activity
+            android:name=".Activity.EnglishSpellTestActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activity.ObjectTestActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activity.EnglishTestActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activity.TestActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activity.IdiomTestActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activity.CharacterRecognitionActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activity.ImageRecognitionActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activity.LearningActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activity.IdentifyActivity"
+            android:screenOrientation="landscape" />
+        <activity android:name=".Activity.WebViewActivity" />
+        <activity android:name=".Activity.MoviesActivity" />
+        <activity
+            android:name=".Activity.PlayerActivity"
+            android:hardwareAccelerated="true"
+            android:screenOrientation="landscape" />
     </application>
 
 </manifest>

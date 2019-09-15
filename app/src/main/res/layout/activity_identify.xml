@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.lz.babyperceive.MainActivity">
+
+    <com.example.lz.babyperceive.View.TitleView
+        android:id="@+id/titleview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="top"></com.example.lz.babyperceive.View.TitleView>
+    <ImageView
+        android:id="@+id/iv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/titleview"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/ico_logo"/>
+    <LinearLayout
+        android:id="@+id/main_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv1"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/bt1"
+            style="@style/MainButton"
+            android:layout_gravity="center"
+            android:text="文字识别" />
+        <Button
+            android:id="@+id/bt2"
+            style="@style/MainButton"
+            android:layout_gravity="center"
+            android:text="物体识别"/>
+        <Button
+            android:id="@+id/bt3"
+            style="@style/MainButton"
+            android:layout_gravity="center"
+            android:text="动物识别"/>
+        <Button
+            android:id="@+id/bt4"
+            style="@style/MainButton"
+            android:layout_gravity="center"
+            android:text="植物识别"/>
+        <Button
+            android:id="@+id/bt5"
+            style="@style/MainButton"
+            android:layout_gravity="center"
+            android:text="蔬果识别"/>
+        <Button
+            android:id="@+id/bt6"
+            style="@style/MainButton"
+            android:layout_gravity="center"
+            android:text="地标识别"/>
+    </LinearLayout>
+
+</RelativeLayout>

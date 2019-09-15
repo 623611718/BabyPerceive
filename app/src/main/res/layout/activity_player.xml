@@ -1,0 +1,87 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <SurfaceView
+        android:id="@+id/surfaceview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:onClick="display" />
+
+    <TextView
+        android:id="@+id/tv_sound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="right|center_vertical"
+
+        android:background="#33ffffff"
+        android:padding="8dp"
+        android:text="音量"
+        android:visibility="gone" />
+
+    <com.example.lz.babyperceive.View.Play_title
+        android:id="@+id/play_title"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"></com.example.lz.babyperceive.View.Play_title>
+
+    <LinearLayout
+        android:id="@+id/sk_linear"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_gravity="bottom"
+        android:gravity="center_vertical"
+        android:background="@color/gray">
+
+        <Button
+            android:id="@+id/playing"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/play_pause"
+            android:layout_marginLeft="10dp"/>
+
+        <TextView
+            android:id="@+id/tv_begin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/start_time"
+            android:textColor="@color/white"
+            android:textSize="10dp" />
+
+        <SeekBar
+            android:id="@+id/sb_main"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="13"
+            android:background="#00000000"
+            />
+            <!--android:progressDrawable="@drawable/video_seekbar_progress"/>-->
+
+        <TextView
+            android:id="@+id/tv_end"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:textSize="10dp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_play"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:background="@drawable/btn_start_selector"
+        android:onClick="playLocalMedia" />
+
+    <ProgressBar
+        android:id="@+id/pb_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
+</FrameLayout>

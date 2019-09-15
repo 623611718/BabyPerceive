@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.lz.babyperceive.MainActivity">
+
+    <com.example.lz.babyperceive.View.TitleView
+        android:id="@+id/titleview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"></com.example.lz.babyperceive.View.TitleView>
+    <ImageView
+        android:id="@+id/imageview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/titleview"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/ico_logo"/>
+    <LinearLayout
+        android:id="@+id/main_layout"
+        android:layout_below="@+id/imageview"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/bt1"
+            android:layout_gravity="center"
+            style="@style/MainButton"
+            android:text="@string/speaking"/>
+        <Button
+            android:id="@+id/bt2"
+            android:layout_gravity="center"
+            style="@style/MainButton"
+            android:text="@string/english"/>
+        <Button
+            android:id="@+id/bt3"
+            android:layout_gravity="center"
+            style="@style/MainButton"
+            android:text="@string/object"/>
+        <Button
+            android:id="@+id/bt4"
+            android:layout_gravity="center"
+            style="@style/MainButton"
+            android:text="@string/idiom"/>
+         <Button
+             android:id="@+id/bt5"
+             android:layout_gravity="center"
+             style="@style/MainButton"
+             android:text="练词组"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

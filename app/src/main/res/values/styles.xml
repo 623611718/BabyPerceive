@@ -23,10 +23,19 @@
     </style>
     <style name="MainButton">
         <item name="android:background">@drawable/shape_button</item>
-        <item name="android:textSize">30sp</item>
+        <item name="android:textSize">15sp</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:layout_height">50dp</item>
-        <item name="android:layout_width">200dp</item>
-        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+
+    </style>
+
+
+    <style name="result_pop_scroll">
+        <item name="android:background">@color/white</item>
+    </style>
+    <style name="result_pop_scrollinner">
+        <item name="android:padding">@dimen/result_pop_padding</item>
+        <item name="android:rowHeight">12dp</item>
     </style>
 </resources>

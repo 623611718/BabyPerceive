@@ -17,4 +17,15 @@
     <string name="vegetables">蔬菜</string>
     <string name="down">按住说话</string>
     <string name="up">正在说话</string>
+    <string name="spell">输入单词</string>
+    <string name="learning">学一学</string>
+    <string name="identify">智能识别</string>
+    <string name="entertainment">娱乐</string>
+
+    <string name="vedio_name">视频名称</string>
+    <string name="start_time">开始时间</string>
+    <string name="play_title_name">播放电影名称</string>
+    <string name="now_time">时间日期</string>
+    <string name="now_speed">网速</string>
+
 </resources>

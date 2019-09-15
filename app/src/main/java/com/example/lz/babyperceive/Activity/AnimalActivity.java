@@ -24,15 +24,16 @@ public class AnimalActivity extends BaseActivity {
     private Utils utils;
     private TitleView titleView;
     private ImageView imageView;
-    private TextView introduction_tv, namespell_tv, name_tv; //介绍 ,拼音/翻译, 名称/英文
+    private TextView introduction_tv, namespell_tv, name_tv,tv1; //介绍 ,拼音/翻译, 名称/英文 tv1显示成语的介绍
     private ButtonView buttonView;
     private String object, name,introduction,imageId,namespell;
     private int id;
     private List<Object> objectList = new ArrayList<>();
-    private int random_number;  //随机数
+    private int number;  //随机数
     private Speek speek; //百度语音合成
     private int previous_number = 0;//上一个随机数
     private boolean isEnglish = false;
+    private boolean isIdiom = false; //判断是否是成语
     @Override
     public void widgetClick(View v) {
 
@@ -45,7 +46,11 @@ public class AnimalActivity extends BaseActivity {
         initData();
         setData();
         initView1();
-        speek.Speeking(name);
+        if (isEnglish){
+            speek.Speeking(object);
+        }else {
+            speek.Speeking(name);
+        }
     }
 
     /**
@@ -53,14 +58,13 @@ public class AnimalActivity extends BaseActivity {
      */
     @SuppressLint("NewApi")
     private void setData() {
-        int max = objectList.size()-1;
-        random_number = utils.getRandomNumber(max);
+        number = 0;
 
-        object = objectList.get(random_number).getObject();
-        name = objectList.get(random_number).getName();
-        imageId = objectList.get(random_number).getImageId();
-        introduction = objectList.get(random_number).getIntroduction();
-        object = objectList.get(random_number).getObject();
+        object = objectList.get(number).getObject();
+        name = objectList.get(number).getName();
+        imageId = objectList.get(number).getImageId();
+        introduction = objectList.get(number).getIntroduction();
+        object = objectList.get(number).getObject();
         StringBuffer stringBuffer = new StringBuffer();
         if (name.length()>0) {
             for (int i = 1; i <= name.length(); i++) {
@@ -76,7 +80,13 @@ public class AnimalActivity extends BaseActivity {
         }else {
             namespell_tv.setText(namespell);
         }
-        introduction_tv.setText(introduction);
+        if (isIdiom ==true){
+            tv1.setText(introduction);
+            imageView.setVisibility(View.GONE);
+            introduction_tv.setVisibility(View.GONE);
+        }else {
+            introduction_tv.setText(introduction);
+        }
         name_tv.setText(name);
         imageView.setBackground(utils.getAssectImage(imageId));
     }
@@ -86,6 +96,12 @@ public class AnimalActivity extends BaseActivity {
         Intent intent = getIntent();
        if (intent.getStringExtra("data").equals("english.txt")){
            isEnglish =true;
+           isIdiom = false;
+       }else {
+           if (intent.getStringExtra("data").equals("idiom.txt")){
+               isIdiom = true;
+               isEnglish =false;
+           }
        }
         objectList = asrJson.parseJSONobject(utils.getAsstesTxt( intent.getStringExtra("data")));
         speek = new Speek(this);
@@ -95,12 +111,14 @@ public class AnimalActivity extends BaseActivity {
      * 传入一个随机数,设置名称/英文  介绍 拼音/翻译
      */
     @SuppressLint("NewApi")
-    private void initData(int random_number) {
-        object = objectList.get(random_number).getObject();
-        name = objectList.get(random_number).getName();
-        imageId = objectList.get(random_number).getImageId();
-        introduction = objectList.get(random_number).getIntroduction();
-        object = objectList.get(random_number).getObject();
+    private void initData(int number1) {
+        number=number1;
+
+        object = objectList.get(number).getObject();
+        name = objectList.get(number).getName();
+        imageId = objectList.get(number).getImageId();
+        introduction = objectList.get(number).getIntroduction();
+        object = objectList.get(number).getObject();
         StringBuffer stringBuffer = new StringBuffer();
         if (name.length()>0) {
             for (int i = 1; i <= name.length(); i++) {
@@ -116,7 +134,13 @@ public class AnimalActivity extends BaseActivity {
         }else {
             namespell_tv.setText(namespell);
         }
-        introduction_tv.setText(introduction);
+        if (isIdiom ==true){
+            tv1.setText(introduction);
+            imageView.setVisibility(View.GONE);
+            introduction_tv.setVisibility(View.GONE);
+        }else {
+            introduction_tv.setText(introduction);
+        }
         name_tv.setText(name);
         imageView.setBackground(utils.getAssectImage(imageId));
     }
@@ -126,11 +150,13 @@ public class AnimalActivity extends BaseActivity {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.previous_bt:
-                        initData(previous_number);
-                        if (isEnglish ==true){
-                            speek.Speeking(object);
-                        }else {
-                            speek.Speeking(name);
+                        if (number>0) {
+                            initData(number - 1);
+                            if (isEnglish == true) {
+                                speek.Speeking(object);
+                            } else {
+                                speek.Speeking(name);
+                            }
                         }
                         break;
                     case R.id.play_bt:
@@ -142,13 +168,14 @@ public class AnimalActivity extends BaseActivity {
                         }
                         break;
                     case R.id.next_bt:
-                        previous_number = random_number;
-                        setData();
-                        initData(random_number);
-                        if (isEnglish ==true){
-                            speek.Speeking(object);
-                        }else {
-                            speek.Speeking(name);
+                       // setData();
+                        if (number<objectList.size()-1) {
+                            initData(number + 1);
+                            if (isEnglish == true) {
+                                speek.Speeking(object);
+                            } else {
+                                speek.Speeking(name);
+                            }
                         }
                         break;
                 }
@@ -186,6 +213,7 @@ public class AnimalActivity extends BaseActivity {
         name_tv = $(R.id.name_tv);
         namespell_tv= $(R.id.namespell_tv);
         imageView = $(R.id.image);
+        tv1 = $(R.id.tv1);
     }
 
     @Override

@@ -141,6 +141,7 @@ public class ObjectTestActivity extends BaseActivity {
         Intent intent = getIntent();
         intent.getStringExtra("data");
         objectList = asrJson.parseJSONobject(utils.getAsstesTxt("animal.txt"));
+        objectList.addAll(asrJson.parseJSONobject(utils.getAsstesTxt("fruit.txt")));
     }
 
 

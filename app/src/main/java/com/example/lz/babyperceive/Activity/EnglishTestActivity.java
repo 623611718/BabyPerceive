@@ -105,12 +105,12 @@ public class EnglishTestActivity extends BaseActivity implements SpeechRecognize
                     case MotionEvent.ACTION_DOWN:
                         speechRecognizerTool.startASR(EnglishTestActivity.this);
                         next_bt.setBackgroundResource(
-                                R.color.colorPrimaryDark);
+                                R.color.colorAccent);
                         break;
                     case MotionEvent.ACTION_UP:
                         speechRecognizerTool.stopASR();
                         next_bt.setBackgroundResource(
-                                R.color.colorAccent);
+                                R.color.white);
                         break;
                     default:
                         return false;

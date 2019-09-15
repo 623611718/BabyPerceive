@@ -2,25 +2,39 @@ package com.example.lz.babyperceive;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.PopupMenu;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.lz.babyperceive.Activity.AnimalActivity;
+import com.example.lz.babyperceive.Activity.CharacterRecognitionActivity;
+import com.example.lz.babyperceive.Activity.IdentifyActivity;
+import com.example.lz.babyperceive.Activity.ImageRecognitionActivity;
+import com.example.lz.babyperceive.Activity.LearningActivity;
+import com.example.lz.babyperceive.Activity.MoviesActivity;
 import com.example.lz.babyperceive.Activity.ObjectActivity;
+import com.example.lz.babyperceive.Activity.PlayerActivity;
 import com.example.lz.babyperceive.Activity.SpeakingActivity;
 import com.example.lz.babyperceive.Activity.TestActivity;
+import com.example.lz.babyperceive.View.TitleView;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button speaking_bt,english_bt,object_bt,test_bt,idiom_bt;
+    private Button bt1, bt2, bt3, bt4; //1:学一学 2:考一考 3:智能识别 4:休闲娱乐
+    private TitleView titleView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initPermission();  //初始化权限
         initView();//初始化View
     }
+
     //改变状态栏字体颜色
     private void changeStatusBarTextColor(boolean isBlack) {
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
@@ -40,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
     }
+
     /**
      * android 6.0 以上需要动态申请权限
      */
@@ -48,12 +64,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Manifest.permission.ACCESS_NETWORK_STATE,
                 Manifest.permission.INTERNET,
                 Manifest.permission.READ_PHONE_STATE,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.CAMERA,
+                Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS,
+                Manifest.permission.READ_PHONE_STATE
         };
 
         ArrayList<String> toApplyList = new ArrayList<String>();
 
-        for (String perm :permissions){
+        for (String perm : permissions) {
             if (PackageManager.PERMISSION_GRANTED != ContextCompat.checkSelfPermission(this, perm)) {
                 toApplyList.add(perm);
                 //进入到这里代表没有权限.
@@ -61,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
         String tmpList[] = new String[toApplyList.size()];
-        if (!toApplyList.isEmpty()){
+        if (!toApplyList.isEmpty()) {
             ActivityCompat.requestPermissions(this, toApplyList.toArray(tmpList), 123);
         }
 
@@ -71,44 +90,126 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         // 此处为android 6.0以上动态授权的回调，用户自行实现。
     }
-    private void initView(){
-        speaking_bt = (Button) findViewById(R.id.speaking_bt);
-        english_bt = (Button) findViewById(R.id.english_bt);
-        object_bt = (Button) findViewById(R.id.object_bt);
-        test_bt = (Button) findViewById(R.id.test_bt);
-        idiom_bt = (Button) findViewById(R.id.idiom_bt);
-        speaking_bt.setOnClickListener(this);
-        english_bt.setOnClickListener(this);
-        object_bt.setOnClickListener(this);
-        test_bt.setOnClickListener(this);
-        idiom_bt.setOnClickListener(this);
 
+    private void initView() {
+        bt1 = (Button) findViewById(R.id.bt1);
+        bt2 = (Button) findViewById(R.id.bt2);
+        bt3 = (Button) findViewById(R.id.bt3);
+        bt4 = (Button) findViewById(R.id.bt4);
+        titleView = (TitleView) findViewById(R.id.titleview);
+        bt1.setOnClickListener(this);
+        bt2.setOnClickListener(this);
+        bt3.setOnClickListener(this);
+        bt4.setOnClickListener(this);
+        titleView.setCustomOnClickListener(new TitleView.ClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()) {
+                    case R.id.mote_bt:
+                        showPopupMenu(v);
+                        break;
+                    case R.id.back_bt:
+                        finish();
+                        break;
+                }
+            }
+        });
+        titleView.setTitle_tv("幼儿学知识");
     }
+
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.speaking_bt:
-                Intent intent = new Intent(this, SpeakingActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.english_bt:
-                Intent intent_english = new Intent(this, AnimalActivity.class);
-                intent_english.putExtra("data","english.txt");
-                startActivity(intent_english);
-                break;
-            case R.id.object_bt:
-                Intent intent_object = new Intent(this, ObjectActivity.class);
-                startActivity(intent_object);
-                break;
-            case R.id.test_bt:
-                Intent intent1 = new Intent(this, TestActivity.class);
+        switch (v.getId()) {
+            case R.id.bt1:
+                Intent intent1 = new Intent(this, LearningActivity.class);
+                intent1.putExtra("title","学一学");
                 startActivity(intent1);
                 break;
-            case R.id.idiom_bt:
-                Intent intent_idiom= new Intent(this, AnimalActivity.class);
-                intent_idiom.putExtra("data","idiom.txt");
-                startActivity(intent_idiom);
+            case R.id.bt2:
+                Intent intent2 = new Intent(this, TestActivity.class);
+                intent2.putExtra("title","考一考");
+                startActivity(intent2);
                 break;
+            case R.id.bt3:
+                Intent intent3 = new Intent(this, IdentifyActivity.class);
+                intent3.putExtra("title","智能识别");
+                startActivity(intent3);
+                break;
+            case R.id.bt4:
+                Intent intent4 = new Intent(this, MoviesActivity.class);
+                intent4.putExtra("title","休闲娱乐");
+                startActivity(intent4);
+                break;
+           /* case R.id.idiom_bt:
+                Intent intent_idiom = new Intent(this, AnimalActivity.class);
+                intent_idiom.putExtra("data", "idiom.txt");
+                startActivity(intent_idiom);
+                break;*/
         }
+    }
+
+
+    private void showPopupMenu(View view) {
+        // View当前PopupMenu显示的相对View的位置
+        PopupMenu popupMenu = new PopupMenu(this, view);
+        // menu布局
+        popupMenu.getMenuInflater().inflate(R.menu.info, popupMenu.getMenu());
+        // menu的item点击事件
+        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.quit1:
+                        Intent intent1 = new Intent(MainActivity.this, CharacterRecognitionActivity.class);
+                        startActivity(intent1);
+                        break;
+                    case R.id.quit2:
+                        Intent intent2 = new Intent(MainActivity.this, ImageRecognitionActivity.class);
+                        intent2.putExtra("type","advanced_general");
+                        startActivity(intent2);
+                        break;
+                    case R.id.quit3:
+                        Intent intent3 = new Intent(MainActivity.this, ImageRecognitionActivity.class);
+                        intent3.putExtra("type","animal");
+                        startActivity(intent3);
+                        break;
+                    case R.id.quit4:
+                        Intent intent4 = new Intent(MainActivity.this, ImageRecognitionActivity.class);
+                        intent4.putExtra("type","plant");
+                        startActivity(intent4);
+                        break;
+                    case R.id.quit5:
+                        Intent intent5 = new Intent(MainActivity.this, ImageRecognitionActivity.class);
+                        intent5.putExtra("type","ingredient");
+                        startActivity(intent5);
+                        break;
+                    case R.id.quit6:
+                        Intent intent6 = new Intent(MainActivity.this, ImageRecognitionActivity.class);
+                        intent6.putExtra("type","landmark");
+                        startActivity(intent6);
+                        break;
+
+                }
+                return false;
+            }
+        });
+        // PopupMenu关闭事件
+        popupMenu.setOnDismissListener(new PopupMenu.OnDismissListener() {
+            @Override
+            public void onDismiss(PopupMenu menu) {
+                //Toast.makeText(getApplicationContext(), "关闭PopupMenu", Toast.LENGTH_SHORT).show();
+            }
+        });
+        popupMenu.show();
+    }
+    @Override
+    protected void onResume() {
+        /**
+         * 设置为横屏
+         */
+        if(getRequestedOrientation()!= ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
+        super.onResume();
     }
 }

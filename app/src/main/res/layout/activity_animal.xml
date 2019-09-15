@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -16,27 +16,34 @@
 
     <FrameLayout
         android:id="@+id/iamage_layout"
-        android:layout_width="275dp"
-        android:layout_height="185dp"
+        android:layout_width="190dp"
+        android:layout_height="133dp"
+        android:layout_weight="1"
         android:layout_below="@id/titleview"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_gravity="center_horizontal"
         android:background="@drawable/bg_exam_line">
 
+        <TextView
+            android:id="@+id/tv1"
+            android:layout_width="170dp"
+            android:layout_height="135dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="20sp"/>
         <ImageView
             android:id="@+id/image"
-            android:layout_width="250dp"
-            android:layout_height="162dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:background="@drawable/dog" />
+             />
     </FrameLayout>
 
     <TextView
         android:id="@+id/introduction_tv"
-        android:layout_width="275dp"
-        android:layout_height="95dp"
-        android:layout_below="@id/iamage_layout"
-        android:layout_centerHorizontal="true"
+        android:layout_width="190dp"
+        android:layout_height="25dp"
+        android:layout_weight="0.25"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
         android:background="@drawable/bg_read_text"
         android:text="这是一个简介"
@@ -47,8 +54,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/introduction_tv"
-        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
+        android:layout_weight="0.5"
         android:orientation="vertical">
 
         <TextView
@@ -70,13 +78,14 @@
             android:text="狗"></TextView>
     </LinearLayout>
     <com.example.lz.babyperceive.View.ButtonView
-        android:layout_marginTop="20dp"
+
         android:id="@+id/buttonview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/name_layout"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true">
+        android:layout_gravity="center_horizontal"
+        android:layout_centerVertical="true"
+        android:layout_weight="0.25">
     </com.example.lz.babyperceive.View.ButtonView>
 
-</RelativeLayout>
+</LinearLayout>

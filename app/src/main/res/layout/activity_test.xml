@@ -1,74 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.lz.babyperceive.Activity.TestActivity">
+    tools:context="com.example.lz.babyperceive.MainActivity">
+
     <com.example.lz.babyperceive.View.TitleView
         android:id="@+id/titleview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></com.example.lz.babyperceive.View.TitleView>
-
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="top"></com.example.lz.babyperceive.View.TitleView>
     <ImageView
-        android:id="@+id/right_iv"
-        android:layout_width="50sp"
-        android:layout_height="50sp"
-        android:layout_gravity="center"
-        android:layout_marginBottom="110dp"
-        android:visibility="gone"
-        android:background="@drawable/right" />
-
-    <FrameLayout
-        android:id="@+id/framelayout"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_gravity="center"
-        android:background="@drawable/tian">
-
-        <TextView
-            android:id="@+id/chinese_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="10dp"
-            android:text="111"
-            android:textColor="@color/black"
-            android:textSize="100sp" />
-    </FrameLayout>
-
-    <LinearLayout
+        android:id="@+id/iv1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="130dp"
+        android:layout_below="@+id/titleview"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/ico_logo"/>
+    <LinearLayout
+        android:id="@+id/main_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv1"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal">
-
         <Button
-            android:id="@+id/previous_bt"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/previous1" />
-
+            android:id="@+id/bt1"
+            style="@style/MainButton"
+            android:layout_gravity="center"
+            android:text="文字测试" />
         <Button
-            android:id="@+id/play_bt"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="30dp"
-            android:background="@drawable/play1" />
-
+            android:id="@+id/bt2"
+            style="@style/MainButton"
+            android:layout_gravity="center"
+            android:text="英语测试(读)"/>
         <Button
-            android:id="@+id/next_bt"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="30dp"
-            android:background="@drawable/next1" />
+            android:id="@+id/bt3"
+            style="@style/MainButton"
+            android:layout_gravity="center"
+            android:text="英语测试(写)"/>
+        <Button
+            android:id="@+id/bt4"
+            style="@style/MainButton"
+            android:layout_gravity="center"
+            android:text="事物测试"/>
+        <Button
+            android:id="@+id/bt5"
+            style="@style/MainButton"
+            android:layout_gravity="center"
+            android:text="成语测试"/>
     </LinearLayout>
 
-    <com.example.lz.babyperceive.View.SpeakingView
-        android:id="@+id/speakingview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:layout_gravity="center"></com.example.lz.babyperceive.View.SpeakingView>
-</FrameLayout>
+</RelativeLayout>

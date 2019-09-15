@@ -11,6 +11,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -25,7 +26,7 @@ public class TitleView extends LinearLayout {
     private TextView title_tv;
     private Button more_bt, back_bt;
     private int height, width;
-    private LinearLayout layout;
+    private FrameLayout layout;
     //private AndroiodScreenProperty androiodScreenProperty;
     private ClickListener clickListener;
 
@@ -42,7 +43,7 @@ public class TitleView extends LinearLayout {
         more_bt.setOnClickListener(new TitleClistener());
         back_bt.setOnClickListener(new TitleClistener());
         title_tv.setOnClickListener(new TitleClistener());
-        layout = (LinearLayout) findViewById(R.id.layout);
+        layout = (FrameLayout) findViewById(R.id.layout);
 
     }
 
@@ -54,6 +55,9 @@ public class TitleView extends LinearLayout {
                 clickListener.onClick(v);
             }
         }
+    }
+    public void setTitle_tv(String name){
+        title_tv.setText(name);
     }
 
     @SuppressLint("ResourceAsColor")

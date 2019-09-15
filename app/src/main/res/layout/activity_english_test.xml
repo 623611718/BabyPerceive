@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -18,12 +18,12 @@
         android:id="@+id/tv1"
         android:layout_width="275dp"
         android:layout_height="185dp"
-        android:layout_below="@id/titleview"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_weight="1"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
         android:gravity="center"
         android:textSize="35sp"
-        android:background="@drawable/bg_line"
+        android:background="@drawable/bg_exam_line"
         >
 
     </TextView>
@@ -31,8 +31,8 @@
         android:id="@+id/name_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv1"
-        android:layout_centerHorizontal="true"
+        android:layout_weight="0.35"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
         android:orientation="vertical">
 
@@ -51,7 +51,7 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:background="@drawable/bg_read_title"
-            android:textSize="25sp"
+            android:textSize="15sp"
             android:text="狗"></TextView>
     </LinearLayout>
 
@@ -59,8 +59,8 @@
         android:id="@+id/next_bt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/name_layout"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"
         android:text="@string/down"/>
-</RelativeLayout>
+
+</LinearLayout>

@@ -22,6 +22,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
@@ -30,13 +31,14 @@ import java.util.Random;
  */
 
 public class Utils {
+    private final static String TAG="utils";
     private  String Chinesetext ="";
     private String englishtext = "";
     private String IdiomText;
     private Context context;
     public Utils(Context context) {
         this.context=context;
-     //   this.Chinesetext = getTextHanzi();
+        this.Chinesetext = getAsstesTxt("hanzi.txt");
      //   this.englishtext = getTextEnglish();
       //  this.IdiomText = getTextIdiom();
 
@@ -79,12 +81,23 @@ public class Utils {
      * @return
      */
     public String getChinese(){
-        int position = getRandomNumber();
-        Log.i("test", "位置:" + position);
-        Log.i("test", "长度:" + Chinesetext.length());
-        String chinses = Chinesetext.substring(position, position+1);      //随机获取的汉字
+        int position = getRandomNumber(420);
+       // String chinses = Chinesetext.substring(position, position+1);      //随机获取的汉字
+        String[] arr = Chinesetext.split(",");
+        List<String> list = java.util.Arrays.asList(arr);
+        String chinses = list.get(position);
         String chineseSpell = getChineseSpell(chinses);                          //获取拼音
-        Log.i("test", "内容:" + chinses+"拼音:"+chineseSpell);
+        Log.i(TAG, "内容:" + chinses+"拼音:"+chineseSpell);
+        return chinses;
+    }
+    public String getChinese(int position){
+
+        // String chinses = Chinesetext.substring(position, position+1);      //随机获取的汉字
+        String[] arr = Chinesetext.split(",");
+        List<String> list = java.util.Arrays.asList(arr);
+        String chinses = list.get(position);
+       // String chineseSpell = getChineseSpell(chinses);                          //获取拼音
+       // Log.i("test", "内容:" + chinses+"拼音:"+chineseSpell);
         return chinses;
     }
     private int getRandomNumber() {

@@ -25,17 +25,17 @@ import net.sourceforge.pinyin4j.format.HanyuPinyinToneType;
 import net.sourceforge.pinyin4j.format.HanyuPinyinVCharType;
 import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
 public class SpeakingActivity extends AppCompatActivity implements View.OnClickListener {
-
+    private List<String> objectList = new ArrayList<>();
     private Random random;
     private TextView chinese_tv,chineseSpell_tv;
-    private int random_number;
-    private String text;    //3500常用汉字
+    private int number;
     private String chinses;  //单个汉字
     private String previous_number = "";//上一个汉字
     private Speek speek;  //文字转语音类
@@ -43,15 +43,21 @@ public class SpeakingActivity extends AppCompatActivity implements View.OnClickL
     private String[] spell = new String[0];
     private String chineseSpell = "";
     private TitleView titleView;
+    private int  length;
 
+    private Utils utils;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speaking);
         getSupportActionBar().hide();//隐藏掉整个ActionBar，包括下面的Tabs
         changeStatusBarTextColor(true);
+        utils = new Utils(this);
+        String[] arr = utils.getAsstesTxt("hanzi.txt").split(",");
+        objectList = java.util.Arrays.asList(arr);
+        length = objectList.size();
         initView();
-        initData();
+        initData(1);
         speek = new Speek(this);
         //   List
 
@@ -91,30 +97,16 @@ public class SpeakingActivity extends AppCompatActivity implements View.OnClickL
     }
 
 
-    /**
-     * 获取随机数
-     */
-    private void getRandomNumber() {
-        //random = new Random(3500);//指定种子数字
-        //  random_number = random.nextInt();
-        int max = 3500;
-        int min = 1;
-        random = new Random();
-        random_number = random.nextInt(max) % (max - min + 1) + min;
-    }
 
     /**
      * \
      * 设定随机数
      */
-    private void initData() {
-        getRandomNumber();
-        Utils utils = new Utils(this);
-        text = utils.getAsstesTxt("hanzi.txt");
-        Log.i("test", "位置:" + random_number);
-        Log.i("test", "长度:" + text.length());
-        chinses = text.substring(random_number - 1, random_number);      //随机获取的汉字
-        chineseSpell = getChineseSpell(chinses);                          //获取拼音
+    private void initData(int position) {
+        number = position;
+        Log.i("test", "位置:" + number);
+        chinses = utils.getChinese(number);      //随机获取的汉字
+        chineseSpell = utils.getChineseSpell(chinses);                          //获取拼音
         Log.i("test", "内容:" + chinses+"拼音:"+chineseSpell);
         chinese_tv.setText(chinses);
         chineseSpell_tv.setText(chineseSpell);
@@ -161,13 +153,17 @@ public class SpeakingActivity extends AppCompatActivity implements View.OnClickL
                 speek.Speeking(chinses);
                 break;
             case R.id.next_bt:
-                previous_number = chinses;
-                initData();
-                speek.Speeking(chinses);
+                if (number<length-2) {
+                    previous_number = chinses;
+                    initData(number+1);
+                    speek.Speeking(chinses);
+                }
                 break;
             case R.id.previous_bt:
-                initData(previous_number);
-                speek.Speeking(chinses);
+                if (number>1) {
+                    initData(number-1);
+                    speek.Speeking(chinses);
+                }
                 break;
             case R.id.play_bt:
                 speek.Speeking(chinses);
