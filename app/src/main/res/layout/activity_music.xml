@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/deepskyblue"
+    android:orientation="vertical"
+    tools:context="com.example.lz.babyperceive.Activity.MusicActivity">
+
+    <com.example.lz.babyperceive.View.TitleView
+        android:id="@+id/titleview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"></com.example.lz.babyperceive.View.TitleView>
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:background="@drawable/ico_txt_song" />
+
+    <FrameLayout
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/layout_boder">
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"></Spinner>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+
+            <TextView
+                android:id="@+id/musicName_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:ellipsize="end"
+                android:maxEms="8"
+                android:singleLine="true"
+                android:text="歌曲名字"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+            <LinearLayout
+                android:id="@+id/sk_linear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+               >
+
+                <TextView
+                    android:id="@+id/tv_begin"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/white"
+                    android:textSize="5dp" />
+
+                <SeekBar
+                    android:id="@+id/sb_main"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:background="#00000000"
+                    />
+                <!--android:progressDrawable="@drawable/video_seekbar_progress"/>-->
+
+                <TextView
+                    android:id="@+id/tv_end"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/white"
+                    android:textSize="5dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center_horizontal|bottom">
+
+            <Button
+                android:id="@+id/previous_bt"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ico_play_pre_n" />
+
+            <Button
+                android:id="@+id/play_bt"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ico_pre_big_n"
+                android:layout_marginLeft="30dp"/>
+
+            <Button
+                android:id="@+id/next_bt"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ico_play_next_n"
+                android:layout_marginLeft="30dp"/>
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

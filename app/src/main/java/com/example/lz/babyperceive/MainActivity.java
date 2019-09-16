@@ -22,10 +22,12 @@ import com.example.lz.babyperceive.Activity.IdentifyActivity;
 import com.example.lz.babyperceive.Activity.ImageRecognitionActivity;
 import com.example.lz.babyperceive.Activity.LearningActivity;
 import com.example.lz.babyperceive.Activity.MoviesActivity;
+import com.example.lz.babyperceive.Activity.MusicActivity;
 import com.example.lz.babyperceive.Activity.ObjectActivity;
 import com.example.lz.babyperceive.Activity.PlayerActivity;
 import com.example.lz.babyperceive.Activity.SpeakingActivity;
 import com.example.lz.babyperceive.Activity.TestActivity;
+import com.example.lz.babyperceive.Activity.YuleActivity;
 import com.example.lz.babyperceive.View.TitleView;
 
 import java.util.ArrayList;
@@ -136,7 +138,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent3);
                 break;
             case R.id.bt4:
-                Intent intent4 = new Intent(this, MoviesActivity.class);
+                Intent intent4 = new Intent(this, YuleActivity.class);
                 intent4.putExtra("title","休闲娱乐");
                 startActivity(intent4);
                 break;

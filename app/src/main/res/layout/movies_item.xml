@@ -7,17 +7,21 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/play_play"
+        android:background="@drawable/bg_ico_play"
         android:layout_marginLeft="10dp"/>
 
     <TextView
         android:id="@+id/name_tv"
+        android:layout_marginLeft="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
         android:gravity="center"
         android:layout_gravity="center"
+        android:textColor="@color/black"
+        android:maxEms="8"
         android:text="111"
-        android:textSize="25sp" />
+        android:ellipsize="end"
+        android:textSize="20sp"
+        android:singleLine="true" />
 
 </LinearLayout>
