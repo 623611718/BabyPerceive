@@ -45,7 +45,9 @@ public class MusicActivity extends BaseActivity {
     private TextView musicName_tv;
     private int number = 0;
 
-    private List<String> nameList = new ArrayList<>();;
+    private ArrayAdapter<String> adapter1;
+    private List<String> nameList = new ArrayList<>();
+    ;
     private Handler handler = new Handler() {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
@@ -93,23 +95,67 @@ public class MusicActivity extends BaseActivity {
             Log.i("dsa", "doInBackground after");
             return null;
         }
+
+        //onPostExecute用于UI的更新.此方法的参数为doInBackground方法返回的值.
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            Log.i("dsa", "onPostExecute");
+            //   mediaPlayer.seekTo(pro);
+            // 1.得到当前的视频播放进度
+            currenposition = mediaPlayer.getCurrentPosition();
+            // 2.Seekbar.setprogress(当前进度);
+            sb_main.setProgress(currenposition);
+            // mediaPlayer.start();
+
+        }
+    }
+
+    //对加载进行异步处理
+    class MyAsyncTask2 extends AsyncTask<Integer, Void, String> {
+
+        //onPreExecute用于异步处理前的操作
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            //此处将progressBar设置为可见.
+
+        }
+
+        //在doInBackground方法中进行异步任务的处理.
+        @Override
+        protected String doInBackground(Integer... params) {
+            play(adapter1.getItem(number));
+            Log.i("test", "!1111" + adapter1.getItem(number));
+            return null;
+        }
+
+        //onPostExecute用于UI的更新.此方法的参数为doInBackground方法返回的值.
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            Log.i("dsa", "onPostExecute");
+            isPlayingVideo();
+            musicName_tv.setText(adapter1.getItem(number));
+        }
     }
 
     @Override
     public void widgetClick(View v) {
         switch (v.getId()) {
             case R.id.play_bt:
-                isPlayingVideo();
+                if (currenposition > 0)
+                    isPlayingVideo();
                 break;
             case R.id.next_bt:
-                if (number<nameList.size()-1){
-                    number+=1;
+                if (number < nameList.size() - 1) {
+                    number += 1;
                     play(nameList.get(number));
                 }
                 break;
             case R.id.previous_bt:
-                if (number>0){
-                    number-=1;
+                if (number > 0) {
+                    number -= 1;
                     play(nameList.get(number));
                 }
                 break;
@@ -128,7 +174,7 @@ public class MusicActivity extends BaseActivity {
     // 播放的时候调用
     public void play(String name) {
         // 重置mediaPaly,建议在初始化mediaplay立即调用
-        if (mediaPlayer !=null){
+        if (mediaPlayer != null) {
             mediaPlayer.pause();
             mediaPlayer.stop();
         }
@@ -293,9 +339,9 @@ public class MusicActivity extends BaseActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // 将适配器添加到下拉列表上
         spinner.setAdapter(adapter);
-        if (nameList.size()>0) {
+        if (nameList.size() > 0) {
             spinner.setSelection(nameList.size() - 1, false);
-        }else {
+        } else {
             spinner.setSelection(0, false);
         }
         // 为下拉框设置事件的响应
@@ -309,11 +355,12 @@ public class MusicActivity extends BaseActivity {
              */
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                ArrayAdapter<String> adapter = (ArrayAdapter<String>) adapterView.getAdapter();
-                isPlayingVideo();
-                play(adapter.getItem(i));
-                musicName_tv.setText(adapter.getItem(i));
-                Log.i("test", "!1111" + adapter.getItem(i));
+                adapter1 = (ArrayAdapter<String>) adapterView.getAdapter();
+                number = i;
+                musicName_tv.setText(adapter1.getItem(number));
+                MyAsyncTask2 asyncTask2 = new MyAsyncTask2();
+                asyncTask2.execute(i);
+
             }
 
             @Override
@@ -361,7 +408,7 @@ public class MusicActivity extends BaseActivity {
         sb_main = $(R.id.sb_main);
         tv_begin = $(R.id.tv_begin);
         tv_end = $(R.id.tv_end);
-        musicName_tv=$(R.id.musicName_tv);
+        musicName_tv = $(R.id.musicName_tv);
         musicName_tv.requestFocus();
     }
 

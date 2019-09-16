@@ -63,7 +63,7 @@ public class EnglishTestActivity extends BaseActivity implements SpeechRecognize
         title_tv.setText(object);
         namespell_tv.setText(object);
         name_tv.setText(name);
-        speek.Speeking(object);
+       // speek.Speeking(object);
 
     }
 
@@ -105,12 +105,12 @@ public class EnglishTestActivity extends BaseActivity implements SpeechRecognize
                     case MotionEvent.ACTION_DOWN:
                         speechRecognizerTool.startASR(EnglishTestActivity.this);
                         next_bt.setBackgroundResource(
-                                R.color.colorAccent);
+                                R.drawable.bg_btn_voice_collecting);
                         break;
                     case MotionEvent.ACTION_UP:
                         speechRecognizerTool.stopASR();
                         next_bt.setBackgroundResource(
-                                R.color.white);
+                                R.drawable.bg_btn_voice);
                         break;
                     default:
                         return false;

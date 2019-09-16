@@ -84,6 +84,7 @@ public class TestActivity extends BaseActivity {
                 }
             }
         });
+        titleView.setTitle_tv("  ");
     }
 
     @Override

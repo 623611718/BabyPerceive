@@ -109,7 +109,7 @@ public class LearningActivity extends AppCompatActivity implements View.OnClickL
             }
         });
 
-        titleView.setTitle_tv("学一学");
+        titleView.setTitle_tv("  ");
     }
 
     //1:跟我读 2:学英语 3:认事物 4:学成语 5:练词组

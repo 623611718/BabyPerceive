@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/test_bg"
     tools:context="com.example.lz.babyperceive.MainActivity">
 
     <com.example.lz.babyperceive.View.TitleView
@@ -36,21 +37,25 @@
             android:id="@+id/bt2"
             style="@style/MainButton"
             android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
             android:text="英语测试(读)"/>
         <Button
             android:id="@+id/bt3"
             style="@style/MainButton"
             android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
             android:text="英语测试(写)"/>
         <Button
             android:id="@+id/bt4"
             style="@style/MainButton"
             android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
             android:text="事物测试"/>
         <Button
             android:id="@+id/bt5"
             style="@style/MainButton"
             android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
             android:text="成语测试"/>
     </LinearLayout>
 

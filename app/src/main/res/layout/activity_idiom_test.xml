@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/test_bg"
     tools:context="com.example.lz.babyperceive.Activity.SpeakingActivity">
 
     <com.example.lz.babyperceive.View.TitleView
@@ -114,5 +115,5 @@
         android:layout_marginTop="10dp"
         android:layout_gravity="center_horizontal"
         android:layout_below="@id/layout2"
-        android:text="@string/next"/>
+        android:background="@drawable/next1"/>
 </LinearLayout>

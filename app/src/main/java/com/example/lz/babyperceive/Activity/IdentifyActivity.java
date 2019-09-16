@@ -101,7 +101,7 @@ public class IdentifyActivity extends BaseActivity {
                 }
             }
         });
-        titleView.setTitle_tv("智能识别");
+        titleView.setTitle_tv("  ");
     }
 
     @Override

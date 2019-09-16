@@ -46,11 +46,11 @@ public class AnimalActivity extends BaseActivity {
         initData();
         setData();
         initView1();
-        if (isEnglish){
+        /*if (isEnglish){
             speek.Speeking(object);
         }else {
             speek.Speeking(name);
-        }
+        }*/
     }
 
     /**

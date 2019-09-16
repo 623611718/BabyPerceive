@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
         });
-        titleView.setTitle_tv("幼儿学知识");
+        titleView.setTitle_tv(" ");
     }
 
     @Override

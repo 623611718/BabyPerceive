@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gk_bg"
     tools:context="com.example.lz.babyperceive.MainActivity">
 
     <com.example.lz.babyperceive.View.TitleView
@@ -35,27 +36,32 @@
         <Button
             android:id="@+id/bt2"
             style="@style/MainButton"
+            android:layout_marginLeft="10dp"
             android:layout_gravity="center"
             android:text="物体识别"/>
         <Button
             android:id="@+id/bt3"
             style="@style/MainButton"
+            android:layout_marginLeft="10dp"
             android:layout_gravity="center"
             android:text="动物识别"/>
         <Button
             android:id="@+id/bt4"
             style="@style/MainButton"
             android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
             android:text="植物识别"/>
         <Button
             android:id="@+id/bt5"
             style="@style/MainButton"
             android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
             android:text="蔬果识别"/>
         <Button
             android:id="@+id/bt6"
             style="@style/MainButton"
             android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
             android:text="地标识别"/>
     </LinearLayout>
 

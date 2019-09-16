@@ -285,7 +285,7 @@ public class CharacterRecognitionActivity extends BaseActivity {
                 }
             }
         });
-
+titleView.setTitle_tv("  ");
         previous_bt = $(R.id.previous_bt);
         previous_bt.setOnClickListener(this);
 
