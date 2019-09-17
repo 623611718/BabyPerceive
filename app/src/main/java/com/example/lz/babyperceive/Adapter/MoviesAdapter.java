@@ -44,7 +44,7 @@ public class MoviesAdapter  extends ArrayAdapter<MoviesBean> {
         MoviesBean moviesBean = getItem(position);
         View view = LayoutInflater.from(getContext()).inflate(resourceId,parent,false);
         TextView name_tv=(TextView) view.findViewById((R.id.name_tv));
-        ImageView imageView=(ImageView) view.findViewById((R.id.score_tv));
+      //  ImageView imageView=(ImageView) view.findViewById((R.id.score_tv));
         name_tv.setText(moviesBean.getName());
        // imageView.setText(moviesBean.getScore());
         return view;

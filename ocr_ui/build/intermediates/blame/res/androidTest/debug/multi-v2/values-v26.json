@@ -1,6 +1,22 @@
 {
     "logs": [
         {
+            "outputFile": "E:\\studio workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-v26\\values-v26.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Administrator\\.gradle\\wrapper\\dists\\gradle-4.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\dda2366587fdc71a6d4943e6d7d6d765\\res\\values-v26\\values-v26.xml",
+                    "from": {
+                        "startLines": "2,6",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,294",
+                        "endLines": "5,6",
+                        "endColumns": "12,92",
+                        "endOffsets": "289,382"
+                    }
+                }
+            ]
+        },
+        {
             "outputFile": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-v26\\values-v26.xml",
             "map": [
                 {

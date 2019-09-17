@@ -16,7 +16,9 @@ import com.example.lz.babyperceive.R;
 import com.example.lz.babyperceive.View.TitleView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MoviesActivity extends BaseActivity {
     private TitleView titleView;
@@ -24,6 +26,7 @@ public class MoviesActivity extends BaseActivity {
     private List<MoviesBean> list = new ArrayList<>();
     private MoviesAdapter adapter;
     private MoviesBean moviesBean;
+    private Map<String,String> m = new HashMap<String,String>();
     @Override
     public void widgetClick(View v) {
 
@@ -32,9 +35,18 @@ public class MoviesActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        moviesBean = new MoviesBean();
-        moviesBean.setName("行尸走肉.mp4");
-        list.add(moviesBean);
+        String[] s = {"行尸走肉.mp4","test.mp4"};
+        m.put("行尸走肉.mp4","http://lz.free.idcfengye.com/行尸走肉.mp4");
+        m.put("test.mp4","http://s.swao.cn/o_1c3n5oq2s1gcai5d1vm917hv1cps7.mp4");
+        initList(s);
+    }
+
+    private void initList(String[] s) {
+        for (int i=0;i<s.length;i++){
+            MoviesBean moviesBean = new MoviesBean();
+            moviesBean.setName(s[i]);
+            list.add(moviesBean);
+        }
     }
 
     @Override
@@ -78,6 +90,8 @@ public class MoviesActivity extends BaseActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(MoviesActivity.this, PlayerActivity.class);
                 intent.putExtra("data", list.get(position).getName());
+                m.get(list.get(position).getName());
+                intent.putExtra("url", m.get(list.get(position).getName()));
                 startActivity(intent);
             }
         });

@@ -120,7 +120,31 @@ public class PlayerActivity extends Activity implements View.OnClickListener{
 
         }
     }
+    //对加载进行异步处理
+    class MyAsyncTask2 extends AsyncTask<Integer, Void, String> {
 
+        //onPreExecute用于异步处理前的操作
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            //此处将progressBar设置为可见.
+
+        }
+
+        //在doInBackground方法中进行异步任务的处理.
+        @Override
+        protected String doInBackground(Integer... params) {
+            play();
+            return null;
+        }
+
+        //onPostExecute用于UI的更新.此方法的参数为doInBackground方法返回的值.
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,9 +160,9 @@ public class PlayerActivity extends Activity implements View.OnClickListener{
         setContentView(R.layout.activity_player);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         Intent myintent = getIntent();
-      //  path = myintent.getStringExtra("url");
+        path = myintent.getStringExtra("url");
         name = myintent.getStringExtra("data");
-        path="http://lz.free.idcfengye.com/"+name;
+        //path="http://lz.free.idcfengye.com/"+name;
         Log.i("play", "path:  " + path);
         utils_play = new Utils_play();
         initdata();
@@ -360,6 +384,8 @@ public class PlayerActivity extends Activity implements View.OnClickListener{
             // 当surfaceview被创建的时候播放
             Log.i("tag", "surfaceCreated  ");
             play();
+            //MyAsyncTask2 myAsyncTask2 = new MyAsyncTask2();
+           // myAsyncTask2.execute();
         }
 
         @Override
@@ -400,7 +426,7 @@ public class PlayerActivity extends Activity implements View.OnClickListener{
             mediaPlayer.setDataSource(path);
             Log.i("play", "url  " + path);
             // 设置异步加载视频，包括两种方式 prepare()同步，prepareAsync()异步
-            mediaPlayer.prepare();
+            mediaPlayer.prepareAsync();
         } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(this, "加载视频错误！", Toast.LENGTH_LONG).show();

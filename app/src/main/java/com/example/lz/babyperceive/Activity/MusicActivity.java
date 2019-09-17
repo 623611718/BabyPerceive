@@ -198,7 +198,7 @@ public class MusicActivity extends BaseActivity {
             mediaPlayer.setDataSource(path);
             Log.i("play", "url  " + path);
             // 设置异步加载视频，包括两种方式 prepare()同步，prepareAsync()异步
-            mediaPlayer.prepare();
+            mediaPlayer.prepareAsync();
         } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(this, "加载错误！", Toast.LENGTH_LONG).show();
@@ -328,9 +328,6 @@ public class MusicActivity extends BaseActivity {
 
     private void intSpinner() {
         nameList.add("孙燕姿 - 遇见.mp3");
-        nameList.add("Mike");
-        nameList.add("Leo");
-        nameList.add("Raph");
         nameList.add("  ");
         Spinner spinner = findViewById(R.id.spinner);
         // 为下拉列表定义一个适配器，使用到上面定义的turtleList
