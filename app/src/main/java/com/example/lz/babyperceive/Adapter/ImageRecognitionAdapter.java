@@ -3,9 +3,13 @@ package com.example.lz.babyperceive.Adapter;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
@@ -45,6 +49,18 @@ public class ImageRecognitionAdapter extends ArrayAdapter<ImageRecognitionBean> 
         TextView score_tv=(TextView) view.findViewById((R.id.score_tv));
         name_tv.setText(imageRecognitionBean.getName());
         score_tv.setText(imageRecognitionBean.getScore());
+        WebView webView =(WebView)view.findViewById(R.id.webview);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.setWebViewClient(new WebViewClient());
+        webView.getSettings().setSupportZoom(true);
+        webView.getSettings().setBuiltInZoomControls(true);
+        webView.getSettings().setUseWideViewPort(true);
+        webView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
+        webView.getSettings().setLoadWithOverviewMode(true);
+
+        String url = "https://baike.baidu.com/item/"+imageRecognitionBean.getName();
+        webView.loadUrl(url);
+        Log.i("web","百度百科url:"+url);
         return view;
     }
 }

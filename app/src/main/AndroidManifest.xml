@@ -39,7 +39,8 @@
             android:name="com.baidu.speech.VoiceRecognitionService"
             android:exported="false" />
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:screenOrientation="landscape" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -55,7 +56,9 @@
         <activity
             android:name=".Activity.ObjectActivity"
             android:screenOrientation="landscape" />
-        <activity android:name=".Activity.AnimalActivity" />
+        <activity
+            android:name=".Activity.AnimalActivity"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".Activity.EnglishSpellTestActivity"
             android:screenOrientation="landscape" />
@@ -83,8 +86,12 @@
         <activity
             android:name=".Activity.IdentifyActivity"
             android:screenOrientation="landscape" />
-        <activity android:name=".Activity.WebViewActivity" />
-        <activity android:name=".Activity.MoviesActivity" />
+        <activity
+            android:name=".Activity.WebViewActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activity.MoviesActivity"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".Activity.PlayerActivity"
             android:hardwareAccelerated="true"
@@ -92,7 +99,8 @@
         <activity
             android:name=".Activity.MusicActivity"
             android:screenOrientation="landscape" />
-        <activity android:name=".Activity.YuleActivity"
+        <activity
+            android:name=".Activity.YuleActivity"
             android:screenOrientation="landscape" />
     </application>
 

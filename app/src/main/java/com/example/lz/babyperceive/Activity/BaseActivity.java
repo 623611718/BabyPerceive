@@ -58,9 +58,9 @@ public abstract class BaseActivity extends Activity implements View.OnClickListe
             steepStatusBar();
         }
         setContentView(mContextView);
-        if (!isAllowScreenRoate) {
+       /* if (!isAllowScreenRoate) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        }
+        }*/
         initView(mContextView);
         setListener();
         doBusiness(this);

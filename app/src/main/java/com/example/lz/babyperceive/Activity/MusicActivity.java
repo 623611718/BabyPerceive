@@ -194,7 +194,7 @@ public class MusicActivity extends BaseActivity {
         sb_main.setOnSeekBarChangeListener(new SeekBarChangeListener());
 
         try {
-            path = "http://lz.free.idcfengye.com/" + name;
+            path = "http://codingwang.free.idcfengye.com/123/" + name;
             mediaPlayer.setDataSource(path);
             Log.i("play", "url  " + path);
             // 设置异步加载视频，包括两种方式 prepare()同步，prepareAsync()异步
@@ -327,7 +327,7 @@ public class MusicActivity extends BaseActivity {
     }
 
     private void intSpinner() {
-        nameList.add("孙燕姿 - 遇见.mp3");
+        nameList.add("小老鼠上灯台.mp3");
         nameList.add("  ");
         Spinner spinner = findViewById(R.id.spinner);
         // 为下拉列表定义一个适配器，使用到上面定义的turtleList

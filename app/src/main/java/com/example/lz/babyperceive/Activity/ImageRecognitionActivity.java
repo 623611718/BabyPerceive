@@ -15,6 +15,7 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -60,7 +61,7 @@ public class ImageRecognitionActivity extends BaseActivity {
     private ImageRecognitionAdapter adapter;
     private String title;
     private Button bt1;
-
+    private WebView webView;
     @Override
     public void widgetClick(View v) {
         switch (v.getId()) {
