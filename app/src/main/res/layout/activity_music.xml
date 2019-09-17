@@ -67,7 +67,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textColor="@color/white"
-                    android:textSize="5dp" />
+                    android:textSize="6dp" />
 
                 <SeekBar
                     android:id="@+id/sb_main"
@@ -85,7 +85,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textColor="@color/white"
-                    android:textSize="5dp" />
+                    android:textSize="6dp" />
             </LinearLayout>
         </LinearLayout>
 

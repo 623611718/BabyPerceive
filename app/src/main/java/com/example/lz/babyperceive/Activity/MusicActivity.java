@@ -126,7 +126,7 @@ public class MusicActivity extends BaseActivity {
         @Override
         protected String doInBackground(Integer... params) {
             play(adapter1.getItem(number));
-            Log.i("test", "!1111" + adapter1.getItem(number));
+
             return null;
         }
 
@@ -194,8 +194,9 @@ public class MusicActivity extends BaseActivity {
         sb_main.setOnSeekBarChangeListener(new SeekBarChangeListener());
 
         try {
-            path = "http://codingwang.free.idcfengye.com/123/" + name;
+            path = "http://codingwang.free.idcfengye.com/" + name;
             mediaPlayer.setDataSource(path);
+            Toast.makeText(this,"url:"+path,Toast.LENGTH_LONG).show();
             Log.i("play", "url  " + path);
             // 设置异步加载视频，包括两种方式 prepare()同步，prepareAsync()异步
             mediaPlayer.prepareAsync();
@@ -355,8 +356,9 @@ public class MusicActivity extends BaseActivity {
                 adapter1 = (ArrayAdapter<String>) adapterView.getAdapter();
                 number = i;
                 musicName_tv.setText(adapter1.getItem(number));
-                MyAsyncTask2 asyncTask2 = new MyAsyncTask2();
-                asyncTask2.execute(i);
+               // MyAsyncTask2 asyncTask2 = new MyAsyncTask2();
+               // asyncTask2.execute(i);
+                play(adapter1.getItem(number));
 
             }
 
