@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/yx_bg1"
     tools:context="com.example.lz.babyperceive.MainActivity">
 
     <com.example.lz.babyperceive.View.TitleView
         android:id="@+id/titleview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:layout_gravity="top"></com.example.lz.babyperceive.View.TitleView>
     <ImageView
         android:id="@+id/iv1"
@@ -31,16 +33,19 @@
             android:id="@+id/animal_bt"
             style="@style/MainButton"
             android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
             android:text="@string/animal" />
         <Button
             android:id="@+id/fruit_bt"
             style="@style/MainButton"
             android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
             android:text="@string/fruit"/>
         <Button
             android:id="@+id/vegetables_bt"
             style="@style/MainButton"
             android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
             android:text="@string/vegetables"/>
 
     </LinearLayout>

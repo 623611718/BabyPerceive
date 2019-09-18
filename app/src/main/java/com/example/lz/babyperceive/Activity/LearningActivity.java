@@ -1,6 +1,7 @@
 package com.example.lz.babyperceive.Activity;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -22,17 +23,22 @@ import java.util.ArrayList;
 /**
  * 学习的主界面
  */
-public class LearningActivity extends AppCompatActivity implements View.OnClickListener {
+public class LearningActivity extends BaseActivity implements View.OnClickListener {
 
     private Button bt1, bt2, bt3, bt4, bt5; //1:跟我读 2:学英语 3:认事物 4:学成语 5:练词组
     private TitleView titleView;
 
     @Override
+    public void widgetClick(View v) {
+
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_learning);
-        getSupportActionBar().hide();//隐藏掉整个ActionBar，包括下面的Tabs
-        changeStatusBarTextColor(true);
+       // setContentView(R.layout.activity_learning);
+      //  getSupportActionBar().hide();//隐藏掉整个ActionBar，包括下面的Tabs
+       // changeStatusBarTextColor(true);
         initPermission();  //初始化权限
         initView();//初始化View
     }
@@ -46,6 +52,31 @@ public class LearningActivity extends AppCompatActivity implements View.OnClickL
                 getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);//恢复状态栏白色字体
             }
         }
+    }
+
+    @Override
+    public void initParms(Bundle parms) {
+
+    }
+
+    @Override
+    public View bindView() {
+        return null;
+    }
+
+    @Override
+    public int bindLayout() {
+        return R.layout.activity_learning;
+    }
+
+    @Override
+    public void initView(View view) {
+
+    }
+
+    @Override
+    public void setListener() {
+
     }
 
     /**
@@ -139,12 +170,17 @@ public class LearningActivity extends AppCompatActivity implements View.OnClickL
                 startActivity(intent4);
                 break;
             case R.id.bt5:
-                Intent intent5 = new Intent(this, AnimalActivity.class);
+                Intent intent5 = new Intent(this, GroupActivity.class);
                 intent5.putExtra("data", "idiom.txt");
                 intent5.putExtra("title", "练词组");
                 startActivity(intent5);
                 break;
         }
+    }
+
+    @Override
+    public void doBusiness(Context mContext) {
+
     }
 
 
@@ -159,33 +195,8 @@ public class LearningActivity extends AppCompatActivity implements View.OnClickL
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.quit1:
-                        Intent intent1 = new Intent(LearningActivity.this, CharacterRecognitionActivity.class);
+                        Intent intent1 = new Intent(LearningActivity.this, TranslateActivity.class);
                         startActivity(intent1);
-                        break;
-                    case R.id.quit2:
-                        Intent intent2 = new Intent(LearningActivity.this, ImageRecognitionActivity.class);
-                        intent2.putExtra("type", "advanced_general");
-                        startActivity(intent2);
-                        break;
-                    case R.id.quit3:
-                        Intent intent3 = new Intent(LearningActivity.this, ImageRecognitionActivity.class);
-                        intent3.putExtra("type", "animal");
-                        startActivity(intent3);
-                        break;
-                    case R.id.quit4:
-                        Intent intent4 = new Intent(LearningActivity.this, ImageRecognitionActivity.class);
-                        intent4.putExtra("type", "plant");
-                        startActivity(intent4);
-                        break;
-                    case R.id.quit5:
-                        Intent intent5 = new Intent(LearningActivity.this, ImageRecognitionActivity.class);
-                        intent5.putExtra("type", "ingredient");
-                        startActivity(intent5);
-                        break;
-                    case R.id.quit6:
-                        Intent intent6 = new Intent(LearningActivity.this, ImageRecognitionActivity.class);
-                        intent6.putExtra("type", "landmark");
-                        startActivity(intent6);
                         break;
 
                 }

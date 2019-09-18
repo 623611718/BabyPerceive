@@ -38,7 +38,7 @@ public class EnglishSpellTestActivity extends BaseActivity {
     private TitleView titleView;
     private int random_number;  //随机数
     private String object, name, introduction, imageId, namespell;
-    private Button confirm_bt;
+    private Button confirm_bt,next_bt;
     private Speek speek;  //百度语音合成封装类
     private   MyHandler myHandler;
     private Animation animation;
@@ -71,6 +71,10 @@ public class EnglishSpellTestActivity extends BaseActivity {
                         }
                     }, 2000);
                 }
+                break;
+            case R.id.next_bt:
+                image_answer.setVisibility(View.GONE);
+                setData();
                 break;
         }
     }
@@ -144,10 +148,12 @@ public class EnglishSpellTestActivity extends BaseActivity {
         confirm_bt = $(R.id.confirm_bt);
         titleView = $(R.id.titleview);
         answer_et = $(R.id.answre_et);
+        next_bt = $(R.id.next_bt);
         image_answer = $(R.id.image_answer);
         animation = AnimationUtils.loadAnimation(this,R.anim.narrow);
         confirm_bt.setOnClickListener(this);
         titleView.setTitleView(1);
+        next_bt.setOnClickListener(this);
         titleView.setCustomOnClickListener(new TitleView.ClickListener() {
             @Override
             public void onClick(View v) {

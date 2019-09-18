@@ -1,5 +1,6 @@
 package com.example.lz.babyperceive.Activity;
 
+import android.content.Context;
 import android.os.Build;
 import android.speech.tts.TextToSpeech;
 import android.support.v4.view.PagerAdapter;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lz.babyperceive.R;
+import com.example.lz.babyperceive.Utils.SharedPreferencesHelper;
 import com.example.lz.babyperceive.Utils.Speek;
 import com.example.lz.babyperceive.Utils.Utils;
 import com.example.lz.babyperceive.View.TitleView;
@@ -31,11 +33,11 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
-public class SpeakingActivity extends AppCompatActivity implements View.OnClickListener {
+public class SpeakingActivity extends BaseActivity implements View.OnClickListener {
     private List<String> objectList = new ArrayList<>();
     private Random random;
     private TextView chinese_tv,chineseSpell_tv;
-    private int number;
+    private int number =1;
     private String chinses;  //单个汉字
     private String previous_number = "";//上一个汉字
     private Speek speek;  //文字转语音类
@@ -45,19 +47,26 @@ public class SpeakingActivity extends AppCompatActivity implements View.OnClickL
     private TitleView titleView;
     private int  length;
 
+    private SharedPreferencesHelper sharedPreferencesHelper;
     private Utils utils;
+
+    @Override
+    public void widgetClick(View v) {
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_speaking);
-        getSupportActionBar().hide();//隐藏掉整个ActionBar，包括下面的Tabs
-        changeStatusBarTextColor(true);
         utils = new Utils(this);
         String[] arr = utils.getAsstesTxt("hanzi.txt").split(",");
         objectList = java.util.Arrays.asList(arr);
         length = objectList.size();
+        sharedPreferencesHelper = new SharedPreferencesHelper(this,"hanzi.txt");
+        number = (int) sharedPreferencesHelper.getSharedPreference("hanzi.txt",1);
+        Log.i("test","number:"+number);
         initView();
-        initData(1);
+        initData(number);
         speek = new Speek(this);
         //   List
 
@@ -171,6 +180,11 @@ public class SpeakingActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
+    @Override
+    public void doBusiness(Context mContext) {
+
+    }
+
     //改变状态栏字体颜色
     private void changeStatusBarTextColor(boolean isBlack) {
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
@@ -182,4 +196,34 @@ public class SpeakingActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
+    @Override
+    public void initParms(Bundle parms) {
+
+    }
+
+    @Override
+    public View bindView() {
+        return null;
+    }
+
+    @Override
+    public int bindLayout() {
+        return R.layout.activity_speaking;
+    }
+
+    @Override
+    public void initView(View view) {
+
+    }
+
+    @Override
+    public void setListener() {
+
+    }
+
+    @Override
+    protected void onStop() {
+        sharedPreferencesHelper.put("hanzi",number);
+        super.onStop();
+    }
 }

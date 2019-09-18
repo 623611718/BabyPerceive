@@ -105,7 +105,7 @@
                 android:id="@+id/play_bt"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:background="@drawable/ico_pre_big_n"
+                android:background="@drawable/ico_play_big_n"
                 android:layout_marginLeft="30dp"/>
 
             <Button

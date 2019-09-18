@@ -177,6 +177,8 @@ public class MusicActivity extends BaseActivity {
         if (mediaPlayer != null) {
             mediaPlayer.pause();
             mediaPlayer.stop();
+            mediaPlayer.release();
+            mediaPlayer =null;
         }
         mediaPlayer = new MediaPlayer();
         mediaPlayer.reset();
@@ -194,7 +196,8 @@ public class MusicActivity extends BaseActivity {
         sb_main.setOnSeekBarChangeListener(new SeekBarChangeListener());
 
         try {
-            path = "http://codingwang.free.idcfengye.com/" + name;
+            //http://lz.free.idcfengye.com  http://codingwang.free.idcfengye.com
+            path = "http://lz.free.idcfengye.com/" + name;
             mediaPlayer.setDataSource(path);
             Toast.makeText(this,"url:"+path,Toast.LENGTH_LONG).show();
             Log.i("play", "url  " + path);
@@ -214,7 +217,7 @@ public class MusicActivity extends BaseActivity {
                 mediaPlayer.pause();
                 Log.i("localplayer", "暂停");
 
-                play_bt.setBackgroundResource(R.drawable.ico_pre_big_n);
+                play_bt.setBackgroundResource(R.drawable.ico_next_big_n);
                 // play_bt.setVisibility(View.VISIBLE);
                 Log.i("TAG", "STOP");
 
@@ -284,6 +287,7 @@ public class MusicActivity extends BaseActivity {
                 mediaPlayer.reset();
                 mediaPlayer.release();
                 mediaPlayer = null;
+                Log.i("url", "ErrorListener mediaPlayer!=null ");
             }
             return false;
         }
@@ -329,6 +333,7 @@ public class MusicActivity extends BaseActivity {
 
     private void intSpinner() {
         nameList.add("小老鼠上灯台.mp3");
+        nameList.add("孙燕姿 - 遇见.mp3");
         nameList.add("  ");
         Spinner spinner = findViewById(R.id.spinner);
         // 为下拉列表定义一个适配器，使用到上面定义的turtleList

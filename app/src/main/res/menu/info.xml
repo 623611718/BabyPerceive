@@ -5,36 +5,7 @@
         android:id="@+id/quit1"
         android:orderInCategory="50"
         android:showAsAction="never"
-        android:title="识别文字"
+        android:title="翻译"
         tools:ignore="AppCompatResource"></item>
-    <item
-        android:id="@+id/quit2"
-        android:orderInCategory="50"
-        android:showAsAction="never"
-        android:title="识别物体"
-        tools:ignore="AppCompatResource"></item>
-    <item
-        android:id="@+id/quit3"
-        android:orderInCategory="50"
-        android:showAsAction="never"
-        android:title="识别动物"
-        tools:ignore="AppCompatResource"></item>
-    <item
-        android:id="@+id/quit4"
-        android:orderInCategory="50"
-        android:showAsAction="never"
-        android:title="识别植物"
-        tools:ignore="AppCompatResource"></item>
-    <item
-        android:id="@+id/quit5"
-        android:orderInCategory="50"
-        android:showAsAction="never"
-        android:title="识别蔬果"
-        tools:ignore="AppCompatResource"></item>\
-    <item
-        android:id="@+id/quit6"
-        android:orderInCategory="50"
-        android:showAsAction="never"
-        android:title="识别地标"
-        tools:ignore="AppCompatResource"></item>
+
 </menu>

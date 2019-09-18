@@ -35,8 +35,8 @@ public class MoviesActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String[] s = {"土块魔王.3gp","test.mp4"};
-        m.put("土块魔王.3gp","http://codingwang.free.idcfengye.com/土块魔王.3gp");
+        String[] s = {"行尸走肉.mp4","test.mp4"};
+        m.put("行尸走肉.mp4","http://lz.free.idcfengye.com/行尸走肉.mp4");
         m.put("test.mp4","http://s.swao.cn/o_1c3n5oq2s1gcai5d1vm917hv1cps7.mp4");
         initList(s);
     }

@@ -15,35 +15,48 @@
         android:layout_marginTop="20dp"></com.example.lz.babyperceive.View.TitleView>
 
     <FrameLayout
-        android:id="@+id/iamage_layout"
-        android:layout_width="275dp"
-        android:layout_height="185dp"
-        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/bg_exam_line">
+        android:layout_marginTop="1dp"
+        android:layout_weight="1">
 
-        <TextView
-            android:id="@+id/tv1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/titleview"
-            android:gravity="center"
-            android:layout_gravity="top"
-            android:textSize="35sp"
-          ></TextView>
-        <ImageView
-            android:id="@+id/image_answer"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_gravity="center" />
+        <FrameLayout
+            android:id="@+id/iamage_layout"
+            android:layout_width="275dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_exam_line">
+
+            <TextView
+                android:id="@+id/tv1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/titleview"
+                android:layout_gravity="top"
+                android:gravity="center"
+                android:textSize="35sp"></TextView>
+
+            <ImageView
+                android:id="@+id/image_answer"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center" />
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/next_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/next1" />
     </FrameLayout>
-
 
     <LinearLayout
         android:id="@+id/name_layout"
         android:layout_width="275dp"
-        android:layout_height="60dp"
+        android:layout_height="30dp"
         android:layout_weight="0.3"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
@@ -51,11 +64,13 @@
 
         <EditText
             android:id="@+id/answre_et"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="输入单词"
+            android:background="@null"
             android:focusable="true"
-            android:background="@null"/>
-        <View
+           />
+       <View
             android:layout_width="wrap_content"
             android:layout_height="1dp"
             android:background="@color/black"
@@ -68,7 +83,7 @@
         android:id="@+id/confirm_bt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginBottom="15dp"
         android:layout_gravity="center_horizontal"
         android:layout_below="@id/name_layout"
         android:background="@drawable/shape_button"

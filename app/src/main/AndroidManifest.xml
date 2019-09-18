@@ -39,8 +39,9 @@
             android:name="com.baidu.speech.VoiceRecognitionService"
             android:exported="false" />
 
-        <activity android:name=".MainActivity"
-            android:screenOrientation="landscape" >
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -101,6 +102,12 @@
             android:screenOrientation="landscape" />
         <activity
             android:name=".Activity.YuleActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activity.TranslateActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activity.GroupActivity"
             android:screenOrientation="landscape" />
     </application>
 

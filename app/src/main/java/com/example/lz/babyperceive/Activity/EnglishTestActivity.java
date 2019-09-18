@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EnglishTestActivity extends BaseActivity implements SpeechRecognizerTool.ResultsCallback {
-
+    private ImageView image_answer;
     private TextView title_tv,namespell_tv,name_tv;
     private static  final String TAG = "ObjectTest";
     private List<Object> objectList = new ArrayList<>();
@@ -32,12 +34,18 @@ public class EnglishTestActivity extends BaseActivity implements SpeechRecognize
     private TitleView titleView;
     private int random_number;  //随机数
     private String object, name, introduction, imageId, namespell;
-    private Button next_bt;
+    private Button speaking_bt,next_bt;
     private Speek speek;  //百度语音合成封装类
     private SpeechRecognizerTool speechRecognizerTool;//百度语音识别封装类
+    private Animation animation;
     @Override
     public void widgetClick(View v) {
-
+        switch (v.getId()){
+            case R.id.next_bt:
+                image_answer.setVisibility(View.GONE);
+                setData();
+                break;
+        }
     }
 
     @Override
@@ -48,6 +56,21 @@ public class EnglishTestActivity extends BaseActivity implements SpeechRecognize
         speechRecognizerTool= new SpeechRecognizerTool(this);
         initData();
         setData();
+    }
+    private boolean setImageView_answer(String s) {
+        Log.i("test", "选择的答案。。。" + s);
+        Log.i("test", "正确的答案。。。" + object);
+        if (object.equals(s)) {
+            image_answer.setBackgroundResource(R.drawable.ico_exam_correct);
+            image_answer.setVisibility(View.VISIBLE);
+            image_answer.startAnimation(animation);
+            return true;
+        } else {
+            image_answer.setBackgroundResource(R.drawable.ico_exam_error);
+            image_answer.setVisibility(View.VISIBLE);
+            image_answer.startAnimation(animation);
+            return false;
+        }
     }
     @SuppressLint("NewApi")
     private void setData() {
@@ -93,23 +116,25 @@ public class EnglishTestActivity extends BaseActivity implements SpeechRecognize
         title_tv = $(R.id.tv1);
         name_tv = $(R.id.name_tv);
         namespell_tv = $(R.id.namespell_tv);
+        speaking_bt = $(R.id.speaking_bt);
         next_bt = $(R.id.next_bt);
         titleView = $(R.id.titleview);
-
-
-        next_bt.setOnTouchListener(new View.OnTouchListener() {
+        image_answer = $(R.id.image_answer);
+        animation = AnimationUtils.loadAnimation(this,R.anim.narrow);
+        next_bt.setOnClickListener(this);
+        speaking_bt.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 int action = event.getAction();
                 switch (action) {
                     case MotionEvent.ACTION_DOWN:
                         speechRecognizerTool.startASR(EnglishTestActivity.this);
-                        next_bt.setBackgroundResource(
+                        speaking_bt.setBackgroundResource(
                                 R.drawable.bg_btn_voice_collecting);
                         break;
                     case MotionEvent.ACTION_UP:
                         speechRecognizerTool.stopASR();
-                        next_bt.setBackgroundResource(
+                        speaking_bt.setBackgroundResource(
                                 R.drawable.bg_btn_voice);
                         break;
                     default:
@@ -152,7 +177,9 @@ public class EnglishTestActivity extends BaseActivity implements SpeechRecognize
     @Override
     public void onResults(String result) {
         Log.i("test","结果:"+result);
+        setImageView_answer(result);
         if (object.equals(result)){
+            image_answer.setVisibility(View.GONE);
             setData();
         }
     }

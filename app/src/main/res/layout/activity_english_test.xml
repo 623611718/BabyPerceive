@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/test_bg"
+    android:orientation="vertical"
     tools:context="com.example.lz.babyperceive.Activity.SpeakingActivity">
 
     <com.example.lz.babyperceive.View.TitleView
@@ -14,27 +14,52 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"></com.example.lz.babyperceive.View.TitleView>
 
-
-    <TextView
-        android:id="@+id/tv1"
-        android:layout_width="275dp"
-        android:layout_height="185dp"
-        android:layout_weight="1"
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:textSize="35sp"
-        android:background="@drawable/bg_exam_line"
-        >
+        android:layout_marginTop="1dp"
+        android:layout_weight="1">
 
-    </TextView>
+        <FrameLayout
+            android:id="@+id/iamage_layout"
+            android:layout_width="275dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_exam_line">
+
+            <TextView
+                android:id="@+id/tv1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/titleview"
+                android:layout_gravity="top"
+                android:gravity="center"
+                android:textSize="35sp"></TextView>
+
+            <ImageView
+                android:id="@+id/image_answer"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center" />
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/next_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/next1" />
+    </FrameLayout>
+
     <LinearLayout
         android:id="@+id/name_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="0.35"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
+        android:layout_weight="0.35"
         android:orientation="vertical">
 
         <TextView
@@ -42,26 +67,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="拼音"
-            android:gravity="center"></TextView>
+            android:gravity="center"
+            android:text="拼音"></TextView>
 
         <TextView
             android:id="@+id/name_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:gravity="center"
             android:background="@drawable/bg_read_title"
-            android:textSize="15sp"
-            android:text="狗"></TextView>
+            android:gravity="center"
+            android:text="狗"
+            android:textSize="15sp"></TextView>
     </LinearLayout>
 
     <Button
-        android:id="@+id/next_bt"
+        android:id="@+id/speaking_bt"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
         android:layout_gravity="center_horizontal"
-        android:background="@drawable/bg_btn_voice"/>
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_btn_voice" />
 
 </LinearLayout>

@@ -11,7 +11,8 @@
         android:id="@+id/titleview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="top"></com.example.lz.babyperceive.View.TitleView>
+        android:layout_gravity="top"
+        android:layout_marginTop="20dp"></com.example.lz.babyperceive.View.TitleView>
 
     <ImageView
         android:id="@+id/imageview"

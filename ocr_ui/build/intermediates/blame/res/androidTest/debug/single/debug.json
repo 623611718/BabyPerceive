@@ -36,12 +36,12 @@
         "source": "C:\\Users\\Administrator\\.gradle\\wrapper\\dists\\gradle-4.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\dda2366587fdc71a6d4943e6d7d6d765\\res\\anim\\abc_slide_out_bottom.xml"
     },
     {
-        "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxxhdpi-v4_abc_ic_star_half_black_36dp.png.flat",
-        "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\drawable-xxxhdpi-v4\\abc_ic_star_half_black_36dp.png"
-    },
-    {
         "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4_abc_btn_check_to_on_mtrl_015.png.flat",
         "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\drawable-xhdpi-v4\\abc_btn_check_to_on_mtrl_015.png"
+    },
+    {
+        "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxxhdpi-v4_abc_ic_star_half_black_36dp.png.flat",
+        "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\drawable-xxxhdpi-v4\\abc_ic_star_half_black_36dp.png"
     },
     {
         "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-v11_notification_template_big_media_custom.xml.flat",
@@ -256,12 +256,12 @@
         "source": "C:\\Users\\Administrator\\.gradle\\wrapper\\dists\\gradle-4.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\dda2366587fdc71a6d4943e6d7d6d765\\res\\layout-v16\\notification_template_custom_big.xml"
     },
     {
-        "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4_abc_btn_switch_to_on_mtrl_00012.9.png.flat",
-        "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\drawable-hdpi-v4\\abc_btn_switch_to_on_mtrl_00012.9.png"
-    },
-    {
         "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi-v4_abc_cab_background_top_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\drawable-mdpi-v4\\abc_cab_background_top_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4_abc_btn_switch_to_on_mtrl_00012.9.png.flat",
+        "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\drawable-hdpi-v4\\abc_btn_switch_to_on_mtrl_00012.9.png"
     },
     {
         "merged": "E:\\studio workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4_abc_ab_share_pack_mtrl_alpha.9.png.flat",
@@ -280,12 +280,12 @@
         "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\drawable-hdpi-v4\\abc_ab_share_pack_mtrl_alpha.9.png"
     },
     {
-        "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4_abc_list_pressed_holo_light.9.png.flat",
-        "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\drawable-hdpi-v4\\abc_list_pressed_holo_light.9.png"
-    },
-    {
         "merged": "E:\\studio workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxxhdpi-v4_abc_ic_menu_paste_mtrl_am_alpha.png.flat",
         "source": "C:\\Users\\Administrator\\.gradle\\wrapper\\dists\\gradle-4.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\dda2366587fdc71a6d4943e6d7d6d765\\res\\drawable-xxxhdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png"
+    },
+    {
+        "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4_abc_list_pressed_holo_light.9.png.flat",
+        "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\drawable-hdpi-v4\\abc_list_pressed_holo_light.9.png"
     },
     {
         "merged": "E:\\studio workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4_abc_text_select_handle_middle_mtrl_dark.png.flat",
@@ -316,12 +316,12 @@
         "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\layout-v21\\notification_template_custom_big.xml"
     },
     {
-        "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout_bd_ocr_activity_camera.xml.flat",
-        "source": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\bundles\\debug\\res\\layout\\bd_ocr_activity_camera.xml"
-    },
-    {
         "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout_abc_alert_dialog_button_bar_material.xml.flat",
         "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\layout\\abc_alert_dialog_button_bar_material.xml"
+    },
+    {
+        "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout_bd_ocr_activity_camera.xml.flat",
+        "source": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\bundles\\debug\\res\\layout\\bd_ocr_activity_camera.xml"
     },
     {
         "merged": "E:\\studio workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi-v4_abc_text_select_handle_right_mtrl_light.png.flat",
@@ -344,20 +344,20 @@
         "source": "C:\\Users\\Administrator\\.gradle\\wrapper\\dists\\gradle-4.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\dda2366587fdc71a6d4943e6d7d6d765\\res\\layout\\notification_template_icon_group.xml"
     },
     {
-        "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi-v4_abc_scrubber_track_mtrl_alpha.9.png.flat",
-        "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\drawable-mdpi-v4\\abc_scrubber_track_mtrl_alpha.9.png"
-    },
-    {
         "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
         "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\drawable-xhdpi-v4\\abc_ic_menu_copy_mtrl_am_alpha.png"
     },
     {
-        "merged": "E:\\studio workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi-v4_abc_ab_share_pack_mtrl_alpha.9.png.flat",
-        "source": "C:\\Users\\Administrator\\.gradle\\wrapper\\dists\\gradle-4.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\dda2366587fdc71a6d4943e6d7d6d765\\res\\drawable-mdpi-v4\\abc_ab_share_pack_mtrl_alpha.9.png"
+        "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi-v4_abc_scrubber_track_mtrl_alpha.9.png.flat",
+        "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\drawable-mdpi-v4\\abc_scrubber_track_mtrl_alpha.9.png"
     },
     {
         "merged": "E:\\studio workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi-v4_abc_list_focused_holo.9.png.flat",
         "source": "C:\\Users\\Administrator\\.gradle\\wrapper\\dists\\gradle-4.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\dda2366587fdc71a6d4943e6d7d6d765\\res\\drawable-mdpi-v4\\abc_list_focused_holo.9.png"
+    },
+    {
+        "merged": "E:\\studio workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi-v4_abc_ab_share_pack_mtrl_alpha.9.png.flat",
+        "source": "C:\\Users\\Administrator\\.gradle\\wrapper\\dists\\gradle-4.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\dda2366587fdc71a6d4943e6d7d6d765\\res\\drawable-mdpi-v4\\abc_ab_share_pack_mtrl_alpha.9.png"
     },
     {
         "merged": "E:\\studio workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxxhdpi-v4_abc_ic_star_half_black_36dp.png.flat",
@@ -448,12 +448,12 @@
         "source": "C:\\Users\\Administrator\\.gradle\\wrapper\\dists\\gradle-4.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\dda2366587fdc71a6d4943e6d7d6d765\\res\\drawable-ldrtl-hdpi-v17\\abc_spinner_mtrl_am_alpha.9.png"
     },
     {
-        "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout_abc_popup_menu_item_layout.xml.flat",
-        "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\layout\\abc_popup_menu_item_layout.xml"
-    },
-    {
         "merged": "E:\\studio workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_abc_switch_thumb_material.xml.flat",
         "source": "C:\\Users\\Administrator\\.gradle\\wrapper\\dists\\gradle-4.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\dda2366587fdc71a6d4943e6d7d6d765\\res\\drawable\\abc_switch_thumb_material.xml"
+    },
+    {
+        "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout_abc_popup_menu_item_layout.xml.flat",
+        "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\layout\\abc_popup_menu_item_layout.xml"
     },
     {
         "merged": "E:\\studio workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\color-v11_abc_background_cache_hint_selector_material_light.xml.flat",
@@ -520,36 +520,36 @@
         "source": "C:\\Users\\Administrator\\.gradle\\wrapper\\dists\\gradle-4.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\dda2366587fdc71a6d4943e6d7d6d765\\res\\drawable-xxhdpi-v4\\abc_btn_radio_to_on_mtrl_000.png"
     },
     {
-        "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4_abc_scrubber_control_off_mtrl_alpha.png.flat",
-        "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\drawable-xxhdpi-v4\\abc_scrubber_control_off_mtrl_alpha.png"
+        "merged": "E:\\studio workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxxhdpi-v4_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
+        "source": "C:\\Users\\Administrator\\.gradle\\wrapper\\dists\\gradle-4.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\dda2366587fdc71a6d4943e6d7d6d765\\res\\drawable-xxxhdpi-v4\\abc_ic_menu_copy_mtrl_am_alpha.png"
     },
     {
         "merged": "E:\\studio workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\color_abc_primary_text_material_light.xml.flat",
         "source": "C:\\Users\\Administrator\\.gradle\\wrapper\\dists\\gradle-4.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\dda2366587fdc71a6d4943e6d7d6d765\\res\\color\\abc_primary_text_material_light.xml"
     },
     {
-        "merged": "E:\\studio workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxxhdpi-v4_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
-        "source": "C:\\Users\\Administrator\\.gradle\\wrapper\\dists\\gradle-4.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\dda2366587fdc71a6d4943e6d7d6d765\\res\\drawable-xxxhdpi-v4\\abc_ic_menu_copy_mtrl_am_alpha.png"
-    },
-    {
-        "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\color_abc_primary_text_disable_only_material_light.xml.flat",
-        "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\color\\abc_primary_text_disable_only_material_light.xml"
+        "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4_abc_scrubber_control_off_mtrl_alpha.png.flat",
+        "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\drawable-xxhdpi-v4\\abc_scrubber_control_off_mtrl_alpha.png"
     },
     {
         "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi-v4_notification_bg_low_pressed.9.png.flat",
         "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\drawable-mdpi-v4\\notification_bg_low_pressed.9.png"
     },
     {
+        "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\color_abc_primary_text_disable_only_material_light.xml.flat",
+        "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\color\\abc_primary_text_disable_only_material_light.xml"
+    },
+    {
         "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4_abc_ic_star_half_black_36dp.png.flat",
         "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\drawable-xxhdpi-v4\\abc_ic_star_half_black_36dp.png"
     },
     {
-        "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4_abc_btn_radio_to_on_mtrl_000.png.flat",
-        "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\drawable-xxhdpi-v4\\abc_btn_radio_to_on_mtrl_000.png"
-    },
-    {
         "merged": "E:\\studio workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout_abc_screen_simple_overlay_action_mode.xml.flat",
         "source": "C:\\Users\\Administrator\\.gradle\\wrapper\\dists\\gradle-4.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\dda2366587fdc71a6d4943e6d7d6d765\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
+    },
+    {
+        "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4_abc_btn_radio_to_on_mtrl_000.png.flat",
+        "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\drawable-xxhdpi-v4\\abc_btn_radio_to_on_mtrl_000.png"
     },
     {
         "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxxhdpi-v4_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
@@ -584,12 +584,12 @@
         "source": "C:\\Users\\Administrator\\.gradle\\wrapper\\dists\\gradle-4.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\dda2366587fdc71a6d4943e6d7d6d765\\res\\drawable-mdpi-v4\\abc_text_select_handle_middle_mtrl_light.png"
     },
     {
-        "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout_abc_list_menu_item_icon.xml.flat",
-        "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\layout\\abc_list_menu_item_icon.xml"
-    },
-    {
         "merged": "E:\\studio workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4_abc_ic_menu_share_mtrl_alpha.png.flat",
         "source": "C:\\Users\\Administrator\\.gradle\\wrapper\\dists\\gradle-4.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\dda2366587fdc71a6d4943e6d7d6d765\\res\\drawable-hdpi-v4\\abc_ic_menu_share_mtrl_alpha.png"
+    },
+    {
+        "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout_abc_list_menu_item_icon.xml.flat",
+        "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\layout\\abc_list_menu_item_icon.xml"
     },
     {
         "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout_abc_select_dialog_material.xml.flat",
@@ -628,12 +628,12 @@
         "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\drawable-xxhdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png"
     },
     {
-        "merged": "E:\\studio workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi-v4_abc_scrubber_control_off_mtrl_alpha.png.flat",
-        "source": "C:\\Users\\Administrator\\.gradle\\wrapper\\dists\\gradle-4.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\dda2366587fdc71a6d4943e6d7d6d765\\res\\drawable-mdpi-v4\\abc_scrubber_control_off_mtrl_alpha.png"
-    },
-    {
         "merged": "E:\\studio workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4_abc_ic_star_black_48dp.png.flat",
         "source": "C:\\Users\\Administrator\\.gradle\\wrapper\\dists\\gradle-4.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\dda2366587fdc71a6d4943e6d7d6d765\\res\\drawable-hdpi-v4\\abc_ic_star_black_48dp.png"
+    },
+    {
+        "merged": "E:\\studio workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi-v4_abc_scrubber_control_off_mtrl_alpha.png.flat",
+        "source": "C:\\Users\\Administrator\\.gradle\\wrapper\\dists\\gradle-4.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\dda2366587fdc71a6d4943e6d7d6d765\\res\\drawable-mdpi-v4\\abc_scrubber_control_off_mtrl_alpha.png"
     },
     {
         "merged": "E:\\studio workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4_abc_list_selector_disabled_holo_dark.9.png.flat",
@@ -684,12 +684,12 @@
         "source": "C:\\Users\\Administrator\\.gradle\\wrapper\\dists\\gradle-4.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\dda2366587fdc71a6d4943e6d7d6d765\\res\\drawable-xhdpi-v4\\abc_list_pressed_holo_light.9.png"
     },
     {
-        "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_abc_ic_clear_material.xml.flat",
-        "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\drawable\\abc_ic_clear_material.xml"
-    },
-    {
         "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_abc_item_background_holo_light.xml.flat",
         "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\drawable\\abc_item_background_holo_light.xml"
+    },
+    {
+        "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_abc_ic_clear_material.xml.flat",
+        "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\drawable\\abc_ic_clear_material.xml"
     },
     {
         "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_abc_dialog_material_background.xml.flat",
@@ -732,12 +732,12 @@
         "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\drawable-xhdpi-v4\\abc_list_pressed_holo_light.9.png"
     },
     {
-        "merged": "E:\\studio workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4_abc_list_divider_mtrl_alpha.9.png.flat",
-        "source": "C:\\Users\\Administrator\\.gradle\\wrapper\\dists\\gradle-4.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\dda2366587fdc71a6d4943e6d7d6d765\\res\\drawable-xxhdpi-v4\\abc_list_divider_mtrl_alpha.9.png"
-    },
-    {
         "merged": "E:\\studio workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxxhdpi-v4_abc_ic_star_half_black_16dp.png.flat",
         "source": "C:\\Users\\Administrator\\.gradle\\wrapper\\dists\\gradle-4.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\dda2366587fdc71a6d4943e6d7d6d765\\res\\drawable-xxxhdpi-v4\\abc_ic_star_half_black_16dp.png"
+    },
+    {
+        "merged": "E:\\studio workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4_abc_list_divider_mtrl_alpha.9.png.flat",
+        "source": "C:\\Users\\Administrator\\.gradle\\wrapper\\dists\\gradle-4.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\dda2366587fdc71a6d4943e6d7d6d765\\res\\drawable-xxhdpi-v4\\abc_list_divider_mtrl_alpha.9.png"
     },
     {
         "merged": "E:\\studio workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi-v4_abc_ic_commit_search_api_mtrl_alpha.png.flat",
@@ -760,12 +760,12 @@
         "source": "C:\\Users\\Administrator\\.gradle\\wrapper\\dists\\gradle-4.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\dda2366587fdc71a6d4943e6d7d6d765\\res\\color\\abc_primary_text_material_dark.xml"
     },
     {
-        "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4_abc_scrubber_control_to_pressed_mtrl_000.png.flat",
-        "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\drawable-xhdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png"
-    },
-    {
         "merged": "E:\\studio workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout_bd_ocr_confirm_result.xml.flat",
         "source": "E:\\studio workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\bundles\\debug\\res\\layout\\bd_ocr_confirm_result.xml"
+    },
+    {
+        "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4_abc_scrubber_control_to_pressed_mtrl_000.png.flat",
+        "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\drawable-xhdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png"
     },
     {
         "merged": "E:\\studio workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi-v4_abc_popup_background_mtrl_mult.9.png.flat",
@@ -844,16 +844,16 @@
         "source": "C:\\Users\\Administrator\\.gradle\\wrapper\\dists\\gradle-4.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\dda2366587fdc71a6d4943e6d7d6d765\\res\\drawable-xxxhdpi-v4\\abc_ic_menu_share_mtrl_alpha.png"
     },
     {
-        "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_abc_text_cursor_material.xml.flat",
-        "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\drawable\\abc_text_cursor_material.xml"
+        "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4_abc_btn_radio_to_on_mtrl_000.png.flat",
+        "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\drawable-xhdpi-v4\\abc_btn_radio_to_on_mtrl_000.png"
     },
     {
         "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-v11_notification_media_action.xml.flat",
         "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\layout-v11\\notification_media_action.xml"
     },
     {
-        "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4_abc_btn_radio_to_on_mtrl_000.png.flat",
-        "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\drawable-xhdpi-v4\\abc_btn_radio_to_on_mtrl_000.png"
+        "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_abc_text_cursor_material.xml.flat",
+        "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\drawable\\abc_text_cursor_material.xml"
     },
     {
         "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4_abc_text_select_handle_middle_mtrl_light.png.flat",
@@ -936,12 +936,12 @@
         "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\drawable-ldrtl-mdpi-v17\\abc_spinner_mtrl_am_alpha.9.png"
     },
     {
-        "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxxhdpi-v4_abc_ic_menu_paste_mtrl_am_alpha.png.flat",
-        "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\drawable-xxxhdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png"
-    },
-    {
         "merged": "E:\\studio workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4_abc_text_select_handle_middle_mtrl_light.png.flat",
         "source": "C:\\Users\\Administrator\\.gradle\\wrapper\\dists\\gradle-4.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\dda2366587fdc71a6d4943e6d7d6d765\\res\\drawable-xxhdpi-v4\\abc_text_select_handle_middle_mtrl_light.png"
+    },
+    {
+        "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxxhdpi-v4_abc_ic_menu_paste_mtrl_am_alpha.png.flat",
+        "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\drawable-xxxhdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png"
     },
     {
         "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi-v4_abc_list_focused_holo.9.png.flat",
@@ -952,12 +952,12 @@
         "source": "C:\\Users\\Administrator\\.gradle\\wrapper\\dists\\gradle-4.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\dda2366587fdc71a6d4943e6d7d6d765\\res\\drawable-xhdpi-v4\\abc_switch_track_mtrl_alpha.9.png"
     },
     {
-        "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4_abc_list_focused_holo.9.png.flat",
-        "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\drawable-hdpi-v4\\abc_list_focused_holo.9.png"
-    },
-    {
         "merged": "E:\\studio workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4_abc_ic_star_half_black_16dp.png.flat",
         "source": "C:\\Users\\Administrator\\.gradle\\wrapper\\dists\\gradle-4.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\dda2366587fdc71a6d4943e6d7d6d765\\res\\drawable-xhdpi-v4\\abc_ic_star_half_black_16dp.png"
+    },
+    {
+        "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4_abc_list_focused_holo.9.png.flat",
+        "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\drawable-hdpi-v4\\abc_list_focused_holo.9.png"
     },
     {
         "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4_abc_switch_track_mtrl_alpha.9.png.flat",
@@ -972,12 +972,12 @@
         "source": "C:\\Users\\Administrator\\.gradle\\wrapper\\dists\\gradle-4.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\dda2366587fdc71a6d4943e6d7d6d765\\res\\drawable\\abc_text_cursor_material.xml"
     },
     {
-        "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout_tooltip.xml.flat",
-        "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\layout\\tooltip.xml"
-    },
-    {
         "merged": "E:\\studio workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_notification_tile_bg.xml.flat",
         "source": "C:\\Users\\Administrator\\.gradle\\wrapper\\dists\\gradle-4.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\dda2366587fdc71a6d4943e6d7d6d765\\res\\drawable\\notification_tile_bg.xml"
+    },
+    {
+        "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout_tooltip.xml.flat",
+        "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\layout\\tooltip.xml"
     },
     {
         "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-ldrtl-xxhdpi-v17_abc_spinner_mtrl_am_alpha.9.png.flat",
@@ -996,16 +996,16 @@
         "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\drawable-xxhdpi-v4\\abc_ic_star_black_16dp.png"
     },
     {
-        "merged": "E:\\studio workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4_abc_btn_radio_to_on_mtrl_015.png.flat",
-        "source": "C:\\Users\\Administrator\\.gradle\\wrapper\\dists\\gradle-4.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\dda2366587fdc71a6d4943e6d7d6d765\\res\\drawable-xxhdpi-v4\\abc_btn_radio_to_on_mtrl_015.png"
+        "merged": "E:\\studio workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4_abc_btn_check_to_on_mtrl_000.png.flat",
+        "source": "C:\\Users\\Administrator\\.gradle\\wrapper\\dists\\gradle-4.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\dda2366587fdc71a6d4943e6d7d6d765\\res\\drawable-xxhdpi-v4\\abc_btn_check_to_on_mtrl_000.png"
     },
     {
         "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_abc_ic_menu_overflow_material.xml.flat",
         "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\drawable\\abc_ic_menu_overflow_material.xml"
     },
     {
-        "merged": "E:\\studio workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4_abc_btn_check_to_on_mtrl_000.png.flat",
-        "source": "C:\\Users\\Administrator\\.gradle\\wrapper\\dists\\gradle-4.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\dda2366587fdc71a6d4943e6d7d6d765\\res\\drawable-xxhdpi-v4\\abc_btn_check_to_on_mtrl_000.png"
+        "merged": "E:\\studio workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4_abc_btn_radio_to_on_mtrl_015.png.flat",
+        "source": "C:\\Users\\Administrator\\.gradle\\wrapper\\dists\\gradle-4.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\dda2366587fdc71a6d4943e6d7d6d765\\res\\drawable-xxhdpi-v4\\abc_btn_radio_to_on_mtrl_015.png"
     },
     {
         "merged": "E:\\studio workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi-v4_notification_bg_low_normal.9.png.flat",
@@ -1176,12 +1176,12 @@
         "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\drawable-hdpi-v4\\abc_spinner_mtrl_am_alpha.9.png"
     },
     {
-        "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\color-v23_abc_tint_switch_track.xml.flat",
-        "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\color-v23\\abc_tint_switch_track.xml"
-    },
-    {
         "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_abc_list_selector_holo_light.xml.flat",
         "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\drawable\\abc_list_selector_holo_light.xml"
+    },
+    {
+        "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\color-v23_abc_tint_switch_track.xml.flat",
+        "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\color-v23\\abc_tint_switch_track.xml"
     },
     {
         "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxxhdpi-v4_abc_scrubber_control_to_pressed_mtrl_005.png.flat",
@@ -1196,12 +1196,12 @@
         "source": "C:\\Users\\Administrator\\.gradle\\wrapper\\dists\\gradle-4.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\dda2366587fdc71a6d4943e6d7d6d765\\res\\drawable\\abc_spinner_textfield_background_material.xml"
     },
     {
-        "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi-v4_abc_btn_switch_to_on_mtrl_00012.9.png.flat",
-        "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\drawable-mdpi-v4\\abc_btn_switch_to_on_mtrl_00012.9.png"
-    },
-    {
         "merged": "E:\\studio workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout_abc_action_bar_title_item.xml.flat",
         "source": "C:\\Users\\Administrator\\.gradle\\wrapper\\dists\\gradle-4.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\dda2366587fdc71a6d4943e6d7d6d765\\res\\layout\\abc_action_bar_title_item.xml"
+    },
+    {
+        "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi-v4_abc_btn_switch_to_on_mtrl_00012.9.png.flat",
+        "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\drawable-mdpi-v4\\abc_btn_switch_to_on_mtrl_00012.9.png"
     },
     {
         "merged": "E:\\studio workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4_abc_text_select_handle_right_mtrl_light.png.flat",
@@ -1236,12 +1236,12 @@
         "source": "C:\\Users\\Administrator\\.gradle\\wrapper\\dists\\gradle-4.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\dda2366587fdc71a6d4943e6d7d6d765\\res\\drawable-hdpi-v4\\abc_ic_star_black_16dp.png"
     },
     {
-        "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4_abc_btn_check_to_on_mtrl_000.png.flat",
-        "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\drawable-xxhdpi-v4\\abc_btn_check_to_on_mtrl_000.png"
-    },
-    {
         "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4_abc_tab_indicator_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\drawable-xxhdpi-v4\\abc_tab_indicator_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4_abc_btn_check_to_on_mtrl_000.png.flat",
+        "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\drawable-xxhdpi-v4\\abc_btn_check_to_on_mtrl_000.png"
     },
     {
         "merged": "E:\\studio workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4_notification_bg_normal_pressed.9.png.flat",
@@ -1316,12 +1316,12 @@
         "source": "C:\\Users\\Administrator\\.gradle\\wrapper\\dists\\gradle-4.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\dda2366587fdc71a6d4943e6d7d6d765\\res\\drawable-xxxhdpi-v4\\abc_tab_indicator_mtrl_alpha.9.png"
     },
     {
-        "merged": "E:\\studio workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-ldrtl-xxhdpi-v17_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
-        "source": "C:\\Users\\Administrator\\.gradle\\wrapper\\dists\\gradle-4.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\dda2366587fdc71a6d4943e6d7d6d765\\res\\drawable-ldrtl-xxhdpi-v17\\abc_ic_menu_copy_mtrl_am_alpha.png"
-    },
-    {
         "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4_abc_cab_background_top_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\lz\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\788a6d971faf07dae21831cf86f499c2\\res\\drawable-xhdpi-v4\\abc_cab_background_top_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "E:\\studio workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-ldrtl-xxhdpi-v17_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
+        "source": "C:\\Users\\Administrator\\.gradle\\wrapper\\dists\\gradle-4.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\dda2366587fdc71a6d4943e6d7d6d765\\res\\drawable-ldrtl-xxhdpi-v17\\abc_ic_menu_copy_mtrl_am_alpha.png"
     },
     {
         "merged": "E:\\studio workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\color-v23_abc_tint_default.xml.flat",
@@ -1424,12 +1424,12 @@
         "source": "C:\\Users\\Administrator\\.gradle\\wrapper\\dists\\gradle-4.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\dda2366587fdc71a6d4943e6d7d6d765\\res\\layout-v26\\abc_screen_toolbar.xml"
     },
     {
-        "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\mipmap-xxhdpi-v4_ic_launcher.png.flat",
-        "source": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\bundles\\debug\\res\\mipmap-xxhdpi-v4\\ic_launcher.png"
-    },
-    {
         "merged": "E:\\studio workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\color_switch_thumb_material_light.xml.flat",
         "source": "C:\\Users\\Administrator\\.gradle\\wrapper\\dists\\gradle-4.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-beta1.aar\\dda2366587fdc71a6d4943e6d7d6d765\\res\\color\\switch_thumb_material_light.xml"
+    },
+    {
+        "merged": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\mipmap-xxhdpi-v4_ic_launcher.png.flat",
+        "source": "F:\\workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\bundles\\debug\\res\\mipmap-xxhdpi-v4\\ic_launcher.png"
     },
     {
         "merged": "E:\\studio workplace\\BabyPerceive\\ocr_ui\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout_abc_expanded_menu_layout.xml.flat",

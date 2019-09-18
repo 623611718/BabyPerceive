@@ -3,6 +3,7 @@ package com.example.lz.babyperceive.Activity;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import com.example.lz.babyperceive.Bean.AsrJson;
 import com.example.lz.babyperceive.Bean.Object;
 import com.example.lz.babyperceive.R;
+import com.example.lz.babyperceive.Utils.SharedPreferencesHelper;
 import com.example.lz.babyperceive.Utils.Speek;
 import com.example.lz.babyperceive.Utils.Utils;
 import com.example.lz.babyperceive.View.ButtonView;
@@ -29,11 +31,12 @@ public class AnimalActivity extends BaseActivity {
     private String object, name,introduction,imageId,namespell;
     private int id;
     private List<Object> objectList = new ArrayList<>();
-    private int number;  //随机数
+    private int number =0;  //计数
     private Speek speek; //百度语音合成
     private int previous_number = 0;//上一个随机数
     private boolean isEnglish = false;
     private boolean isIdiom = false; //判断是否是成语
+    private SharedPreferencesHelper sharedPreferencesHelper;
     @Override
     public void widgetClick(View v) {
 
@@ -58,7 +61,7 @@ public class AnimalActivity extends BaseActivity {
      */
     @SuppressLint("NewApi")
     private void setData() {
-        number = 0;
+
 
         object = objectList.get(number).getObject();
         name = objectList.get(number).getName();
@@ -94,6 +97,8 @@ public class AnimalActivity extends BaseActivity {
     private void initData() {
         AsrJson asrJson = new AsrJson();
         Intent intent = getIntent();
+        String fileName;
+        fileName=intent.getStringExtra("data");
        if (intent.getStringExtra("data").equals("english.txt")){
            isEnglish =true;
            isIdiom = false;
@@ -103,6 +108,8 @@ public class AnimalActivity extends BaseActivity {
                isEnglish =false;
            }
        }
+        sharedPreferencesHelper = new SharedPreferencesHelper(this,fileName);
+        number = (int) sharedPreferencesHelper.getSharedPreference("number",0);
         objectList = asrJson.parseJSONobject(utils.getAsstesTxt( intent.getStringExtra("data")));
         speek = new Speek(this);
         speek.Speeking(name);
@@ -157,6 +164,8 @@ public class AnimalActivity extends BaseActivity {
                             } else {
                                 speek.Speeking(name);
                             }
+                        }else if (number ==0){
+                            showToast("已经是第一个啦");
                         }
                         break;
                     case R.id.play_bt:
@@ -176,6 +185,8 @@ public class AnimalActivity extends BaseActivity {
                             } else {
                                 speek.Speeking(name);
                             }
+                        }else if (number ==objectList.size()-1){
+                           showToast("已经是最后一个啦");
                         }
                         break;
                 }
@@ -217,6 +228,12 @@ public class AnimalActivity extends BaseActivity {
     }
 
     @Override
+    protected void onStop() {
+        sharedPreferencesHelper.put("number",number);
+        super.onStop();
+    }
+
+    @Override
     public void setListener() {
 
     }
@@ -225,5 +242,6 @@ public class AnimalActivity extends BaseActivity {
     public void doBusiness(Context mContext) {
 
     }
+
 }
 

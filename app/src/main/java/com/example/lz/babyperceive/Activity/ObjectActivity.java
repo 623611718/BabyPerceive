@@ -1,6 +1,7 @@
 package com.example.lz.babyperceive.Activity;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -17,15 +18,18 @@ import com.example.lz.babyperceive.View.TitleView;
 
 import java.util.ArrayList;
 
-public class ObjectActivity extends AppCompatActivity implements View.OnClickListener {
+public class ObjectActivity extends BaseActivity implements View.OnClickListener {
     private Button animal_bt,fruit_bt,vegetables_bt;
     private TitleView titleView;
+
+    @Override
+    public void widgetClick(View v) {
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_object);
-        getSupportActionBar().hide();//隐藏掉整个ActionBar，包括下面的Tabs
-        changeStatusBarTextColor(true);
         initPermission();  //初始化权限
         initView();//初始化View
     }
@@ -39,6 +43,32 @@ public class ObjectActivity extends AppCompatActivity implements View.OnClickLis
             }
         }
     }
+
+    @Override
+    public void initParms(Bundle parms) {
+
+    }
+
+    @Override
+    public View bindView() {
+        return null;
+    }
+
+    @Override
+    public int bindLayout() {
+        return R.layout.activity_object;
+    }
+
+    @Override
+    public void initView(View view) {
+
+    }
+
+    @Override
+    public void setListener() {
+
+    }
+
     /**
      * android 6.0 以上需要动态申请权限
      */
@@ -105,5 +135,10 @@ public class ObjectActivity extends AppCompatActivity implements View.OnClickLis
                 break;
 
         }
+    }
+
+    @Override
+    public void doBusiness(Context mContext) {
+
     }
 }

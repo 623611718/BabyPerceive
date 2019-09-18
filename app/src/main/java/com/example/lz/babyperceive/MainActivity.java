@@ -1,6 +1,7 @@
 package com.example.lz.babyperceive;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
@@ -19,6 +20,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.lz.babyperceive.Activity.AnimalActivity;
+import com.example.lz.babyperceive.Activity.BaseActivity;
 import com.example.lz.babyperceive.Activity.CharacterRecognitionActivity;
 import com.example.lz.babyperceive.Activity.IdentifyActivity;
 import com.example.lz.babyperceive.Activity.ImageRecognitionActivity;
@@ -29,6 +31,7 @@ import com.example.lz.babyperceive.Activity.ObjectActivity;
 import com.example.lz.babyperceive.Activity.PlayerActivity;
 import com.example.lz.babyperceive.Activity.SpeakingActivity;
 import com.example.lz.babyperceive.Activity.TestActivity;
+import com.example.lz.babyperceive.Activity.TranslateActivity;
 import com.example.lz.babyperceive.Activity.YuleActivity;
 import com.example.lz.babyperceive.Utils.BaiduTranslateService;
 import com.example.lz.babyperceive.Utils.TranslateResult;
@@ -43,7 +46,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private Button bt1, bt2, bt3, bt4; //1:学一学 2:考一考 3:智能识别 4:休闲娱乐
     private TitleView titleView;
@@ -51,11 +54,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static String dst;
 
     @Override
+    public void widgetClick(View v) {
+
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        getSupportActionBar().hide();//隐藏掉整个ActionBar，包括下面的Tabs
-        changeStatusBarTextColor(true);
+        //setContentView(R.layout.activity_main);
+      //  getSupportActionBar().hide();//隐藏掉整个ActionBar，包括下面的Tabs
+       // changeStatusBarTextColor(true);
         initPermission();  //初始化权限
         initView();//初始化View
         handler = new Handler();
@@ -188,6 +196,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    @Override
+    public void initParms(Bundle parms) {
+
+    }
+
+    @Override
+    public View bindView() {
+        return null;
+    }
+
+    @Override
+    public int bindLayout() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    public void initView(View view) {
+
+    }
+
+    @Override
+    public void setListener() {
+
+    }
+
     /**
      * android 6.0 以上需要动态申请权限
      */
@@ -280,6 +313,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    @Override
+    public void doBusiness(Context mContext) {
+
+    }
+
 
     private void showPopupMenu(View view) {
         // View当前PopupMenu显示的相对View的位置
@@ -292,34 +330,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.quit1:
-                        Intent intent1 = new Intent(MainActivity.this, CharacterRecognitionActivity.class);
+                        Intent intent1 = new Intent(MainActivity.this, TranslateActivity.class);
                         startActivity(intent1);
                         break;
-                    case R.id.quit2:
-                        Intent intent2 = new Intent(MainActivity.this, ImageRecognitionActivity.class);
-                        intent2.putExtra("type","advanced_general");
-                        startActivity(intent2);
-                        break;
-                    case R.id.quit3:
-                        Intent intent3 = new Intent(MainActivity.this, ImageRecognitionActivity.class);
-                        intent3.putExtra("type","animal");
-                        startActivity(intent3);
-                        break;
-                    case R.id.quit4:
-                        Intent intent4 = new Intent(MainActivity.this, ImageRecognitionActivity.class);
-                        intent4.putExtra("type","plant");
-                        startActivity(intent4);
-                        break;
-                    case R.id.quit5:
-                        Intent intent5 = new Intent(MainActivity.this, ImageRecognitionActivity.class);
-                        intent5.putExtra("type","ingredient");
-                        startActivity(intent5);
-                        break;
-                    case R.id.quit6:
-                        Intent intent6 = new Intent(MainActivity.this, ImageRecognitionActivity.class);
-                        intent6.putExtra("type","landmark");
-                        startActivity(intent6);
-                        break;
+
 
                 }
                 return false;
