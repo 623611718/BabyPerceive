@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/BabyPerceive.iml" filepath="$PROJECT_DIR$/BabyPerceive.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/ocr_ui/ocr_ui.iml" filepath="$PROJECT_DIR$/ocr_ui/ocr_ui.iml" />
-      <module fileurl="file://E:\studio workplace\BabyPerceive\ocr_ui\ocr_ui.iml" filepath="E:\studio workplace\BabyPerceive\ocr_ui\ocr_ui.iml" />
     </modules>
   </component>
 </project>

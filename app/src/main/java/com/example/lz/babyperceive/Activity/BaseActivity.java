@@ -17,6 +17,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.example.lz.babyperceive.Application.MyApplication;
+
 import java.util.ArrayList;
 
 /**
@@ -42,6 +44,7 @@ public abstract class BaseActivity extends Activity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "BaseActivity-->onCreate()");
+        MyApplication myApplication=(MyApplication)getApplication();
         initPermission();
         Bundle bundle = getIntent().getExtras();
         initParms(bundle);
