@@ -88,6 +88,7 @@ public class SpeakingDialog extends Dialog implements View.OnClickListener {
         initView();
         initData();
         setData();
+        myApplication.setShow(true);
     }
 
     @SuppressLint("NewApi")
@@ -209,6 +210,22 @@ public class SpeakingDialog extends Dialog implements View.OnClickListener {
 
     }
 
+    private void GoneView(){
+        v4.setVisibility(View.GONE);
+        v0.setVisibility(View.GONE);
+        v1.setVisibility(View.GONE);
+        v2.setVisibility(View.GONE);
+        v3.setVisibility(View.GONE);
+        v5.setVisibility(View.GONE);
+        setData();
+    }
+    private void correct(){
+        myApplication.setStatus(true);
+        myApplication.setYueleStatus(true);
+        myApplication.setTime(0);
+        myApplication.setYuletime(0);
+        dismiss();
+    }
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -217,18 +234,10 @@ public class SpeakingDialog extends Dialog implements View.OnClickListener {
                     answer_number += 1;
                     v0.setVisibility(View.VISIBLE);
                     if (answer_number == 2) {
-                        myApplication.setStatus(true);
-                        myApplication.setYueleStatus(true);
-                        dismiss();
+                        correct();
                     }
                 } else {
-                    v4.setVisibility(View.GONE);
-                    v0.setVisibility(View.GONE);
-                    v1.setVisibility(View.GONE);
-                    v2.setVisibility(View.GONE);
-                    v3.setVisibility(View.GONE);
-                    v5.setVisibility(View.GONE);
-                    setData();
+                    GoneView();
                 }
                 break;
             case R.id.iv1:
@@ -236,18 +245,10 @@ public class SpeakingDialog extends Dialog implements View.OnClickListener {
                     answer_number += 1;
                     v1.setVisibility(View.VISIBLE);
                     if (answer_number == 2) {
-                        myApplication.setStatus(true);
-                        myApplication.setYueleStatus(true);
-                        dismiss();
+                        correct();
                     }
                 } else {
-                    v4.setVisibility(View.GONE);
-                    v0.setVisibility(View.GONE);
-                    v1.setVisibility(View.GONE);
-                    v2.setVisibility(View.GONE);
-                    v3.setVisibility(View.GONE);
-                    v5.setVisibility(View.GONE);
-                    setData();
+                    GoneView();
                 }
                 break;
             case R.id.iv2:
@@ -255,18 +256,10 @@ public class SpeakingDialog extends Dialog implements View.OnClickListener {
                     answer_number += 1;
                     v2.setVisibility(View.VISIBLE);
                     if (answer_number == 2) {
-                        myApplication.setStatus(true);
-                        myApplication.setYueleStatus(true);
-                        dismiss();
+                        correct();
                     }
                 } else {
-                    v4.setVisibility(View.GONE);
-                    v0.setVisibility(View.GONE);
-                    v1.setVisibility(View.GONE);
-                    v2.setVisibility(View.GONE);
-                    v3.setVisibility(View.GONE);
-                    v5.setVisibility(View.GONE);
-                    setData();
+                    GoneView();
                 }
                 break;
             case R.id.iv3:
@@ -274,18 +267,10 @@ public class SpeakingDialog extends Dialog implements View.OnClickListener {
                     answer_number += 1;
                     v3.setVisibility(View.VISIBLE);
                     if (answer_number == 2) {
-                        myApplication.setStatus(true);
-                        myApplication.setYueleStatus(true);
-                        dismiss();
+                        correct();
                     }
                 } else {
-                    v4.setVisibility(View.GONE);
-                    v0.setVisibility(View.GONE);
-                    v1.setVisibility(View.GONE);
-                    v2.setVisibility(View.GONE);
-                    v3.setVisibility(View.GONE);
-                    v5.setVisibility(View.GONE);
-                    setData();
+                    GoneView();
                 }
                 break;
             case R.id.iv4:
@@ -293,18 +278,10 @@ public class SpeakingDialog extends Dialog implements View.OnClickListener {
                     answer_number += 1;
                     v4.setVisibility(View.VISIBLE);
                     if (answer_number == 2) {
-                        myApplication.setStatus(true);
-                        myApplication.setYueleStatus(true);
-                        dismiss();
+                        correct();
                     }
                 } else {
-                    v4.setVisibility(View.GONE);
-                    v0.setVisibility(View.GONE);
-                    v1.setVisibility(View.GONE);
-                    v2.setVisibility(View.GONE);
-                    v3.setVisibility(View.GONE);
-                    v5.setVisibility(View.GONE);
-                    setData();
+                    GoneView();
                 }
                 break;
             case R.id.iv5:
@@ -312,23 +289,16 @@ public class SpeakingDialog extends Dialog implements View.OnClickListener {
                     answer_number += 1;
                     v5.setVisibility(View.VISIBLE);
                     if (answer_number == 2) {
-                        myApplication.setStatus(true);
-                        myApplication.setYueleStatus(true);
-                        dismiss();
+                        correct();
                     }
                 } else {
-                    v4.setVisibility(View.GONE);
-                    v0.setVisibility(View.GONE);
-                    v1.setVisibility(View.GONE);
-                    v2.setVisibility(View.GONE);
-                    v3.setVisibility(View.GONE);
-                    v5.setVisibility(View.GONE);
-                    setData();
+                    GoneView();
                 }
                 break;
             case R.id.button:
                 // myApplication.setStatus(false);
                 //dismiss();
+                myApplication.setYueleStatus(false);
                 android.os.Process.killProcess(android.os.Process.myPid());
                 break;
             case R.id.v0:

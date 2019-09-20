@@ -1,5 +1,6 @@
 package com.example.lz.babyperceive.Activity;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -20,6 +21,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.lz.babyperceive.Application.MyApplication;
+import com.example.lz.babyperceive.Dialog.SpeakingDialog;
 import com.example.lz.babyperceive.R;
 import com.example.lz.babyperceive.Utils.Utils_play;
 import com.example.lz.babyperceive.View.ButtonView;
@@ -44,7 +47,9 @@ public class MusicActivity extends BaseActivity {
     private int currenposition = 0;
     private TextView musicName_tv;
     private int number = 0;
+    private MyApplication myApplication;
 
+    private int time = 0;
     private ArrayAdapter<String> adapter1;
     private List<String> nameList = new ArrayList<>();
     ;
@@ -54,6 +59,13 @@ public class MusicActivity extends BaseActivity {
             switch (msg.what) {
                 case PROGRESS:
                     if (mediaPlayer != null) {
+                        time +=1;
+                        if (!myApplication.isYueleStatus() && !myApplication.isShow()) {  //如果娱乐状态为false 弹出验证
+                            myApplication.setShow(true);
+                            showDialog();
+                            time = 0;
+                            // myApplication.setYueleStatus(false);
+                        }
                         // 1.得到当前的视频播放进度
                         currenposition = mediaPlayer.getCurrentPosition();
                         // 2.Seekbar.setprogress(当前进度);
@@ -168,9 +180,22 @@ public class MusicActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         utils_play = new Utils_play();
         intSpinner();
+        myApplication = (MyApplication) getApplication();
+        if (!myApplication.isYueleStatus()){
+            showDialog();
+            myApplication.setYueleStatus(false);
+        }
+        myApplication.sendYuleEmptyMessage();
 
     }
+    private void showDialog(){
+        new SpeakingDialog(this, R.style.dialog, "快让家长帮忙吧", new SpeakingDialog.OnCloseListener() {
+            @Override
+            public void onClick(Dialog dialog, boolean confirm) {
 
+            }
+        }).setTitle("不能玩了").show();
+    }
     // 播放的时候调用
     public void play(String name) {
         // 重置mediaPaly,建议在初始化mediaplay立即调用
@@ -331,6 +356,10 @@ public class MusicActivity extends BaseActivity {
 
     }
 
+
+    /**
+     * 初始化下拉框
+     */
     private void intSpinner() {
         nameList.add("小老鼠上灯台.mp3");
         nameList.add("孙燕姿 - 遇见.mp3");
@@ -433,6 +462,7 @@ public class MusicActivity extends BaseActivity {
             mediaPlayer.release();
         }
         handler.removeMessages(PROGRESS);
+        myApplication.removeYuleEmptyMessage();
         super.onDestroy();
     }
 }

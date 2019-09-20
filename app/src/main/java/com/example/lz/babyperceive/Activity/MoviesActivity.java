@@ -13,6 +13,7 @@ import com.example.lz.babyperceive.Adapter.MoviesAdapter;
 import com.example.lz.babyperceive.Bean.ImageRecognitionBean;
 import com.example.lz.babyperceive.Bean.MoviesBean;
 import com.example.lz.babyperceive.R;
+import com.example.lz.babyperceive.Utils.UtilsGetUrl;
 import com.example.lz.babyperceive.View.TitleView;
 
 import java.util.ArrayList;
@@ -26,7 +27,9 @@ public class MoviesActivity extends BaseActivity {
     private List<MoviesBean> list = new ArrayList<>();
     private MoviesAdapter adapter;
     private MoviesBean moviesBean;
-    private Map<String,String> m = new HashMap<String,String>();
+    private List<String> urls = new ArrayList<>();
+    private UtilsGetUrl utilsGetUrl;
+    private List<String> videos = new ArrayList<>();
     @Override
     public void widgetClick(View v) {
 
@@ -35,16 +38,19 @@ public class MoviesActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String[] s = {"行尸走肉.mp4","test.mp4"};
-        m.put("行尸走肉.mp4","http://lz.free.idcfengye.com/行尸走肉.mp4");
-        m.put("test.mp4","http://s.swao.cn/o_1c3n5oq2s1gcai5d1vm917hv1cps7.mp4");
-        initList(s);
+        // String[] s = {"行尸走肉.mp4","test.mp4"};
+        //  m.put("行尸走肉.mp4","http://lz.free.idcfengye.com/行尸走肉.mp4");
+        //  m.put("test.mp4","http://s.swao.cn/o_1c3n5oq2s1gcai5d1vm917hv1cps7.mp4");
+        utilsGetUrl = new UtilsGetUrl(this,"URIConfig.txt");
+        videos = utilsGetUrl.getVideos();
+        urls = utilsGetUrl.getUrls();
+        initList();
     }
 
-    private void initList(String[] s) {
-        for (int i=0;i<s.length;i++){
+    private void initList() {
+        for (int i=0;i<videos.size();i++){
             MoviesBean moviesBean = new MoviesBean();
-            moviesBean.setName(s[i]);
+            moviesBean.setName(videos.get(i));
             list.add(moviesBean);
         }
     }
@@ -89,9 +95,8 @@ public class MoviesActivity extends BaseActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(MoviesActivity.this, PlayerActivity.class);
-                intent.putExtra("data", list.get(position).getName());
-                m.get(list.get(position).getName());
-                intent.putExtra("url", m.get(list.get(position).getName()));
+                intent.putExtra("data", list.get(position).getName()); // URL
+                intent.putExtra("url", urls.get(position));  //名称
                 startActivity(intent);
             }
         });

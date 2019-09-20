@@ -35,9 +35,12 @@ import com.example.lz.babyperceive.Activity.TestActivity;
 import com.example.lz.babyperceive.Activity.TranslateActivity;
 import com.example.lz.babyperceive.Activity.YuleActivity;
 import com.example.lz.babyperceive.Application.MyApplication;
+import com.example.lz.babyperceive.Dialog.CommomDialog;
 import com.example.lz.babyperceive.Dialog.SpeakingDialog;
 import com.example.lz.babyperceive.Utils.BaiduTranslateService;
 import com.example.lz.babyperceive.Utils.TranslateResult;
+import com.example.lz.babyperceive.Utils.Utils;
+import com.example.lz.babyperceive.Utils.UtilsGetUrl;
 import com.example.lz.babyperceive.View.TitleView;
 import com.google.gson.Gson;
 
@@ -54,10 +57,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private SpeakingDialog speakingDialog;
     private Button bt1, bt2, bt3, bt4; //1:学一学 2:考一考 3:智能识别 4:休闲娱乐
     private TitleView titleView;
-    private static  Handler handler = null;
+    private static Handler handler = null;
     private static String dst;
 
     private MyApplication myApplication;
+
     @Override
     public void widgetClick(View v) {
 
@@ -66,24 +70,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-            myApplication= (MyApplication) getApplication();
-
-
-        //setContentView(R.layout.activity_main);
-      //  getSupportActionBar().hide();//隐藏掉整个ActionBar，包括下面的Tabs
-       // changeStatusBarTextColor(true);
+        myApplication = (MyApplication) getApplication();
         initPermission();  //初始化权限
         initView();//初始化View
         handler = new Handler();
-        /*new SpeakingDialog(this, R.style.dialog, "快让家长帮忙吧", new SpeakingDialog.OnCloseListener() {
-            @Override
-            public void onClick(Dialog dialog, boolean confirm) {
-
-            }
-        }).setTitle("不能玩了").show();*/
-
-
-
     }
 
     //改变状态栏字体颜色
@@ -188,22 +178,22 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.bt1:
                 Intent intent1 = new Intent(this, LearningActivity.class);
-                intent1.putExtra("title","学一学");
+                intent1.putExtra("title", "学一学");
                 startActivity(intent1);
                 break;
             case R.id.bt2:
                 Intent intent2 = new Intent(this, TestActivity.class);
-                intent2.putExtra("title","考一考");
+                intent2.putExtra("title", "考一考");
                 startActivity(intent2);
                 break;
             case R.id.bt3:
                 Intent intent3 = new Intent(this, IdentifyActivity.class);
-                intent3.putExtra("title","智能识别");
+                intent3.putExtra("title", "智能识别");
                 startActivity(intent3);
                 break;
             case R.id.bt4:
                 Intent intent4 = new Intent(this, YuleActivity.class);
-                intent4.putExtra("title","休闲娱乐");
+                intent4.putExtra("title", "休闲娱乐");
                 startActivity(intent4);
                 break;
            /* case R.id.idiom_bt:
@@ -229,10 +219,18 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.quit1:
                         Intent intent1 = new Intent(MainActivity.this, TranslateActivity.class);
                         startActivity(intent1);
+                        break;
+                    case R.id.quit2:
+                        new CommomDialog(MainActivity.this, R.style.dialog, "111", new CommomDialog.OnCloseListener() {
+                            @Override
+                            public void onClick(Dialog dialog, boolean confirm) {
+
+                            }
+                        }).setTitle("家长模式").show();
                         break;
 
 
@@ -249,12 +247,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         });
         popupMenu.show();
     }
+
     @Override
     protected void onResume() {
         /**
          * 设置为横屏
          */
-        if(getRequestedOrientation()!= ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE){
+        if (getRequestedOrientation() != ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         }
         super.onResume();

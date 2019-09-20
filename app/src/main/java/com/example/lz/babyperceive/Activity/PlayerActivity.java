@@ -41,7 +41,7 @@ import com.example.lz.babyperceive.View.Play_title;
 
 import java.io.IOException;
 
-public class PlayerActivity extends Activity implements View.OnClickListener{
+public class PlayerActivity extends Activity implements View.OnClickListener {
     protected static final int PROGRESS = 1;
     protected static final int isplaying = 2;
     private String path, name;
@@ -60,7 +60,7 @@ public class PlayerActivity extends Activity implements View.OnClickListener{
     private LinearLayout sk_linear;
     private int pro = 0;
     private int errorcode = 0;
-    private int time =0;
+    private int time = 0;
     private MyApplication myApplication;
     private Handler handler = new Handler() {
         public void handleMessage(Message msg) {
@@ -69,11 +69,12 @@ public class PlayerActivity extends Activity implements View.OnClickListener{
                 case PROGRESS:
 
                     if (mediaPlayer != null) {
-                        time +=1;
-                        if (myApplication.yuleTime_end ==time){
+                        time += 1;
+                        if (!myApplication.isYueleStatus() && !myApplication.isShow()) {  //如果娱乐状态为false 弹出验证
+                            myApplication.setShow(true);
                             showDialog();
-                            time =0;
-                            myApplication.setYueleStatus(false);
+                            time = 0;
+                            // myApplication.setYueleStatus(false);
                         }
                         // 1.得到当前的视频播放进度
                         currenposition = mediaPlayer.getCurrentPosition();
@@ -132,6 +133,7 @@ public class PlayerActivity extends Activity implements View.OnClickListener{
 
         }
     }
+
     //对加载进行异步处理
     class MyAsyncTask2 extends AsyncTask<Integer, Void, String> {
 
@@ -163,10 +165,11 @@ public class PlayerActivity extends Activity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         // savedInstanceState.getInt("currenposition");
         myApplication = (MyApplication) getApplication();
-        if (!myApplication.isYueleStatus()){
+        if (!myApplication.isYueleStatus()) {
             showDialog();
             myApplication.setYueleStatus(false);
         }
+        myApplication.sendYuleEmptyMessage();
         if (savedInstanceState != null) {
             currenposition = savedInstanceState.getInt("currenposition");
             Log.i("play", "onCreate currenposition:" + savedInstanceState.getInt("currenposition"));
@@ -194,7 +197,7 @@ public class PlayerActivity extends Activity implements View.OnClickListener{
 
     }
 
-    private void showDialog(){
+    private void showDialog() {
         new SpeakingDialog(this, R.style.dialog, "快让家长帮忙吧", new SpeakingDialog.OnCloseListener() {
             @Override
             public void onClick(Dialog dialog, boolean confirm) {
@@ -393,6 +396,7 @@ public class PlayerActivity extends Activity implements View.OnClickListener{
                 break;
         }
     }
+
     private void setSurfaceview() {
         // 设置surfaceHolder
         mSurfaceHolder = surfaceview.getHolder();
@@ -410,7 +414,7 @@ public class PlayerActivity extends Activity implements View.OnClickListener{
             Log.i("tag", "surfaceCreated  ");
             play();
             //MyAsyncTask2 myAsyncTask2 = new MyAsyncTask2();
-           // myAsyncTask2.execute();
+            // myAsyncTask2.execute();
         }
 
         @Override
@@ -700,6 +704,7 @@ public class PlayerActivity extends Activity implements View.OnClickListener{
         if (mBatInfoReceiver != null) {
             unregisterReceiver(mBatInfoReceiver);
         }
+        myApplication.removeYuleEmptyMessage();
         super.onDestroy();
     }
 }

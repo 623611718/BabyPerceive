@@ -20,9 +20,9 @@
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="12dp"
             android:gravity="center"
-            android:layout_gravity="center"
             android:padding="12dp"
             android:text="不能玩啦"
             android:textColor="@color/black"
@@ -66,8 +66,7 @@
             <ImageView
                 android:id="@+id/iv0"
                 android:layout_width="80dp"
-                android:layout_height="60dp"
-                android:background="@drawable/shizi" />
+                android:layout_height="60dp" />
 
             <View
                 android:id="@+id/v0"
@@ -86,8 +85,7 @@
             <ImageView
                 android:id="@+id/iv1"
                 android:layout_width="80dp"
-                android:layout_height="60dp"
-                android:background="@drawable/shizi" />
+                android:layout_height="60dp" />
 
             <View
                 android:id="@+id/v1"
@@ -105,8 +103,7 @@
             <ImageView
                 android:id="@+id/iv2"
                 android:layout_width="80dp"
-                android:layout_height="60dp"
-                android:background="@drawable/shizi" />
+                android:layout_height="60dp" />
 
             <View
                 android:id="@+id/v2"
@@ -134,8 +131,7 @@
             <ImageView
                 android:id="@+id/iv3"
                 android:layout_width="80dp"
-                android:layout_height="60dp"
-                android:background="@drawable/shizi" />
+                android:layout_height="60dp" />
 
             <View
                 android:id="@+id/v3"
@@ -153,8 +149,7 @@
             <ImageView
                 android:id="@+id/iv4"
                 android:layout_width="80dp"
-                android:layout_height="60dp"
-                android:background="@drawable/shizi" />
+                android:layout_height="60dp" />
 
             <View
                 android:id="@+id/v4"
@@ -172,8 +167,7 @@
             <ImageView
                 android:id="@+id/iv5"
                 android:layout_width="80dp"
-                android:layout_height="60dp"
-                android:background="@drawable/shizi" />
+                android:layout_height="60dp" />
 
             <View
                 android:id="@+id/v5"

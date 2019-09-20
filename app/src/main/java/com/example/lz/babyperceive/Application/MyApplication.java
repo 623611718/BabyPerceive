@@ -9,6 +9,7 @@ import android.util.Log;
 
 import com.example.lz.babyperceive.Activity.YuleActivity;
 import com.example.lz.babyperceive.R;
+import com.example.lz.babyperceive.Utils.SharedPreferencesHelper;
 
 import org.w3c.dom.ProcessingInstruction;
 
@@ -27,7 +28,9 @@ public class MyApplication extends Application {
     public final static int yuleStart = 0;  //娱乐计时
     public final static int learnStart = 1;      //学习计时
     private String TAG = "MyApplication";
+    private boolean isShow =false;
 
+    private SharedPreferencesHelper sharedPreferencesHelper;
     private Handler handler = new Handler() {
 
         @Override
@@ -52,9 +55,9 @@ public class MyApplication extends Application {
                     if (yuletime == yuleTime_end){
                         yueleStatus =false;
                         yuletime =0;
-                    }else {
+                    }//else {
                         sendEmptyMessageDelayed(yuleStart, 1000); //1000 = 1秒
-                    }
+                  //  }
                     Log.i(TAG, "time  " + time);
             }
         }
@@ -65,6 +68,9 @@ public class MyApplication extends Application {
         Log.i("test", "MyApplication onCreate");
         //handler.sendEmptyMessageDelayed(start, 0);
         super.onCreate();
+        sharedPreferencesHelper = new SharedPreferencesHelper(this,"MyApplication");
+        yuleTime_end = (int)sharedPreferencesHelper.getSharedPreference("yuleTime",18);
+        learningTime_end=(int)sharedPreferencesHelper.getSharedPreference("learnTime",18);
     }
 
     public void sendEmptyMessage() {
@@ -139,6 +145,27 @@ public class MyApplication extends Application {
 
     public static int getLearnStart() {
         return learnStart;
+    }
+
+    public boolean isShow() {
+        return isShow;
+    }
+
+    public void setShow(boolean show) {
+        isShow = show;
+    }
+
+    @Override
+    public void onTerminate() {
+        super.onTerminate();
+    }
+
+    @Override
+    public void onTrimMemory(int level) {
+
+        sharedPreferencesHelper.put("yuleTime",yuleTime_end);
+        sharedPreferencesHelper.put("learnTime",learningTime_end);
+        super.onTrimMemory(level);
     }
 }
 

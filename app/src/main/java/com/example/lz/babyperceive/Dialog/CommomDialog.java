@@ -3,10 +3,13 @@ package com.example.lz.babyperceive.Dialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.lz.babyperceive.Application.MyApplication;
 import com.example.lz.babyperceive.R;
 
 /**
@@ -14,7 +17,6 @@ import com.example.lz.babyperceive.R;
  */
 
 public class CommomDialog   extends Dialog implements View.OnClickListener{
-    private TextView contentTxt;
     private TextView titleTxt;
     private TextView submitTxt;
     private TextView cancelTxt;
@@ -25,7 +27,9 @@ public class CommomDialog   extends Dialog implements View.OnClickListener{
     private String positiveName;
     private String negativeName;
     private String title;
+    private EditText et1,et2;
 
+    private MyApplication myApplication;
     public CommomDialog(Context context) {
         super(context);
         this.mContext = context;
@@ -68,30 +72,39 @@ public class CommomDialog   extends Dialog implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog_commom2);
-        setCanceledOnTouchOutside(false);
+       // setCanceledOnTouchOutside(false);
+        myApplication=(MyApplication) mContext.getApplicationContext();
+        myApplication.getYuleTime_end();
+        myApplication.getLearningTime_end();
+        positiveName = "确定";
+        negativeName = "取消";
         initView();
     }
 
     private void initView(){
-        contentTxt = (TextView)findViewById(R.id.content);
+
         titleTxt = (TextView)findViewById(R.id.title);
         submitTxt = (TextView)findViewById(R.id.submit);
         submitTxt.setOnClickListener(this);
         cancelTxt = (TextView)findViewById(R.id.cancel);
         cancelTxt.setOnClickListener(this);
-
-        contentTxt.setText(content);
-        if(!TextUtils.isEmpty(positiveName)){
+        et1 = (EditText) findViewById(R.id.et1);
+        et2 = (EditText) findViewById(R.id.et2);
+        et1.setText(  String.valueOf(myApplication.getYuleTime_end() / 60000));
+        et2.setText( String.valueOf(myApplication.getLearningTime_end()/ 60000));
+        et1.setInputType(InputType.TYPE_CLASS_NUMBER);
+        et1.setInputType(InputType.TYPE_CLASS_NUMBER);
+       // if(!TextUtils.isEmpty(positiveName)){
             submitTxt.setText(positiveName);
-        }
+      //  }
 
-        if(!TextUtils.isEmpty(negativeName)){
+     //   if(!TextUtils.isEmpty(negativeName)){
             cancelTxt.setText(negativeName);
-        }
+     //   }
 
-        if(!TextUtils.isEmpty(title)){
+      //  if(!TextUtils.isEmpty(title)){
             titleTxt.setText(title);
-        }
+     //   }
 
     }
 
@@ -102,12 +115,20 @@ public class CommomDialog   extends Dialog implements View.OnClickListener{
                 if(listener != null){
                     listener.onClick(this, false);
                 }
+                if (et1.getText().toString()!=null) {
+                    myApplication.setYuleTime_end(Integer.parseInt(et1.getText().toString()) *60000);
+                }
+
                 this.dismiss();
                 break;
             case R.id.submit:
                 if(listener != null){
                     listener.onClick(this, true);
                 }
+                if (et2.getText().toString()!=null) {
+                    myApplication.setLearningTime_end(Integer.parseInt(et1.getText().toString()) * 60000);
+                }
+                this.dismiss();
                 break;
         }
     }
