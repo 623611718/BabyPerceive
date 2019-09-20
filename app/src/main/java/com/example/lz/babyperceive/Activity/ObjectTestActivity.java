@@ -22,10 +22,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ObjectTestActivity extends BaseActivity {
-    private static  final String TAG = "ObjectTest";
+    private static final String TAG = "ObjectTest";
     private List<Object> objectList = new ArrayList<>();
     private Utils utils;
-    private ImageView imageView,image_answer;
+    private ImageView imageView, image_answer;
     private TextView tv1, tv2, tv3, tv4;
     private TitleView titleView;
     private int random_number;  //随机数
@@ -37,7 +37,7 @@ public class ObjectTestActivity extends BaseActivity {
 
     @Override
     public void widgetClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.tv1:
                 setImageView_answer(tv1.getText().toString());
                 break;
@@ -65,25 +65,30 @@ public class ObjectTestActivity extends BaseActivity {
         setData();
     }
 
-    private void setImageView_answer(String s){
-        Log.i("test","选择的答案。。。"+s);
-        Log.i("test","正确的答案。。。"+name);
-        if (name.equals(s)){
+    private void setImageView_answer(String s) {
+        Log.i("test", "选择的答案。。。" + s);
+        Log.i("test", "正确的答案。。。" + name);
+        if (name.equals(s)) {
             image_answer.setBackgroundResource(R.drawable.ico_exam_correct);
-        }else {
+        } else {
             image_answer.setBackgroundResource(R.drawable.ico_exam_error);
         }
         image_answer.setVisibility(View.VISIBLE);
     }
+
     @SuppressLint("NewApi")
     private void setData() {
+        //获取一个随机数
         int max = objectList.size() - 1;
         random_number = utils.getRandomNumber(max);
 
+        //获取信息
         object = objectList.get(random_number).getObject();
         name = objectList.get(random_number).getName();
         imageId = objectList.get(random_number).getImageId();
         introduction = objectList.get(random_number).getIntroduction();
+
+        //拼接拼音
         StringBuffer stringBuffer = new StringBuffer();
         if (name.length() > 0) {
             for (int i = 1; i <= name.length(); i++) {
@@ -107,27 +112,19 @@ public class ObjectTestActivity extends BaseActivity {
         int index = allOptionsList.indexOf(name);   // 获取答案在所有选项中的位置
         int index_option = utils.getRandomNumber(3);  //设置答案在4个显示的选项中的位置
         int index_error = utils.getRandomNumber(max);
-        //optionsList.add(index_option,allOptionsList.get(index));
-       // for (int i = 0; i < 4; i++) {
-           /* if (i == index_option) {
-                optionsList.add(index_option,allOptionsList.get(index));
-            } else {*/
-           //如果没有就加入
-        while (optionsList.size()<4) {
-            Log.i("test"," 加载。。。"+optionsList.indexOf(allOptionsList.get(index_error)));
+        //如果没有就加入
+        while (optionsList.size() < 4) {
+            Log.i("test", " 加载。。。" + optionsList.indexOf(allOptionsList.get(index_error)));
             if (optionsList.indexOf(allOptionsList.get(index_error)) == -1) {
                 optionsList.add(allOptionsList.get(index_error));
             }
             index_error = utils.getRandomNumber(max);
         }
-
-           // }
-      //  }
-        if (optionsList.indexOf(allOptionsList.get(index)) == -1){
-            optionsList.add(index_option,allOptionsList.get(index));
+        if (optionsList.indexOf(allOptionsList.get(index)) == -1) {
+            optionsList.add(index_option, allOptionsList.get(index));
         }
-        for (String s : optionsList){
-            Log.i("test"," name is:"+s);
+        for (String s : optionsList) {
+            Log.i("test", " name is:" + s);
         }
         tv1.setText(optionsList.get(0));
         tv2.setText(optionsList.get(1));

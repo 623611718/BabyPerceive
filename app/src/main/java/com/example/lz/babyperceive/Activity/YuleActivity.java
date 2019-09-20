@@ -1,6 +1,7 @@
 package com.example.lz.babyperceive.Activity;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -9,9 +10,12 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.lz.babyperceive.Application.MyApplication;
+import com.example.lz.babyperceive.Dialog.SpeakingDialog;
 import com.example.lz.babyperceive.R;
 import com.example.lz.babyperceive.View.TitleView;
 
@@ -20,6 +24,7 @@ import java.util.ArrayList;
 public class YuleActivity extends BaseActivity implements View.OnClickListener {
     private Button animal_bt,fruit_bt,vegetables_bt;
     private TitleView titleView;
+    private MyApplication myApplication;
 
     @Override
     public void widgetClick(View v) {
@@ -32,8 +37,23 @@ public class YuleActivity extends BaseActivity implements View.OnClickListener {
         //setContentView(R.layout.activity_yule);
        // getSupportActionBar().hide();//隐藏掉整个ActionBar，包括下面的Tabs
        // changeStatusBarTextColor(true);
+        myApplication = (MyApplication) getApplication();
         initPermission();  //初始化权限
         initView();//初始化View
+
+        if (!myApplication.isStatus()){
+           myApplication.setStatus(false);
+           new SpeakingDialog(this, R.style.dialog, "快让家长帮忙吧", new SpeakingDialog.OnCloseListener() {
+               @Override
+               public void onClick(Dialog dialog, boolean confirm) {
+
+               }
+           }).setTitle("不能玩了").show();
+       }else {
+            myApplication.setTime(0);
+            myApplication.setStatus(false);
+        }
+        myApplication.sendYuleEmptyMessage();
     }
     //改变状态栏字体颜色
     private void changeStatusBarTextColor(boolean isBlack) {
@@ -142,5 +162,41 @@ public class YuleActivity extends BaseActivity implements View.OnClickListener {
     @Override
     public void doBusiness(Context mContext) {
 
+    }
+
+    @Override
+    protected void onRestart() {
+        Log.i("test","onRestart");
+        super.onRestart();
+    }
+
+    @Override
+    protected void onStart() {
+        Log.i("test","onStart");
+        super.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        Log.i("test","onResume");
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        Log.i("test","onPause");
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        Log.i("test","onStop");
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        Log.i("test","onDestroy");
+        super.onDestroy();
     }
 }

@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.lz.babyperceive.Application.MyApplication;
 import com.example.lz.babyperceive.Bean.AsrJson;
 import com.example.lz.babyperceive.Bean.Object;
 import com.example.lz.babyperceive.R;
@@ -37,6 +38,7 @@ public class AnimalActivity extends BaseActivity {
     private boolean isEnglish = false;
     private boolean isIdiom = false; //判断是否是成语
     private SharedPreferencesHelper sharedPreferencesHelper;
+    private MyApplication myApplication;
     @Override
     public void widgetClick(View v) {
 
@@ -46,6 +48,8 @@ public class AnimalActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         utils = new Utils(this);
+        myApplication = (MyApplication) getApplication();
+        myApplication.sendEmptyMessage();
         initData();
         setData();
         initView1();
@@ -151,13 +155,23 @@ public class AnimalActivity extends BaseActivity {
         name_tv.setText(name);
         imageView.setBackground(utils.getAssectImage(imageId));
     }
+
+    private void getStatus(){
+       if (myApplication.isStatus()){
+         //  myApplication.setStatus(false);
+           Intent intent=new Intent(this,YuleActivity.class);
+           startActivity(intent);
+       }
+    }
     private void initView1() {
         buttonView.setCustomOnClickListener(new ButtonView.ClickListener() {
             @Override
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.previous_bt:
-                        if (number>0) {
+                        if (myApplication.isStatus()) {
+                            getStatus();
+                        } else if (number>0) {
                             initData(number - 1);
                             if (isEnglish == true) {
                                 speek.Speeking(object);
@@ -178,7 +192,9 @@ public class AnimalActivity extends BaseActivity {
                         break;
                     case R.id.next_bt:
                        // setData();
-                        if (number<objectList.size()-1) {
+                        if (myApplication.isStatus()) {
+                            getStatus();
+                        } else if (number<objectList.size()-1) {
                             initData(number + 1);
                             if (isEnglish == true) {
                                 speek.Speeking(object);
@@ -243,5 +259,11 @@ public class AnimalActivity extends BaseActivity {
 
     }
 
+    @Override
+    protected void onDestroy() {
+        myApplication.removeEmptyMessage();
+        speek.Destory();
+        super.onDestroy();
+    }
 }
 

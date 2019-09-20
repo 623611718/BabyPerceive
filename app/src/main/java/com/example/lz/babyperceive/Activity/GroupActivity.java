@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.lz.babyperceive.Application.MyApplication;
 import com.example.lz.babyperceive.Bean.AsrJson;
 import com.example.lz.babyperceive.Bean.Object;
 import com.example.lz.babyperceive.R;
@@ -28,6 +29,7 @@ public class GroupActivity extends BaseActivity {
     private  String query =" ";
     private String answer=" ";
     private TextView textView;
+    private MyApplication myApplication;
     @Override
     public void widgetClick(View v) {
         switch (v.getId()){
@@ -48,7 +50,7 @@ public class GroupActivity extends BaseActivity {
                     }
                     textView.setText(answer);
                 }
-
+                getStatus();
                 break;
         }
     }
@@ -56,8 +58,17 @@ public class GroupActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        myApplication = (MyApplication) getApplication();
+        myApplication.sendEmptyMessage();
         utils = new Utils(this);
         initData();
+    }
+    private void getStatus(){
+        if (myApplication.isStatus()){
+          //  myApplication.setStatus(false);
+            Intent intent=new Intent(this,YuleActivity.class);
+            startActivity(intent);
+        }
     }
     private void initData() {
         AsrJson asrJson = new AsrJson();
@@ -113,5 +124,11 @@ public class GroupActivity extends BaseActivity {
     @Override
     public void doBusiness(Context mContext) {
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        myApplication.removeEmptyMessage();
+        super.onDestroy();
     }
 }

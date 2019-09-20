@@ -1,6 +1,7 @@
 package com.example.lz.babyperceive.Activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.speech.tts.TextToSpeech;
 import android.support.v4.view.PagerAdapter;
@@ -14,6 +15,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.lz.babyperceive.Application.MyApplication;
 import com.example.lz.babyperceive.R;
 import com.example.lz.babyperceive.Utils.SharedPreferencesHelper;
 import com.example.lz.babyperceive.Utils.Speek;
@@ -49,6 +51,7 @@ public class SpeakingActivity extends BaseActivity implements View.OnClickListen
 
     private SharedPreferencesHelper sharedPreferencesHelper;
     private Utils utils;
+    private MyApplication myApplication;
 
     @Override
     public void widgetClick(View v) {
@@ -58,6 +61,8 @@ public class SpeakingActivity extends BaseActivity implements View.OnClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        myApplication = (MyApplication) getApplication();
+        myApplication.sendEmptyMessage();
         utils = new Utils(this);
         String[] arr = utils.getAsstesTxt("hanzi.txt").split(",");
         objectList = java.util.Arrays.asList(arr);
@@ -154,7 +159,13 @@ public class SpeakingActivity extends BaseActivity implements View.OnClickListen
         });
     }
 
-
+    private void getStatus(){
+        if (myApplication.isStatus()){
+           // myApplication.setStatus(false);
+            Intent intent=new Intent(this,YuleActivity.class);
+            startActivity(intent);
+        }
+    }
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -162,14 +173,18 @@ public class SpeakingActivity extends BaseActivity implements View.OnClickListen
                 speek.Speeking(chinses);
                 break;
             case R.id.next_bt:
-                if (number<length-2) {
+                if (myApplication.isStatus()) {
+                    getStatus();
+                } else if (number<length-2) {
                     previous_number = chinses;
                     initData(number+1);
                     speek.Speeking(chinses);
                 }
                 break;
             case R.id.previous_bt:
-                if (number>1) {
+                if (myApplication.isStatus()) {
+                    getStatus();
+                } else if (number>1) {
                     initData(number-1);
                     speek.Speeking(chinses);
                 }
@@ -225,5 +240,12 @@ public class SpeakingActivity extends BaseActivity implements View.OnClickListen
     protected void onStop() {
         sharedPreferencesHelper.put("hanzi",number);
         super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        myApplication.removeEmptyMessage();
+        speek.Destory();
+        super.onDestroy();
     }
 }

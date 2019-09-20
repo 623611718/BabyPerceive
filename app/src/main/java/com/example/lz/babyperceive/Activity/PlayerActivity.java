@@ -2,6 +2,7 @@ package com.example.lz.babyperceive.Activity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -29,6 +30,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.example.lz.babyperceive.Application.MyApplication;
+import com.example.lz.babyperceive.Dialog.SpeakingDialog;
 import com.example.lz.babyperceive.R;
 import com.example.lz.babyperceive.Speed.NetSpeed;
 import com.example.lz.babyperceive.Speed.NetSpeedTimer;
@@ -57,12 +60,21 @@ public class PlayerActivity extends Activity implements View.OnClickListener{
     private LinearLayout sk_linear;
     private int pro = 0;
     private int errorcode = 0;
+    private int time =0;
+    private MyApplication myApplication;
     private Handler handler = new Handler() {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             switch (msg.what) {
                 case PROGRESS:
+
                     if (mediaPlayer != null) {
+                        time +=1;
+                        if (myApplication.yuleTime_end ==time){
+                            showDialog();
+                            time =0;
+                            myApplication.setYueleStatus(false);
+                        }
                         // 1.得到当前的视频播放进度
                         currenposition = mediaPlayer.getCurrentPosition();
                         // 2.Seekbar.setprogress(当前进度);
@@ -150,6 +162,11 @@ public class PlayerActivity extends Activity implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // savedInstanceState.getInt("currenposition");
+        myApplication = (MyApplication) getApplication();
+        if (!myApplication.isYueleStatus()){
+            showDialog();
+            myApplication.setYueleStatus(false);
+        }
         if (savedInstanceState != null) {
             currenposition = savedInstanceState.getInt("currenposition");
             Log.i("play", "onCreate currenposition:" + savedInstanceState.getInt("currenposition"));
@@ -177,6 +194,14 @@ public class PlayerActivity extends Activity implements View.OnClickListener{
 
     }
 
+    private void showDialog(){
+        new SpeakingDialog(this, R.style.dialog, "快让家长帮忙吧", new SpeakingDialog.OnCloseListener() {
+            @Override
+            public void onClick(Dialog dialog, boolean confirm) {
+
+            }
+        }).setTitle("不能玩了").show();
+    }
 
 
     @Override
