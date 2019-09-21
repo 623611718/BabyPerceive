@@ -1,13 +1,10 @@
-package com.example.lz.babyperceive;
+package com.example.lz.babyperceive.LearningActivity;
 
 import android.Manifest;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
-import android.os.Handler;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.os.Bundle;
@@ -17,27 +14,19 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.lz.babyperceive.Activity.BaseActivity;
-import com.example.lz.babyperceive.Activity.IdentifyActivity;
-import com.example.lz.babyperceive.LearningActivity.LearningActivity;
-import com.example.lz.babyperceive.TestActivity.TestActivity;
 import com.example.lz.babyperceive.Activity.TranslateActivity;
-import com.example.lz.babyperceive.Activity.YuleActivity;
-import com.example.lz.babyperceive.Application.MyApplication;
-import com.example.lz.babyperceive.Dialog.CommomDialog;
-import com.example.lz.babyperceive.Dialog.SpeakingDialog;
+import com.example.lz.babyperceive.R;
 import com.example.lz.babyperceive.View.TitleView;
 
 import java.util.ArrayList;
 
-public class MainActivity extends BaseActivity implements View.OnClickListener {
+/**
+ * 学习的主界面
+ */
+public class LearningActivity extends BaseActivity implements View.OnClickListener {
 
-    private SpeakingDialog speakingDialog;
-    private Button bt1, bt2, bt3, bt4; //1:学一学 2:考一考 3:智能识别 4:休闲娱乐
+    private Button bt1, bt2, bt3, bt4, bt5; //1:跟我读 2:学英语 3:认事物 4:学成语 5:练词组
     private TitleView titleView;
-    private static Handler handler = null;
-    private static String dst;
-
-    private MyApplication myApplication;
 
     @Override
     public void widgetClick(View v) {
@@ -47,10 +36,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        myApplication = (MyApplication) getApplication();
+       // setContentView(R.layout.activity_learning);
+      //  getSupportActionBar().hide();//隐藏掉整个ActionBar，包括下面的Tabs
+       // changeStatusBarTextColor(true);
         initPermission();  //初始化权限
         initView();//初始化View
-        handler = new Handler();
     }
 
     //改变状态栏字体颜色
@@ -76,7 +66,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     public int bindLayout() {
-        return R.layout.activity_main;
+        return R.layout.activity_learning;
     }
 
     @Override
@@ -129,11 +119,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         bt2 = (Button) findViewById(R.id.bt2);
         bt3 = (Button) findViewById(R.id.bt3);
         bt4 = (Button) findViewById(R.id.bt4);
+        bt5 = (Button) findViewById(R.id.bt5);
         titleView = (TitleView) findViewById(R.id.titleview);
         bt1.setOnClickListener(this);
         bt2.setOnClickListener(this);
         bt3.setOnClickListener(this);
         bt4.setOnClickListener(this);
+        bt5.setOnClickListener(this);
         titleView.setCustomOnClickListener(new TitleView.ClickListener() {
             @Override
             public void onClick(View v) {
@@ -147,37 +139,42 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 }
             }
         });
-        titleView.setTitle_tv(" ");
+
+        titleView.setTitle_tv("  ");
     }
 
+    //1:跟我读 2:学英语 3:认事物 4:学成语 5:练词组
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.bt1:
-                Intent intent1 = new Intent(this, LearningActivity.class);
-                intent1.putExtra("title", "学一学");
+                Intent intent1 = new Intent(this, SpeakingActivity.class);
+                intent1.putExtra("title", "跟我读");
                 startActivity(intent1);
                 break;
             case R.id.bt2:
-                Intent intent2 = new Intent(this, TestActivity.class);
-                intent2.putExtra("title", "考一考");
+                Intent intent2 = new Intent(this, AnimalActivity.class);
+                intent2.putExtra("data", "english.txt");
+                intent2.putExtra("title", "学英语");
                 startActivity(intent2);
                 break;
             case R.id.bt3:
-                Intent intent3 = new Intent(this, IdentifyActivity.class);
-                intent3.putExtra("title", "智能识别");
+                Intent intent3 = new Intent(this, ObjectActivity.class);
+                intent3.putExtra("title", "认事物");
                 startActivity(intent3);
                 break;
             case R.id.bt4:
-                Intent intent4 = new Intent(this, YuleActivity.class);
-                intent4.putExtra("title", "休闲娱乐");
+                Intent intent4 = new Intent(this, AnimalActivity.class);
+                intent4.putExtra("data", "idiom.txt");
+                intent4.putExtra("title", "学成语");
                 startActivity(intent4);
                 break;
-           /* case R.id.idiom_bt:
-                Intent intent_idiom = new Intent(this, AnimalActivity.class);
-                intent_idiom.putExtra("data", "idiom.txt");
-                startActivity(intent_idiom);
-                break;*/
+            case R.id.bt5:
+                Intent intent5 = new Intent(this, GroupActivity.class);
+                intent5.putExtra("data", "idiom.txt");
+                intent5.putExtra("title", "练词组");
+                startActivity(intent5);
+                break;
         }
     }
 
@@ -198,18 +195,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.quit1:
-                        Intent intent1 = new Intent(MainActivity.this, TranslateActivity.class);
+                        Intent intent1 = new Intent(LearningActivity.this, TranslateActivity.class);
                         startActivity(intent1);
                         break;
-                    case R.id.quit2:
-                        new CommomDialog(MainActivity.this, R.style.dialog, "111", new CommomDialog.OnCloseListener() {
-                            @Override
-                            public void onClick(Dialog dialog, boolean confirm) {
-
-                            }
-                        }).setTitle("家长模式").show();
-                        break;
-
 
                 }
                 return false;
@@ -223,16 +211,5 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             }
         });
         popupMenu.show();
-    }
-
-    @Override
-    protected void onResume() {
-        /**
-         * 设置为横屏
-         */
-        if (getRequestedOrientation() != ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        }
-        super.onResume();
     }
 }

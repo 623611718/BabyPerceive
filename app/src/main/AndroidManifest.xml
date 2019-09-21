@@ -41,7 +41,7 @@
             android:exported="false" />
 
         <activity
-            android:name=".MainActivity"
+            android:name=".Activity.MoviesActivity"
             android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -50,31 +50,31 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activity.SpeakingActivity"
+            android:name=".LearningActivity.SpeakingActivity"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".Activity.TestActivity1"
+            android:name=".TestActivity.SpeakingTestActivity"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".Activity.ObjectActivity"
+            android:name=".LearningActivity.ObjectActivity"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".Activity.AnimalActivity"
+            android:name=".LearningActivity.AnimalActivity"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".Activity.EnglishSpellTestActivity"
+            android:name=".TestActivity.EnglishSpellTestActivity"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".Activity.ObjectTestActivity"
+            android:name=".TestActivity.ObjectTestActivity"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".Activity.EnglishTestActivity"
+            android:name=".TestActivity.EnglishTestActivity"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".Activity.TestActivity"
+            android:name=".TestActivity.TestActivity"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".Activity.IdiomTestActivity"
+            android:name=".TestActivity.IdiomTestActivity"
             android:screenOrientation="landscape" />
         <activity
             android:name=".Activity.CharacterRecognitionActivity"
@@ -83,7 +83,7 @@
             android:name=".Activity.ImageRecognitionActivity"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".Activity.LearningActivity"
+            android:name=".LearningActivity.LearningActivity"
             android:screenOrientation="landscape" />
         <activity
             android:name=".Activity.IdentifyActivity"
@@ -92,7 +92,7 @@
             android:name=".Activity.WebViewActivity"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".Activity.MoviesActivity"
+            android:name=".MainActivity"
             android:screenOrientation="landscape" />
         <activity
             android:name=".Activity.PlayerActivity"
@@ -108,7 +108,7 @@
             android:name=".Activity.TranslateActivity"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".Activity.GroupActivity"
+            android:name=".LearningActivity.GroupActivity"
             android:screenOrientation="landscape" />
     </application>
 

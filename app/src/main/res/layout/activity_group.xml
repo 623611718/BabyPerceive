@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/test_bg"
     android:orientation="vertical"
-    tools:context="com.example.lz.babyperceive.Activity.SpeakingActivity">
+    tools:context="com.example.lz.babyperceive.LearningActivity.SpeakingActivity">
 
     <com.example.lz.babyperceive.View.TitleView
         android:id="@+id/titleview"
