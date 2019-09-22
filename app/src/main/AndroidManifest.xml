@@ -41,7 +41,7 @@
             android:exported="false" />
 
         <activity
-            android:name=".Activity.MoviesActivity"
+            android:name=".MainActivity"
             android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -92,7 +92,7 @@
             android:name=".Activity.WebViewActivity"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Activity.MoviesActivity"
             android:screenOrientation="landscape" />
         <activity
             android:name=".Activity.PlayerActivity"
