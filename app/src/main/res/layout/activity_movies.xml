@@ -14,12 +14,14 @@
         android:layout_marginTop="20dp"></com.example.lz.babyperceive.View.TitleView>
 
     <LinearLayout
+        android:id="@+id/Linear_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
         android:padding="12dp">
 
         <FrameLayout
+            android:id="@+id/Frame_layout"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:padding="12dp"

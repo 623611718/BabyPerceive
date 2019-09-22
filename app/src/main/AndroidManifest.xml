@@ -88,6 +88,8 @@
         <activity
             android:name=".Activity.IdentifyActivity"
             android:screenOrientation="landscape" />
+
+
         <activity
             android:name=".Activity.WebViewActivity"
             android:screenOrientation="landscape" />

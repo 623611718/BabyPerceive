@@ -63,6 +63,8 @@ public class MoviesActivity extends BaseActivity {
     private UtilsGetUrl utilsGetUrl;
     private List<String> videos = new ArrayList<>();
     private Button dispsize_bt;
+    private LinearLayout Linear_layout;
+    private FrameLayout Frame_layout;
 
     @Override
     public void widgetClick(View v) {
@@ -97,7 +99,9 @@ public class MoviesActivity extends BaseActivity {
 
                     if (mediaPlayer != null) {
                         time += 1;
-                        if (!myApplication.isYueleStatus() && !myApplication.isShow()) {  //如果娱乐状态为false 弹出验证
+                        Log.i("test","isYueleStatus:"+myApplication.isYueleStatus());
+                        Log.i("test","isShow:"+myApplication.isShow());
+                        if (myApplication.getYuletime() ==myApplication.getYuleTime_end() && !myApplication.isShow()) {  //如果娱乐状态为false 弹出验证
                             myApplication.setShow(true);
                             showDialog();
                             time = 0;
@@ -290,6 +294,7 @@ public class MoviesActivity extends BaseActivity {
 
             }
         }).setTitle("不能玩了").show();
+        myApplication.setShow(false);
     }
 
 
@@ -345,6 +350,8 @@ public class MoviesActivity extends BaseActivity {
     private int FACTOR = 100;
 
     private void initdata() {
+        Linear_layout = (LinearLayout) findViewById(R.id.Linear_layout);
+        Frame_layout = (FrameLayout) findViewById(R.id.Frame_layout);
         sk_linear = (LinearLayout) findViewById(R.id.sk_linear);
         surfaceview = (SurfaceView) findViewById(R.id.surfaceview);
         tv_begin = (TextView) findViewById(R.id.tv_begin);
@@ -486,9 +493,13 @@ public class MoviesActivity extends BaseActivity {
                 if (listViewl.getVisibility() == View.VISIBLE) {
                     listViewl.setVisibility(View.GONE);
                     titleView.setVisibility(View.GONE);
+                    Frame_layout.setPadding(0, 0, 0, 0);
+                    Linear_layout.setPadding(0, 0, 0, 0);
                 } else {
                     listViewl.setVisibility(View.VISIBLE);
                     titleView.setVisibility(View.VISIBLE);
+                    Frame_layout.setPadding(12, 12, 12, 12);
+                    Linear_layout.setPadding(12, 12, 12, 12);
                 }
               /*  int height = surfaceview.getLayoutParams().height;
                 int width = surfaceview.getLayoutParams().width;

@@ -5,6 +5,9 @@
     android:descendantFocusability="blocksDescendants"
     android:orientation="horizontal">
 
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></FrameLayout>
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -13,47 +16,65 @@
         android:orientation="vertical">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
             android:text="名称"
             android:layout_gravity="center"
             android:gravity="center"
             android:textColor="@color/black"
-            android:textSize="35sp" />
+            android:textSize="25sp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"></View>
 
         <TextView
             android:id="@+id/name_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
-
             android:gravity="center"
             android:text="111"
-            android:textSize="25sp" />
+            android:textSize="15sp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"></View>
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
             android:gravity="center"
             android:text="概率"
             android:textColor="@color/black"
-            android:textSize="35sp" />
+            android:textSize="25sp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"></View>
 
         <TextView
             android:id="@+id/score_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
+            android:layout_width="80dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
             android:gravity="center"
             android:text="111"
-            android:textSize="25sp" />
+            android:textSize="15sp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"></View>
     </LinearLayout>
+    <View
+        android:layout_width="1dp"
+        android:layout_height="wrap_content"
+        android:background="@color/black"></View>
     <WebView
         android:id="@+id/webview"
         android:layout_width="0dp"
-        android:layout_height="160dp"
+        android:layout_height="164dp"
         android:layout_weight="1"
         android:background="@drawable/gk_bg"
         android:focusable="false"></WebView>

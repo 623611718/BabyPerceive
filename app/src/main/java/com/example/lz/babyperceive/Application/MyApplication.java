@@ -58,7 +58,7 @@ public class MyApplication extends Application {
                     }//else {
                         sendEmptyMessageDelayed(yuleStart, 1000); //1000 = 1秒
                   //  }
-                    Log.i(TAG, "time  " + time);
+                    Log.i(TAG, "yuletime  " + time);
             }
         }
     };
@@ -71,6 +71,7 @@ public class MyApplication extends Application {
         sharedPreferencesHelper = new SharedPreferencesHelper(this,"MyApplication");
         yuleTime_end = (int)sharedPreferencesHelper.getSharedPreference("yuleTime",18);
         learningTime_end=(int)sharedPreferencesHelper.getSharedPreference("learnTime",18);
+        Log.i("test","yuleTime_end:"+yuleTime_end+" "+"learningTime_end："+learningTime_end);
     }
 
     public void sendEmptyMessage() {
