@@ -109,12 +109,12 @@ public class SpeakingActivity extends BaseActivity implements View.OnClickListen
 
     /**
      * \
-     * 设定随机数
+     * 随机指定位置的汉字
      */
     private void initData(int position) {
         number = position;
         Log.i("test", "位置:" + number);
-        chinses = utils.getChinese(number);      //随机获取的汉字
+        chinses = utils.getChinese(number);      //随机指定位置的汉字
         chineseSpell = utils.getChineseSpell(chinses);                          //获取拼音
         Log.i("test", "内容:" + chinses+"拼音:"+chineseSpell);
         chinese_tv.setText(chinses);
@@ -233,12 +233,13 @@ public class SpeakingActivity extends BaseActivity implements View.OnClickListen
 
     @Override
     protected void onStop() {
-        sharedPreferencesHelper.put("hanzi",number);
+        sharedPreferencesHelper.put("chinese.txt",number);
         super.onStop();
     }
 
     @Override
     protected void onDestroy() {
+        sharedPreferencesHelper.put("chinese.txt",number);
         myApplication.removeEmptyMessage();
         speek.Destory();
         super.onDestroy();

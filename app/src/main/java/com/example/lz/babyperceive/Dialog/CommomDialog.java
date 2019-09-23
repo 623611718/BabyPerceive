@@ -90,10 +90,10 @@ public class CommomDialog   extends Dialog implements View.OnClickListener{
         cancelTxt.setOnClickListener(this);
         et1 = (EditText) findViewById(R.id.et1);
         et2 = (EditText) findViewById(R.id.et2);
-        et1.setText(  String.valueOf(myApplication.getYuleTime_end() / 60000));
-        et2.setText( String.valueOf(myApplication.getLearningTime_end()/ 60000));
-        et1.setInputType(InputType.TYPE_CLASS_NUMBER);
-        et1.setInputType(InputType.TYPE_CLASS_NUMBER);
+        et2.setText(  String.valueOf(myApplication.getYuleTime_end() / 60));
+        et1.setText( String.valueOf(myApplication.getLearningTime_end()/ 60));
+        et1.setInputType(InputType.TYPE_CLASS_NUMBER);  //设置只能输入数字
+        et2.setInputType(InputType.TYPE_CLASS_NUMBER);
        // if(!TextUtils.isEmpty(positiveName)){
             submitTxt.setText(positiveName);
       //  }
@@ -123,11 +123,11 @@ public class CommomDialog   extends Dialog implements View.OnClickListener{
                 if(listener != null){
                     listener.onClick(this, true);
                 }
-                if (et1.getText().toString()!=null) {
-                    myApplication.setYuleTime_end(Integer.parseInt(et1.getText().toString()) *60000);
-                }
                 if (et2.getText().toString()!=null) {
-                    myApplication.setLearningTime_end(Integer.parseInt(et2.getText().toString()) * 60000);
+                    myApplication.setYuleTime_end(Integer.parseInt(et2.getText().toString()) *60);
+                }
+                if (et1.getText().toString()!=null) {
+                    myApplication.setLearningTime_end(Integer.parseInt(et1.getText().toString()) * 60);
                 }
                 this.dismiss();
                 break;

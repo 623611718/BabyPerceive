@@ -121,6 +121,7 @@ public class Utils {
      * @return
      */
     public String getChineseSpell(String chinese){
+        Log.i("test","chinese:"+chinese);
         String[] spell = new String[0];
         String[] pyStrs = PinyinHelper.toHanyuPinyinStringArray('重');
 

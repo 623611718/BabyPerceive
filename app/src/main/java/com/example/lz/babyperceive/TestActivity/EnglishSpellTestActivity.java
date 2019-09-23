@@ -114,7 +114,7 @@ public class EnglishSpellTestActivity extends BaseActivity {
         introduction = objectList.get(random_number).getIntroduction();
 
         Log.i("test", "11111111:" + object);
-        title_tv.setText(name);
+        title_tv.setText(introduction);
        // speek.Speeking(object);
 
     }

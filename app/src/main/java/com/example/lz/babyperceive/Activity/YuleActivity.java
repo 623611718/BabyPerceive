@@ -42,7 +42,7 @@ public class YuleActivity extends BaseActivity implements View.OnClickListener {
         initView();//初始化View
 
         if (!myApplication.isStatus()){
-           myApplication.setStatus(false);
+           //myApplication.setStatus(false);
            new SpeakingDialog(this, R.style.dialog, "快让家长帮忙吧", new SpeakingDialog.OnCloseListener() {
                @Override
                public void onClick(Dialog dialog, boolean confirm) {
@@ -51,7 +51,7 @@ public class YuleActivity extends BaseActivity implements View.OnClickListener {
            }).setTitle("不能玩了").show();
        }else {
             myApplication.setTime(0);
-            myApplication.setStatus(false);
+            //myApplication.setStatus(false);
         }
     }
     //改变状态栏字体颜色

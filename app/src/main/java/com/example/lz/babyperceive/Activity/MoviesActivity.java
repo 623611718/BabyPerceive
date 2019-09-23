@@ -54,7 +54,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MoviesActivity extends BaseActivity {
+public class  MoviesActivity extends BaseActivity {
     private TitleView titleView;
     private ListView listViewl;
     private List<MoviesBean> list = new ArrayList<>();
@@ -130,6 +130,7 @@ public class MoviesActivity extends BaseActivity {
                     myApplication.setYuletime(time);
                     if (myApplication.getYuletime() >= myApplication.yuleTime_end && !myApplication.isShow()) {  //如果娱乐状态为false 弹出验证
                         myApplication.setShow(true);
+                        myApplication.setStatus(false);
                         showDialog();
                         // myApplication.setYueleStatus(false);
                     }
@@ -181,7 +182,8 @@ public class MoviesActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         myApplication = (MyApplication) getApplication();
-        if (myApplication.getYuletime() <= myApplication.getYuleTime_end()) {
+        Log.i("test","myApplication.isStatus():"+myApplication.isStatus());
+        if (!myApplication.isStatus()) {
             showDialog();
            // myApplication.setYueleStatus(false);
         }

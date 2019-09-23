@@ -94,6 +94,7 @@ public class MusicActivity extends BaseActivity {
                     myApplication.setYuletime(time);
                     if (myApplication.getYuletime() >= myApplication.yuleTime_end && !myApplication.isShow()) {  //如果娱乐状态为false 弹出验证
                         myApplication.setShow(true);
+                        myApplication.setStatus(false);
                         showDialog();
                         // myApplication.setYueleStatus(false);
                     }
@@ -171,7 +172,7 @@ public class MusicActivity extends BaseActivity {
         utils_play = new Utils_play();
         intSpinner();
         myApplication = (MyApplication) getApplication();
-        if (myApplication.getYuletime() <= myApplication.getYuleTime_end()) {
+        if (!myApplication.isStatus()) {
             showDialog();
             // myApplication.setYueleStatus(false);
         }

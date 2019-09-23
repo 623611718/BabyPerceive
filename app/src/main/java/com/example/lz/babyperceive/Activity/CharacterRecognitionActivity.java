@@ -75,46 +75,45 @@ public class CharacterRecognitionActivity extends BaseActivity {
     private AlertDialog.Builder alertDialog;
 
     private TextView name_tv, spell_tv;
-    private Button next_bt,previous_bt,play_bt;
+    private Button next_bt, previous_bt, play_bt;
 
     private TitleView titleView;
     private String result;
     private List<CharacterBean> list = new ArrayList<>();
     private Utils utils = new Utils(this);
-    private String chinese,chineseSpell;
-    private static int number=0;
-    private Speek speek ;
+    private String chinese, chineseSpell;
+    private static int number = 0;
+    private Speek speek;
     private FrameLayout iamage_layout;
-
 
 
     @Override
     public void widgetClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.next_bt:
                 if (!ButtonUtils.isFastDoubleClick(R.id.next_bt)) {
-                    if (number<list.size()-1){
-                        number +=1;
+                    if (number < list.size() - 1) {
+                        number += 1;
                         chinese = list.get(number).getWords();
                         name_tv.setText(chinese);
                         chineseSpell = getSpellChineseText(list.get(number).getWords());
                         spell_tv.setText(chineseSpell);
                         speek.Speeking(chinese);
-                    }else {
+                    } else {
 
                     }
                 }
 
                 break;
             case R.id.previous_bt:
-                if (number>0){
-                    number -=1;
+                if (number > 0) {
+                    number -= 1;
                     chinese = list.get(number).getWords();
                     name_tv.setText(chinese);
                     chineseSpell = getSpellChineseText(list.get(number).getWords());
                     spell_tv.setText(chineseSpell);
                     speek.Speeking(chinese);
-                }else {
+                } else {
 
                 }
                 break;
@@ -124,14 +123,14 @@ public class CharacterRecognitionActivity extends BaseActivity {
                 break;
             case R.id.iamage_layout:
                 int i = 0;
-                List<CharacterBean> list2= new ArrayList<>();
-                for (CharacterBean characterBean :list){
+                List<CharacterBean> list2 = new ArrayList<>();
+                for (CharacterBean characterBean : list) {
                     characterBean.setWords(list.get(i).getWords());
                     characterBean.setWordsSpell(getSpellChineseText(list.get(i).getWords()));
                     list2.add(characterBean);
-                    i+=1;
+                    i += 1;
                 }
-                new CharacterDialog(this,R.style.dialog,list2, new CharacterDialog.OnCloseListener() {
+                new CharacterDialog(this, R.style.dialog, list2, new CharacterDialog.OnCloseListener() {
                     @Override
                     public void onClick(Dialog dialog, boolean confirm) {
 
@@ -149,7 +148,7 @@ public class CharacterRecognitionActivity extends BaseActivity {
         initPermission();
         alertDialog = new AlertDialog.Builder(this);
         // 请选择您的初始化方式
-       // initAccessToken();
+        // initAccessToken();
         initAccessTokenWithAkSk();
         speek = new Speek(this);
     }
@@ -179,7 +178,7 @@ public class CharacterRecognitionActivity extends BaseActivity {
                     intent.putExtra(CameraActivity.KEY_CONTENT_TYPE,
                             CameraActivity.CONTENT_TYPE_GENERAL);
                     startActivityForResult(intent, REQUEST_CODE_ACCURATE_BASIC);*/
-                   showToast("初始化成功,可以进行识别");
+                    showToast("初始化成功,可以进行识别");
                 }
             }
 
@@ -266,7 +265,7 @@ public class CharacterRecognitionActivity extends BaseActivity {
 
     }
 
-   //用户权限回调
+    //用户权限回调
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
@@ -274,7 +273,7 @@ public class CharacterRecognitionActivity extends BaseActivity {
         if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             initAccessToken();
         } else {
-        //    Toast.makeText(getApplicationContext(), "需要android.permission.READ_PHONE_STATE", Toast.LENGTH_LONG).show();
+            //    Toast.makeText(getApplicationContext(), "需要android.permission.READ_PHONE_STATE", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -298,12 +297,12 @@ public class CharacterRecognitionActivity extends BaseActivity {
         name_tv = $(R.id.name_tv);
         spell_tv = $(R.id.spell_tv);
         titleView = $(R.id.titleview);
-        iamage_layout =$(R.id.iamage_layout);
+        iamage_layout = $(R.id.iamage_layout);
         iamage_layout.setOnClickListener(this);
         titleView.setCustomOnClickListener(new TitleView.ClickListener() {
             @Override
             public void onClick(View v) {
-                switch (v.getId()){
+                switch (v.getId()) {
                     case R.id.back_bt:
                         finish();
                         break;
@@ -313,7 +312,7 @@ public class CharacterRecognitionActivity extends BaseActivity {
                 }
             }
         });
-titleView.setTitle_tv("  ");
+        titleView.setTitle_tv("  ");
         previous_bt = $(R.id.previous_bt);
         previous_bt.setOnClickListener(this);
 
@@ -334,6 +333,7 @@ titleView.setTitle_tv("  ");
     public void doBusiness(Context mContext) {
 
     }
+
     private void showPopupMenu(View view) {
         // View当前PopupMenu显示的相对View的位置
         PopupMenu popupMenu = new PopupMenu(this, view);
@@ -374,10 +374,11 @@ titleView.setTitle_tv("  ");
         });
         popupMenu.show();
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.i("test","requestCode:"+requestCode+"  "+"resultCode:"+resultCode);
+        Log.i("test", "requestCode:" + requestCode + "  " + "resultCode:" + resultCode);
         // 识别成功回调，通用文字识别（高精度版）
         if (requestCode == REQUEST_CODE_ACCURATE_BASIC && resultCode == Activity.RESULT_OK) {
             RecognizeService.recAccurateBasic(this, FileUtil.getSaveFile(getApplicationContext()).getAbsolutePath(),
@@ -390,11 +391,11 @@ titleView.setTitle_tv("  ");
                             list = characterAsrJson.parseJSONobject(result);
                             if (list.size() != 0) {
                                 // name_tv.setText(list.get(0).getWords());
-                                Log.i("test","识别成功:"+result);
+                                Log.i("test", "识别成功:" + result);
                             } else {
                                 CharacterBean cha = new CharacterBean();
                                 cha.setWords("识别失败");
-                                Log.i("test","识别失败");
+                                Log.i("test", "识别失败");
                                 list.add(cha);
                             }
                             chinese = list.get(0).getWords();
@@ -412,6 +413,7 @@ titleView.setTitle_tv("  ");
 
     /**
      * 传入汉字 返回拼音
+     *
      * @param chinese
      * @return
      */
@@ -423,10 +425,10 @@ titleView.setTitle_tv("  ");
             for (int i = 1; i <= chinese.length(); i++) {
                 p = Pattern.compile("[\u4e00-\u9fa5]");
                 Matcher m = p.matcher(chinese.substring(i - 1, i));
-                if(m.matches()){
+                if (m.matches()) {
                     stringBuffer.append(utils.getChineseSpell(chinese.substring(i - 1, i)));
                 }
-               // stringBuffer.append(utils.getChineseSpell(chinese.substring(i - 1, i)));
+                // stringBuffer.append(utils.getChineseSpell(chinese.substring(i - 1, i)));
                 stringBuffer.append(" ");
             }
         }

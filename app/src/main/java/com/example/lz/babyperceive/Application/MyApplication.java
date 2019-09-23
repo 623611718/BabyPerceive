@@ -40,7 +40,7 @@ public class MyApplication extends Application {
                 case learnStart:
                     time += 1;
                     removeMessages(learnStart);
-                    if (time == learningTime_end){
+                    if (time >= learningTime_end){
                         status =true;
                         //yueleStatus =true;
                         time =0;
@@ -112,6 +112,7 @@ public class MyApplication extends Application {
 
     public void setLearningTime_end(int learningTime_end) {
         this.learningTime_end = learningTime_end;
+        Log.i(TAG,"learningTime_end:"+this.learningTime_end );
     }
 
     public int getYuletime() {
@@ -128,6 +129,7 @@ public class MyApplication extends Application {
 
     public void setYuleTime_end(int yuleTime_end) {
         this.yuleTime_end = yuleTime_end;
+        Log.i(TAG,"yuleTime_end:"+this.yuleTime_end);
     }
 
     public static int getYuleStart() {
