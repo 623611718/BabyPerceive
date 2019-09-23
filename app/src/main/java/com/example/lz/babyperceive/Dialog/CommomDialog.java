@@ -115,9 +115,7 @@ public class CommomDialog   extends Dialog implements View.OnClickListener{
                 if(listener != null){
                     listener.onClick(this, false);
                 }
-                if (et1.getText().toString()!=null) {
-                    myApplication.setYuleTime_end(Integer.parseInt(et1.getText().toString()) *60000);
-                }
+
 
                 this.dismiss();
                 break;
@@ -125,8 +123,11 @@ public class CommomDialog   extends Dialog implements View.OnClickListener{
                 if(listener != null){
                     listener.onClick(this, true);
                 }
+                if (et1.getText().toString()!=null) {
+                    myApplication.setYuleTime_end(Integer.parseInt(et1.getText().toString()) *60000);
+                }
                 if (et2.getText().toString()!=null) {
-                    myApplication.setLearningTime_end(Integer.parseInt(et1.getText().toString()) * 60000);
+                    myApplication.setLearningTime_end(Integer.parseInt(et2.getText().toString()) * 60000);
                 }
                 this.dismiss();
                 break;

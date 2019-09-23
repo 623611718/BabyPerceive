@@ -8,6 +8,7 @@ import com.baidu.ocr.ui.camera.CameraActivity;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -22,6 +23,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +32,8 @@ import com.example.lz.babyperceive.Bean.CharacterBean;
 import com.example.lz.babyperceive.CharacterRecognition.FileUtil;
 import com.example.lz.babyperceive.CharacterRecognition.IDCardActivity;
 import com.example.lz.babyperceive.CharacterRecognition.RecognizeService;
+import com.example.lz.babyperceive.Dialog.CharacterDialog;
+import com.example.lz.babyperceive.Dialog.SpeakingDialog;
 import com.example.lz.babyperceive.R;
 import com.example.lz.babyperceive.Utils.ButtonUtils;
 import com.example.lz.babyperceive.Utils.Speek;
@@ -80,6 +84,9 @@ public class CharacterRecognitionActivity extends BaseActivity {
     private String chinese,chineseSpell;
     private static int number=0;
     private Speek speek ;
+    private FrameLayout iamage_layout;
+
+
 
     @Override
     public void widgetClick(View v) {
@@ -113,6 +120,25 @@ public class CharacterRecognitionActivity extends BaseActivity {
                 break;
             case R.id.play_bt:
                 speek.Speeking(chinese);
+
+                break;
+            case R.id.iamage_layout:
+                int i = 0;
+                List<CharacterBean> list2= new ArrayList<>();
+                for (CharacterBean characterBean :list){
+                    characterBean.setWords(list.get(i).getWords());
+                    characterBean.setWordsSpell(getSpellChineseText(list.get(i).getWords()));
+                    list2.add(characterBean);
+                    i+=1;
+                }
+                new CharacterDialog(this,R.style.dialog,list2, new CharacterDialog.OnCloseListener() {
+                    @Override
+                    public void onClick(Dialog dialog, boolean confirm) {
+
+                    }
+                }).show();
+                break;
+
         }
 
     }
@@ -272,6 +298,8 @@ public class CharacterRecognitionActivity extends BaseActivity {
         name_tv = $(R.id.name_tv);
         spell_tv = $(R.id.spell_tv);
         titleView = $(R.id.titleview);
+        iamage_layout =$(R.id.iamage_layout);
+        iamage_layout.setOnClickListener(this);
         titleView.setCustomOnClickListener(new TitleView.ClickListener() {
             @Override
             public void onClick(View v) {

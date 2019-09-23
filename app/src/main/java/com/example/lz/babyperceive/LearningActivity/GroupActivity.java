@@ -16,6 +16,7 @@ import com.example.lz.babyperceive.Bean.AsrJson;
 import com.example.lz.babyperceive.Bean.Object;
 import com.example.lz.babyperceive.R;
 import com.example.lz.babyperceive.Utils.Utils;
+import com.example.lz.babyperceive.Utils.UtilsGetUrl;
 import com.example.lz.babyperceive.View.TitleView;
 
 import java.util.ArrayList;
@@ -32,6 +33,7 @@ public class GroupActivity extends BaseActivity {
     private String answer=" ";
     private TextView textView;
     private MyApplication myApplication;
+    private UtilsGetUrl utilsGetUrl;
     @Override
     public void widgetClick(View v) {
         switch (v.getId()){
@@ -39,14 +41,17 @@ public class GroupActivity extends BaseActivity {
                 answer = " ";
                 query = edit_query.getText().toString();
                 textView.setText("正在查询...");
+                StringBuffer stringBuffer = new StringBuffer();
                 for (String s :groupList){
                     //如果包含查询的字词,与 最终结果里没有 则加入
                     if (s.contains(query) && !answer.contains(query)) {
-                        StringBuffer stringBuffer = new StringBuffer();
+                        stringBuffer.append("[");
                         stringBuffer.append(s);
+                        stringBuffer.append("]");
                         stringBuffer.append(" ");
-                        answer = stringBuffer.toString();
+
                     }
+                    answer = stringBuffer.toString();
                     if (answer.equals(" ")){
                         answer="没有查询到结果";
                     }
@@ -65,6 +70,7 @@ public class GroupActivity extends BaseActivity {
         utils = new Utils(this);
         initData();
     }
+
     private void getStatus(){
         if (myApplication.isStatus()){
           //  myApplication.setStatus(false);
@@ -73,15 +79,21 @@ public class GroupActivity extends BaseActivity {
         }
     }
     private void initData() {
+        /**
+         * 获取配置文件URL 名称
+         */
+
+        utilsGetUrl = new UtilsGetUrl(this, "group.txt");
+        groupList = utilsGetUrl.getUrls();
         AsrJson asrJson = new AsrJson();
         Intent intent = getIntent();
         intent.getStringExtra("data");
-        objectList = asrJson.parseJSONobject(utils.getAsstesTxt("animal.txt"));
+      /*  objectList = asrJson.parseJSONobject(utils.getAsstesTxt("animal.txt"));
         objectList.addAll(asrJson.parseJSONobject(utils.getAsstesTxt("fruit.txt")));
         objectList.addAll(asrJson.parseJSONobject(utils.getAsstesTxt("idiom.txt")));
         for (Object objectList : objectList){
             groupList.add(objectList.getName());
-        }
+        }*/
     }
     @Override
     public void initParms(Bundle parms) {

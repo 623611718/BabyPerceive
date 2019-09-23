@@ -20,7 +20,7 @@ import org.w3c.dom.ProcessingInstruction;
 
 public class MyApplication extends Application {
     public  boolean status =false;
-   // public boolean yueleStatus =true;
+    // public boolean yueleStatus =true;
     public  int time = 0;  //计时
     public  int learningTime_end=18; //学习时间
     public  int yuletime = 0;  //计时

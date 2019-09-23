@@ -6,10 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
-import android.speech.tts.TextToSpeech;
 import android.util.Log;
-import android.view.View;
 
 import net.sourceforge.pinyin4j.PinyinHelper;
 import net.sourceforge.pinyin4j.format.HanyuPinyinCaseType;
@@ -23,7 +20,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
 import java.util.Random;
 
 /**
@@ -38,7 +34,7 @@ public class Utils {
     private Context context;
     public Utils(Context context) {
         this.context=context;
-        this.Chinesetext = getAsstesTxt("hanzi.txt");
+        this.Chinesetext = getAsstesTxt("chinese.txt");
      //   this.englishtext = getTextEnglish();
       //  this.IdiomText = getTextIdiom();
 

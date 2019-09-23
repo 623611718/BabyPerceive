@@ -3,17 +3,11 @@ package com.example.lz.babyperceive.LearningActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
-import android.speech.tts.TextToSpeech;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.lz.babyperceive.Activity.BaseActivity;
 import com.example.lz.babyperceive.Activity.YuleActivity;
@@ -34,7 +28,6 @@ import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombi
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
 import java.util.Random;
 
 public class SpeakingActivity extends BaseActivity implements View.OnClickListener {
@@ -66,11 +59,11 @@ public class SpeakingActivity extends BaseActivity implements View.OnClickListen
         myApplication = (MyApplication) getApplication();
         myApplication.sendEmptyMessage();
         utils = new Utils(this);
-        String[] arr = utils.getAsstesTxt("hanzi.txt").split(",");
+        String[] arr = utils.getAsstesTxt("chinese.txt").split(",");
         objectList = java.util.Arrays.asList(arr);
         length = objectList.size();
-        sharedPreferencesHelper = new SharedPreferencesHelper(this,"hanzi.txt");
-        number = (int) sharedPreferencesHelper.getSharedPreference("hanzi.txt",1);
+        sharedPreferencesHelper = new SharedPreferencesHelper(this, "chinese.txt");
+        number = (int) sharedPreferencesHelper.getSharedPreference("chinese.txt",1);
         Log.i("test","number:"+number);
         initView();
         initData(number);

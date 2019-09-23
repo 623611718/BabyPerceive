@@ -3,8 +3,6 @@ package com.example.lz.babyperceive.TestActivity;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,7 +18,6 @@ import com.example.lz.babyperceive.R;
 import com.example.lz.babyperceive.Utils.Utils;
 import com.example.lz.babyperceive.View.TitleView;
 
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -152,7 +149,7 @@ public class SpeakingTestActivity extends BaseActivity {
         Intent intent = getIntent();
         intent.getStringExtra("data");
         //objectList = asrJson.parseJSONobject(utils.getAsstesTxt("idiom.txt"));
-        String[] arr = utils.getAsstesTxt("hanzi.txt").split(",");
+        String[] arr = utils.getAsstesTxt("chinese.txt").split(",");
         objectList = java.util.Arrays.asList(arr);
     }
 

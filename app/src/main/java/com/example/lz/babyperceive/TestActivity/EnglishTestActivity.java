@@ -38,6 +38,7 @@ public class EnglishTestActivity extends BaseActivity implements SpeechRecognize
     private Speek speek;  //百度语音合成封装类
     private SpeechRecognizerTool speechRecognizerTool;//百度语音识别封装类
     private Animation animation;
+    private TextView textView;
     @Override
     public void widgetClick(View v) {
         switch (v.getId()){
@@ -122,6 +123,7 @@ public class EnglishTestActivity extends BaseActivity implements SpeechRecognize
         image_answer = $(R.id.image_answer);
         animation = AnimationUtils.loadAnimation(this,R.anim.narrow);
         next_bt.setOnClickListener(this);
+        textView = $(R.id.textView);
         speaking_bt.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -177,6 +179,7 @@ public class EnglishTestActivity extends BaseActivity implements SpeechRecognize
     @Override
     public void onResults(String result) {
         Log.i("test","结果:"+result);
+        textView.setText(result);
         setImageView_answer(result);
         if (object.equals(result)){
             image_answer.setVisibility(View.GONE);

@@ -62,6 +62,7 @@ public class ImageRecognitionActivity extends BaseActivity {
     private String title;
     private Button bt1;
     private WebView webView;
+
     @Override
     public void widgetClick(View v) {
         switch (v.getId()) {
@@ -392,34 +393,39 @@ public class ImageRecognitionActivity extends BaseActivity {
         Log.i("test", "11111111::::::" + jsonData);
         content = "";
         try {
-            JSONObject jsonObject = new JSONObject(jsonData);
-            JSONArray jsonArray = jsonObject.getJSONArray("result");
+            float score1 = 1;
+            String score = String.format("%.2f", score1);
+            String name = " ";
             Intent intent = getIntent();
-            for (int i = 0; i < jsonArray.length(); i++) {
-                JSONObject object = jsonArray.getJSONObject(i);
-                float score1 = 1;
-                if (intent.getStringExtra("type").equals("landmark")) {
-                    score1 = 1;
-                } else {
-                    score1 = Float.parseFloat(object.getString("score")) * 100;
-                }
-                String score = String.format("%.2f", score1);
-                String name = " ";
+            JSONObject jsonObject = new JSONObject(jsonData);
+            if (intent.getStringExtra("type").equals("landmark")) {
+                name = jsonData.substring(jsonData.lastIndexOf(":")+3, jsonData.lastIndexOf("") - 3);
+                score1 = score1 * 100;
+                Log.i("test","name:"+name);
+            } else {
+                JSONArray jsonArray = jsonObject.getJSONArray("result");
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject object = jsonArray.getJSONObject(i);
+                    if (intent.getStringExtra("type").equals("landmark")) {
+                        score1 = 1;
+                    } else {
+                        score1 = Float.parseFloat(object.getString("score")) * 100;
+                    }
 
-                if (intent.getStringExtra("type").equals("advanced_general")) {
-                    name = object.getString("keyword");
-                } else if (intent.getStringExtra("type").equals("landmark")) {
-                    name = object.getString("landmark");
-                } else {
-                    name = object.getString("name");
+
+                    if (intent.getStringExtra("type").equals("advanced_general")) {
+                        name = object.getString("keyword");
+                    } else {
+                        name = object.getString("name");
+                    }
                 }
+            }
+                Log.i("test", "11111111::::::" + name);
                 content += "\n 名称: " + name + " 可信度: " + score + "%";
                 ImageRecognitionBean imageRecognitionBean = new ImageRecognitionBean();
                 imageRecognitionBean.setName(name);
                 imageRecognitionBean.setScore(score);
                 list.add(imageRecognitionBean);
-            }
-
             handler.post(runnableUi);
         } catch (Exception e) {
             e.printStackTrace();

@@ -35,6 +35,7 @@ import java.util.List;
 public class MusicActivity extends BaseActivity {
     protected static final int PROGRESS = 1;
     protected static final int isplaying = 2;
+    private static final int TIME = 3;
     private TitleView titleView;
     private List<String> urls = new ArrayList<>();
     private UtilsGetUrl utilsGetUrl;
@@ -79,6 +80,25 @@ public class MusicActivity extends BaseActivity {
                 case isplaying:
                     // sk_linear.setVisibility(View.GONE);
                     //  play_title.setVisibility(View.GONE);
+                    return;
+            }
+        }
+    };
+    private Handler handlerTime = new Handler() {
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case TIME:
+                    int time = myApplication.getYuletime();
+                    time += 1;
+                    myApplication.setYuletime(time);
+                    if (myApplication.getYuletime() >= myApplication.yuleTime_end && !myApplication.isShow()) {  //如果娱乐状态为false 弹出验证
+                        myApplication.setShow(true);
+                        showDialog();
+                        // myApplication.setYueleStatus(false);
+                    }
+                    removeMessages(TIME);
+                    sendEmptyMessageDelayed(TIME, 1000);
                     return;
             }
         }
@@ -147,12 +167,15 @@ public class MusicActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initUrl();
         utils_play = new Utils_play();
         intSpinner();
         myApplication = (MyApplication) getApplication();
-
-        initUrl();
-
+        if (myApplication.getYuletime() <= myApplication.getYuleTime_end()) {
+            showDialog();
+            // myApplication.setYueleStatus(false);
+        }
+        handlerTime.sendEmptyMessageDelayed(TIME, 0);
     }
 
     /**
@@ -433,7 +456,7 @@ public class MusicActivity extends BaseActivity {
             mediaPlayer.release();
         }
         handler.removeMessages(PROGRESS);
-        myApplication.removeYuleEmptyMessage();
+        handlerTime.removeMessages(TIME);
         super.onDestroy();
     }
 }

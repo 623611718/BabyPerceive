@@ -6,6 +6,7 @@ package com.example.lz.babyperceive.Bean;
 
 public class CharacterBean {
     private String words;
+    private String wordsSpell;
 
     public String getWords() {
         return words;
@@ -15,10 +16,19 @@ public class CharacterBean {
         this.words = words;
     }
 
+    public String getWordsSpell() {
+        return wordsSpell;
+    }
+
+    public void setWordsSpell(String wordsSpell) {
+        this.wordsSpell = wordsSpell;
+    }
+
     @Override
     public String toString() {
-        return "Character{" +
+        return "CharacterBean{" +
                 "words='" + words + '\'' +
+                ", wordsSpell='" + wordsSpell + '\'' +
                 '}';
     }
 }

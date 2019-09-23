@@ -39,6 +39,7 @@ import com.example.lz.babyperceive.Application.MyApplication;
 import com.example.lz.babyperceive.Bean.ImageRecognitionBean;
 import com.example.lz.babyperceive.Bean.MoviesBean;
 import com.example.lz.babyperceive.Dialog.SpeakingDialog;
+
 import com.example.lz.babyperceive.R;
 import com.example.lz.babyperceive.Speed.NetSpeed;
 import com.example.lz.babyperceive.Speed.NetSpeedTimer;
@@ -81,7 +82,7 @@ public class MoviesActivity extends BaseActivity {
     private Button btn_play, playing;
     private ProgressBar pb_main;
     private MediaPlayer mediaPlayer;
-    private android.view.SurfaceHolder mSurfaceHolder;
+    private SurfaceHolder mSurfaceHolder;
     private int currenposition = 0;
     private int duration;
     private Utils_play utils_play;
@@ -141,6 +142,7 @@ public class MoviesActivity extends BaseActivity {
 
 
     //对快进 和快退进行异步处理
+    @SuppressLint("NewApi")
     class MyAsyncTask extends AsyncTask<String, Void, String> {
 
         //onPreExecute用于异步处理前的操作
@@ -530,20 +532,20 @@ public class MoviesActivity extends BaseActivity {
     class SurfaceCallback implements SurfaceHolder.Callback {
 
         @Override
-        public void surfaceCreated(android.view.SurfaceHolder holder) {
+        public void surfaceCreated(SurfaceHolder holder) {
             // 当surfaceview被创建的时候播放
             Log.i("tag", "surfaceCreated  ");
         }
 
         @Override
-        public void surfaceChanged(android.view.SurfaceHolder holder, int format, int width,
+        public void surfaceChanged(SurfaceHolder holder, int format, int width,
                                    int height) {
             Log.i("tag", "surfaceChanged  ");
 
         }
 
         @Override
-        public void surfaceDestroyed(android.view.SurfaceHolder holder) {
+        public void surfaceDestroyed(SurfaceHolder holder) {
             Log.i("tag", "surfaceDestroyed  ");
 
         }
@@ -662,6 +664,7 @@ public class MoviesActivity extends BaseActivity {
     // 给seekbar设置监听
     class SeekBarChangeListener implements SeekBar.OnSeekBarChangeListener {
 
+        @SuppressLint("NewApi")
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress,
                                       boolean fromUser) {
@@ -683,6 +686,7 @@ public class MoviesActivity extends BaseActivity {
 
         }
 
+        @SuppressLint("NewApi")
         @Override
         public void onStopTrackingTouch(SeekBar seekBar) {
             Log.i("dsa", "onProgressChanged");

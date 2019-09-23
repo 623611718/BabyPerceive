@@ -52,7 +52,7 @@ public class PlayerActivity extends Activity implements View.OnClickListener {
     private Button btn_play, playing;
     private ProgressBar pb_main;
     private MediaPlayer mediaPlayer;
-    private android.view.SurfaceHolder mSurfaceHolder;
+    private SurfaceHolder mSurfaceHolder;
     private int currenposition = 0;
     private int duration;
     private Utils_play utils_play;
@@ -400,7 +400,7 @@ public class PlayerActivity extends Activity implements View.OnClickListener {
     class SurfaceCallback implements SurfaceHolder.Callback {
 
         @Override
-        public void surfaceCreated(android.view.SurfaceHolder holder) {
+        public void surfaceCreated(SurfaceHolder holder) {
             // 当surfaceview被创建的时候播放
             Log.i("tag", "surfaceCreated  ");
             play();
@@ -409,14 +409,14 @@ public class PlayerActivity extends Activity implements View.OnClickListener {
         }
 
         @Override
-        public void surfaceChanged(android.view.SurfaceHolder holder, int format, int width,
+        public void surfaceChanged(SurfaceHolder holder, int format, int width,
                                    int height) {
             Log.i("tag", "surfaceChanged  ");
 
         }
 
         @Override
-        public void surfaceDestroyed(android.view.SurfaceHolder holder) {
+        public void surfaceDestroyed(SurfaceHolder holder) {
             Log.i("tag", "surfaceDestroyed  ");
 
         }
@@ -535,7 +535,7 @@ public class PlayerActivity extends Activity implements View.OnClickListener {
                 if (fromUser) {
                     Log.i("dsa", "onProgressChanged");
                     pro = progress;
-                    PlayerActivity.MyAsyncTask asynctask = null;
+                    MyAsyncTask asynctask = null;
                     asynctask = new MyAsyncTask();
                     asynctask.execute();
 
