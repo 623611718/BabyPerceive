@@ -63,7 +63,8 @@ public class MoviesActivity extends BaseActivity {
     private UtilsGetUrl utilsGetUrl;
     private List<String> videos = new ArrayList<>();
     private Button dispsize_bt;
-
+    private LinearLayout Linear_layout;
+    private FrameLayout Frame_layout;
     @Override
     public void widgetClick(View v) {
 
@@ -71,6 +72,7 @@ public class MoviesActivity extends BaseActivity {
 
     protected static final int PROGRESS = 1;
     protected static final int isplaying = 2;
+    private static final int TIME = 3;
     private String path, name;
     private SurfaceView surfaceview;
     private TextView tv_begin;
@@ -87,7 +89,6 @@ public class MoviesActivity extends BaseActivity {
     private LinearLayout sk_linear;
     private int pro = 0;
     private int errorcode = 0;
-    private int time = 0;
     private MyApplication myApplication;
     private Handler handler = new Handler() {
         public void handleMessage(Message msg) {
@@ -96,13 +97,7 @@ public class MoviesActivity extends BaseActivity {
                 case PROGRESS:
 
                     if (mediaPlayer != null) {
-                        time += 1;
-                        if (!myApplication.isYueleStatus() && !myApplication.isShow()) {  //如果娱乐状态为false 弹出验证
-                            myApplication.setShow(true);
-                            showDialog();
-                            time = 0;
-                            // myApplication.setYueleStatus(false);
-                        }
+
                         // 1.得到当前的视频播放进度
                         currenposition = mediaPlayer.getCurrentPosition();
                         // 2.Seekbar.setprogress(当前进度);
@@ -120,6 +115,25 @@ public class MoviesActivity extends BaseActivity {
                 case isplaying:
                     sk_linear.setVisibility(View.GONE);
                     play_title.setVisibility(View.GONE);
+                    return;
+            }
+        }
+    };
+    private Handler handlerTime = new Handler() {
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case TIME:
+                    int time = myApplication.getYuletime();
+                    time += 1;
+                    myApplication.setYuletime(time);
+                    if (myApplication.getYuletime() >= myApplication.yuleTime_end && !myApplication.isShow()) {  //如果娱乐状态为false 弹出验证
+                        myApplication.setShow(true);
+                        showDialog();
+                        // myApplication.setYueleStatus(false);
+                    }
+                    removeMessages(TIME);
+                    sendEmptyMessageDelayed(TIME, 1000);
                     return;
             }
         }
@@ -161,47 +175,21 @@ public class MoviesActivity extends BaseActivity {
         }
     }
 
-    //对加载进行异步处理
-    class MyAsyncTask2 extends AsyncTask<Integer, Void, String> {
-
-        //onPreExecute用于异步处理前的操作
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            //此处将progressBar设置为可见.
-
-        }
-
-        //在doInBackground方法中进行异步任务的处理.
-        @Override
-        protected String doInBackground(Integer... params) {
-            //play();
-            return null;
-        }
-
-        //onPostExecute用于UI的更新.此方法的参数为doInBackground方法返回的值.
-        @Override
-        protected void onPostExecute(String result) {
-            super.onPostExecute(result);
-
-        }
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         myApplication = (MyApplication) getApplication();
-        if (!myApplication.isYueleStatus()) {
+        if (myApplication.getYuletime() <= myApplication.getYuleTime_end()) {
             showDialog();
-            myApplication.setYueleStatus(false);
+           // myApplication.setYueleStatus(false);
         }
-        myApplication.sendYuleEmptyMessage();
+        handlerTime.sendEmptyMessageDelayed(TIME, 0);
+
+
         if (savedInstanceState != null) {
             currenposition = savedInstanceState.getInt("currenposition");
             Log.i("play", "onCreate currenposition:" + savedInstanceState.getInt("currenposition"));
         }
-        //path="http://lz.free.idcfengye.com/"+name;
-        Log.i("play", "path:  " + path);
         utils_play = new Utils_play();
         initdata();
         initBroad();
@@ -211,12 +199,22 @@ public class MoviesActivity extends BaseActivity {
             mediaPlayer.reset();
         }
 
-        utilsGetUrl = new UtilsGetUrl(this, "URIConfig.txt");
-        videos = utilsGetUrl.getVideos();
-        urls = utilsGetUrl.getUrls();
+        initUrl();
         initList();
     }
 
+    /**
+     * 获取配置文件URL 名称
+     */
+    private void initUrl() {
+        utilsGetUrl = new UtilsGetUrl(this, "URIConfig.txt");
+        videos = utilsGetUrl.getVideos();
+        urls = utilsGetUrl.getUrls();
+    }
+
+    /**
+     * 初始化 list 用于listview
+     */
     private void initList() {
         for (int i = 0; i < videos.size(); i++) {
             MoviesBean moviesBean = new MoviesBean();
@@ -345,6 +343,8 @@ public class MoviesActivity extends BaseActivity {
     private int FACTOR = 100;
 
     private void initdata() {
+        Linear_layout = (LinearLayout) findViewById(R.id.Linear_layout);
+        Frame_layout = (FrameLayout) findViewById(R.id.Frame_layout);
         sk_linear = (LinearLayout) findViewById(R.id.sk_linear);
         surfaceview = (SurfaceView) findViewById(R.id.surfaceview);
         tv_begin = (TextView) findViewById(R.id.tv_begin);
@@ -486,9 +486,13 @@ public class MoviesActivity extends BaseActivity {
                 if (listViewl.getVisibility() == View.VISIBLE) {
                     listViewl.setVisibility(View.GONE);
                     titleView.setVisibility(View.GONE);
+                    Frame_layout.setPadding(0, 0, 0, 0);
+                    Linear_layout.setPadding(0, 0, 0, 0);
                 } else {
                     listViewl.setVisibility(View.VISIBLE);
                     titleView.setVisibility(View.VISIBLE);
+                    Frame_layout.setPadding(12, 12, 12, 12);
+                    Linear_layout.setPadding(12, 12, 12, 12);
                 }
               /*  int height = surfaceview.getLayoutParams().height;
                 int width = surfaceview.getLayoutParams().width;
@@ -529,8 +533,6 @@ public class MoviesActivity extends BaseActivity {
         public void surfaceCreated(android.view.SurfaceHolder holder) {
             // 当surfaceview被创建的时候播放
             Log.i("tag", "surfaceCreated  ");
-            //MyAsyncTask2 myAsyncTask2 = new MyAsyncTask2();
-            // myAsyncTask2.execute();
         }
 
         @Override
@@ -827,7 +829,7 @@ public class MoviesActivity extends BaseActivity {
         if (mBatInfoReceiver != null) {
             unregisterReceiver(mBatInfoReceiver);
         }
-        myApplication.removeYuleEmptyMessage();
+        handlerTime.removeMessages(TIME);
         super.onDestroy();
     }
 }

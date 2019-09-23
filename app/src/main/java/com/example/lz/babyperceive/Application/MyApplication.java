@@ -20,7 +20,7 @@ import org.w3c.dom.ProcessingInstruction;
 
 public class MyApplication extends Application {
     public  boolean status =false;
-    public boolean yueleStatus =true;
+   // public boolean yueleStatus =true;
     public  int time = 0;  //计时
     public  int learningTime_end=18; //学习时间
     public  int yuletime = 0;  //计时
@@ -42,23 +42,14 @@ public class MyApplication extends Application {
                     removeMessages(learnStart);
                     if (time == learningTime_end){
                         status =true;
-                        yueleStatus =true;
+                        //yueleStatus =true;
                         time =0;
                     }else {
                         sendEmptyMessageDelayed(learnStart, 1000); //1000 = 1秒
                     }
                     Log.i(TAG, "time  " + time);
                     break;
-                case yuleStart:
-                    yuletime +=1;
-                    removeMessages(yuleStart);
-                    if (yuletime == yuleTime_end){
-                        yueleStatus =false;
-                        yuletime =0;
-                    }//else {
-                        sendEmptyMessageDelayed(yuleStart, 1000); //1000 = 1秒
-                  //  }
-                    Log.i(TAG, "time  " + time);
+
             }
         }
     };
@@ -99,13 +90,13 @@ public class MyApplication extends Application {
         this.status = status;
     }
 
-    public boolean isYueleStatus() {
+   /* public boolean isYueleStatus() {
         return yueleStatus;
     }
 
     public void setYueleStatus(boolean yueleStatus) {
         this.yueleStatus = yueleStatus;
-    }
+    }*/
 
     public int getTime() {
         return time;

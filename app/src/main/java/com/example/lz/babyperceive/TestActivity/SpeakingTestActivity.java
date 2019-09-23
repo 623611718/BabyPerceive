@@ -41,18 +41,7 @@ public class SpeakingTestActivity extends BaseActivity {
     private Button next_bt;
     private IdiomTestActivity.MyHandler myHandler;
     private Animation animation;
-    static class MyHandler extends Handler {
-        private final WeakReference<IdiomTestActivity> mActivty;
 
-        public MyHandler(IdiomTestActivity activity) {
-            mActivty = new WeakReference<IdiomTestActivity>(activity);
-        }
-
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-        }
-    }
     @Override
     public void widgetClick(View v) {
         switch (v.getId()){

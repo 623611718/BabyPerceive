@@ -221,9 +221,10 @@ public class SpeakingDialog extends Dialog implements View.OnClickListener {
     }
     private void correct(){
         myApplication.setStatus(true);
-        myApplication.setYueleStatus(true);
+       // myApplication.setYueleStatus(true);
         myApplication.setTime(0);
         myApplication.setYuletime(0);
+        myApplication.setShow(false);
         dismiss();
     }
     @Override
@@ -298,7 +299,7 @@ public class SpeakingDialog extends Dialog implements View.OnClickListener {
             case R.id.button:
                 // myApplication.setStatus(false);
                 //dismiss();
-                myApplication.setYueleStatus(false);
+             //   myApplication.setYueleStatus(false);
                 android.os.Process.killProcess(android.os.Process.myPid());
                 break;
             case R.id.v0:

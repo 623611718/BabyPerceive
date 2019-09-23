@@ -24,6 +24,7 @@ import android.widget.Toast;
 import com.example.lz.babyperceive.Application.MyApplication;
 import com.example.lz.babyperceive.Dialog.SpeakingDialog;
 import com.example.lz.babyperceive.R;
+import com.example.lz.babyperceive.Utils.UtilsGetUrl;
 import com.example.lz.babyperceive.Utils.Utils_play;
 import com.example.lz.babyperceive.View.ButtonView;
 import com.example.lz.babyperceive.View.TitleView;
@@ -35,7 +36,9 @@ public class MusicActivity extends BaseActivity {
     protected static final int PROGRESS = 1;
     protected static final int isplaying = 2;
     private TitleView titleView;
-    private ButtonView buttonView;
+    private List<String> urls = new ArrayList<>();
+    private UtilsGetUrl utilsGetUrl;
+    private List<String> videos = new ArrayList<>();
     private MediaPlayer mediaPlayer = null;
     private SeekBar sb_main;
     private String path;
@@ -51,7 +54,6 @@ public class MusicActivity extends BaseActivity {
 
     private int time = 0;
     private ArrayAdapter<String> adapter1;
-    private List<String> nameList = new ArrayList<>();
     ;
     private Handler handler = new Handler() {
         public void handleMessage(Message msg) {
@@ -60,12 +62,7 @@ public class MusicActivity extends BaseActivity {
                 case PROGRESS:
                     if (mediaPlayer != null) {
                         time +=1;
-                        if (!myApplication.isYueleStatus() && !myApplication.isShow()) {  //如果娱乐状态为false 弹出验证
-                            myApplication.setShow(true);
-                            showDialog();
-                            time = 0;
-                            // myApplication.setYueleStatus(false);
-                        }
+
                         // 1.得到当前的视频播放进度
                         currenposition = mediaPlayer.getCurrentPosition();
                         // 2.Seekbar.setprogress(当前进度);
@@ -123,34 +120,6 @@ public class MusicActivity extends BaseActivity {
         }
     }
 
-    //对加载进行异步处理
-    class MyAsyncTask2 extends AsyncTask<Integer, Void, String> {
-
-        //onPreExecute用于异步处理前的操作
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            //此处将progressBar设置为可见.
-
-        }
-
-        //在doInBackground方法中进行异步任务的处理.
-        @Override
-        protected String doInBackground(Integer... params) {
-            play(adapter1.getItem(number));
-
-            return null;
-        }
-
-        //onPostExecute用于UI的更新.此方法的参数为doInBackground方法返回的值.
-        @Override
-        protected void onPostExecute(String result) {
-            super.onPostExecute(result);
-            Log.i("dsa", "onPostExecute");
-            isPlayingVideo();
-            musicName_tv.setText(adapter1.getItem(number));
-        }
-    }
 
     @Override
     public void widgetClick(View v) {
@@ -160,15 +129,15 @@ public class MusicActivity extends BaseActivity {
                     isPlayingVideo();
                 break;
             case R.id.next_bt:
-                if (number < nameList.size() - 1) {
+                if (number < videos.size() - 2) {
                     number += 1;
-                    play(nameList.get(number));
+                    play(videos.get(number));
                 }
                 break;
             case R.id.previous_bt:
                 if (number > 0) {
                     number -= 1;
-                    play(nameList.get(number));
+                    play(videos.get(number));
                 }
                 break;
         }
@@ -181,13 +150,20 @@ public class MusicActivity extends BaseActivity {
         utils_play = new Utils_play();
         intSpinner();
         myApplication = (MyApplication) getApplication();
-        if (!myApplication.isYueleStatus()){
-            showDialog();
-            myApplication.setYueleStatus(false);
-        }
-        myApplication.sendYuleEmptyMessage();
+
+        initUrl();
 
     }
+
+    /**
+     * 获取配置文件URL 名称
+     */
+    private void initUrl() {
+        utilsGetUrl = new UtilsGetUrl(this, "MP3URIConfig.txt");
+        videos = utilsGetUrl.getVideos();
+        urls = utilsGetUrl.getUrls();
+    }
+
     private void showDialog(){
         new SpeakingDialog(this, R.style.dialog, "快让家长帮忙吧", new SpeakingDialog.OnCloseListener() {
             @Override
@@ -197,7 +173,7 @@ public class MusicActivity extends BaseActivity {
         }).setTitle("不能玩了").show();
     }
     // 播放的时候调用
-    public void play(String name) {
+    public void play(String path) {
         // 重置mediaPaly,建议在初始化mediaplay立即调用
         if (mediaPlayer != null) {
             mediaPlayer.pause();
@@ -222,7 +198,7 @@ public class MusicActivity extends BaseActivity {
 
         try {
             //http://lz.free.idcfengye.com  http://codingwang.free.idcfengye.com
-            path = "http://lz.free.idcfengye.com/" + name;
+            //path = "http://lz.free.idcfengye.com/" + name;
             mediaPlayer.setDataSource(path);
             Toast.makeText(this,"url:"+path,Toast.LENGTH_LONG).show();
             Log.i("play", "url  " + path);
@@ -361,18 +337,16 @@ public class MusicActivity extends BaseActivity {
      * 初始化下拉框
      */
     private void intSpinner() {
-        nameList.add("小老鼠上灯台.mp3");
-        nameList.add("孙燕姿 - 遇见.mp3");
-        nameList.add("  ");
+        videos.add("  ");
         Spinner spinner = findViewById(R.id.spinner);
         // 为下拉列表定义一个适配器，使用到上面定义的turtleList
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, nameList);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, videos);
         // 为适配器设置下拉列表下拉时的菜单样式，有好几种样式，请根据喜好选择
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // 将适配器添加到下拉列表上
         spinner.setAdapter(adapter);
-        if (nameList.size() > 0) {
-            spinner.setSelection(nameList.size() - 1, false);
+        if (videos.size() > 0) {
+            spinner.setSelection(videos.size() - 1, false);
         } else {
             spinner.setSelection(0, false);
         }
@@ -390,10 +364,7 @@ public class MusicActivity extends BaseActivity {
                 adapter1 = (ArrayAdapter<String>) adapterView.getAdapter();
                 number = i;
                 musicName_tv.setText(adapter1.getItem(number));
-               // MyAsyncTask2 asyncTask2 = new MyAsyncTask2();
-               // asyncTask2.execute(i);
-                play(adapter1.getItem(number));
-
+                play(urls.get(number));
             }
 
             @Override

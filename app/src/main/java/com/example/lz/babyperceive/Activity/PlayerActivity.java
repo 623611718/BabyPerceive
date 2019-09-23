@@ -70,12 +70,7 @@ public class PlayerActivity extends Activity implements View.OnClickListener {
 
                     if (mediaPlayer != null) {
                         time += 1;
-                        if (!myApplication.isYueleStatus() && !myApplication.isShow()) {  //如果娱乐状态为false 弹出验证
-                            myApplication.setShow(true);
-                            showDialog();
-                            time = 0;
-                            // myApplication.setYueleStatus(false);
-                        }
+
                         // 1.得到当前的视频播放进度
                         currenposition = mediaPlayer.getCurrentPosition();
                         // 2.Seekbar.setprogress(当前进度);
@@ -165,11 +160,7 @@ public class PlayerActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         // savedInstanceState.getInt("currenposition");
         myApplication = (MyApplication) getApplication();
-        if (!myApplication.isYueleStatus()) {
-            showDialog();
-            myApplication.setYueleStatus(false);
-        }
-        myApplication.sendYuleEmptyMessage();
+
         if (savedInstanceState != null) {
             currenposition = savedInstanceState.getInt("currenposition");
             Log.i("play", "onCreate currenposition:" + savedInstanceState.getInt("currenposition"));

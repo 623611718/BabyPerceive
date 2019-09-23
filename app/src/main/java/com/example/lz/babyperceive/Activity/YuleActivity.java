@@ -53,7 +53,6 @@ public class YuleActivity extends BaseActivity implements View.OnClickListener {
             myApplication.setTime(0);
             myApplication.setStatus(false);
         }
-        myApplication.sendYuleEmptyMessage();
     }
     //改变状态栏字体颜色
     private void changeStatusBarTextColor(boolean isBlack) {
