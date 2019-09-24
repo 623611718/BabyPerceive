@@ -24,14 +24,14 @@ import com.example.lz.babyperceive.Activity.TranslateActivity;
 import com.example.lz.babyperceive.Activity.YuleActivity;
 import com.example.lz.babyperceive.Application.MyApplication;
 import com.example.lz.babyperceive.Dialog.CommomDialog;
-import com.example.lz.babyperceive.Dialog.SpeakingDialog;
+import com.example.lz.babyperceive.Dialog.VerifyDialog;
 import com.example.lz.babyperceive.View.TitleView;
 
 import java.util.ArrayList;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
-    private SpeakingDialog speakingDialog;
+    private VerifyDialog speakingDialog;
     private Button bt1, bt2, bt3, bt4; //1:学一学 2:考一考 3:智能识别 4:休闲娱乐
     private TitleView titleView;
     private static Handler handler = null;
@@ -93,7 +93,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
      * android 6.0 以上需要动态申请权限
      */
     private void initPermission() {
-        String permissions[] = {Manifest.permission.RECORD_AUDIO,
+        String permissions[] = {
+                Manifest.permission.RECORD_AUDIO,
                 Manifest.permission.ACCESS_NETWORK_STATE,
                 Manifest.permission.INTERNET,
                 Manifest.permission.READ_PHONE_STATE,

@@ -4,9 +4,11 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,11 +27,14 @@ import com.example.lz.babyperceive.View.TitleView;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 用于英语学习 事物学习 成语学习
+ */
 public class AnimalActivity extends BaseActivity {
 
-    private Utils utils;
-    private TitleView titleView;
-    private ImageView imageView;
+    private Utils utils;  //工具类
+    private TitleView titleView;  //自定义标题栏
+    private ImageView imageView;  //显示图片
     private TextView introduction_tv, namespell_tv, name_tv, tv1; //介绍 ,拼音/翻译, 名称/英文 tv1显示成语的介绍
     private ButtonView buttonView;
     private String object, name, introduction, imageId, namespell;
@@ -42,6 +47,7 @@ public class AnimalActivity extends BaseActivity {
     private boolean isIdiom = false; //判断是否是成语
     private SharedPreferencesHelper sharedPreferencesHelper;
     private MyApplication myApplication;
+    private FrameLayout iamage_layout;
 
     @Override
     public void widgetClick(View v) {
@@ -54,9 +60,8 @@ public class AnimalActivity extends BaseActivity {
         utils = new Utils(this);
         myApplication = (MyApplication) getApplication();
         myApplication.sendEmptyMessage();
-        initData();
-        setData();
-        initView1();
+        MyAsyncTask myAsyncTask = new MyAsyncTask();
+        myAsyncTask.execute();
         /*if (isEnglish){
             speek.Speeking(object);
         }else {
@@ -85,14 +90,15 @@ public class AnimalActivity extends BaseActivity {
                 }
             }
             namespell = stringBuffer.toString();
-        }else {
+        } else {
             namespell = " ";
         }
         namespell = stringBuffer.toString();
 
-        // 如果传入的是英文文档 就把拼音改成英文,
+        // 如果传入的是英文文档 就把拼音改成英文,图像隐藏
         if (isEnglish == true) {
-           namespell_tv.setText(object);
+            namespell_tv.setText(object);
+            iamage_layout.setVisibility(View.GONE);
         } else {
             namespell_tv.setText(namespell);
         }
@@ -107,6 +113,38 @@ public class AnimalActivity extends BaseActivity {
         imageView.setBackground(utils.getAssectImage(imageId));
     }
 
+    @SuppressLint("NewApi")
+    class MyAsyncTask extends AsyncTask<String, Void, String> {
+
+        //onPreExecute用于异步处理前的操作
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            //此处将progressBar设置为可见.
+
+        }
+
+        //在doInBackground方法中进行异步任务的处理.
+        @Override
+        protected String doInBackground(String... params) {
+            Log.i("test", "doInBackground");
+            initData();
+            return null;
+        }
+
+        //onPostExecute用于UI的更新.此方法的参数为doInBackground方法返回的值.
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            Log.i("test", "onPostExecute");
+            setData();
+            initView1();
+        }
+    }
+
+    /**
+     * 初始化数据
+     */
     private void initData() {
         AsrJson asrJson = new AsrJson();
         Intent intent = getIntent();
@@ -121,7 +159,6 @@ public class AnimalActivity extends BaseActivity {
                 isEnglish = false;
             }
         }
-        Log.i("test", "data:" + intent.getStringExtra("data"));
         sharedPreferencesHelper = new SharedPreferencesHelper(this, fileName);
         number = (int) sharedPreferencesHelper.getSharedPreference("number", 0);
         objectList = asrJson.parseJSONobject(utils.getAsstesTxt(intent.getStringExtra("data")));
@@ -150,16 +187,18 @@ public class AnimalActivity extends BaseActivity {
                 }
             }
             namespell = stringBuffer.toString();
-        }else {
+        } else {
             namespell = " ";
         }
-        // 如果传入的是英文文档 就把拼音改成英文,
+        // 如果传入的是英文文档 就把拼音改成英文,图像隐藏
+
         if (isEnglish == true) {
             namespell_tv.setText(object);
+            iamage_layout.setVisibility(View.GONE);
         } else {
             namespell_tv.setText(namespell);
         }
-        if (isIdiom == true) {
+        if (isIdiom == true) {  //如果是成语
             tv1.setText(introduction);
             imageView.setVisibility(View.GONE);
             introduction_tv.setVisibility(View.GONE);
@@ -170,11 +209,14 @@ public class AnimalActivity extends BaseActivity {
         imageView.setBackground(utils.getAssectImage(imageId));
     }
 
+    /**
+     * 判断是否打开娱乐模式
+     */
     private void getStatus() {
         if (myApplication.isStatus()) {
-            //  myApplication.setStatus(false);
             Intent intent = new Intent(this, YuleActivity.class);
             startActivity(intent);
+            finish();
         }
     }
 
@@ -256,6 +298,7 @@ public class AnimalActivity extends BaseActivity {
         namespell_tv = $(R.id.namespell_tv);
         imageView = $(R.id.image);
         tv1 = $(R.id.tv1);
+        iamage_layout=$(R.id.iamage_layout);
     }
 
     @Override

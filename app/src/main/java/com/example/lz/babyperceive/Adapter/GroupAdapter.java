@@ -18,6 +18,7 @@ import java.util.List;
 
 /**
  * Created by lz on 2019/9/23.
+ * 组词功能listview的adapter
  */
 
 public class GroupAdapter extends ArrayAdapter<GroupBean> {

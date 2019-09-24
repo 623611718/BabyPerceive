@@ -33,9 +33,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@id/titleview"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
                 android:layout_gravity="top"
                 android:gravity="center"
-                android:textSize="35sp"></TextView>
+                android:textSize="15sp"></TextView>
 
             <ImageView
                 android:id="@+id/image_answer"

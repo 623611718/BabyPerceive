@@ -185,5 +185,6 @@ public class EnglishTestActivity extends BaseActivity implements SpeechRecognize
             image_answer.setVisibility(View.GONE);
             setData();
         }
+        finish();
     }
 }

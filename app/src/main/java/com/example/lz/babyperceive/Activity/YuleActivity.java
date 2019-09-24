@@ -8,14 +8,13 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import com.example.lz.babyperceive.Application.MyApplication;
-import com.example.lz.babyperceive.Dialog.SpeakingDialog;
+import com.example.lz.babyperceive.Dialog.VerifyDialog;
 import com.example.lz.babyperceive.R;
 import com.example.lz.babyperceive.View.TitleView;
 
@@ -43,7 +42,7 @@ public class YuleActivity extends BaseActivity implements View.OnClickListener {
 
         if (!myApplication.isStatus()){
            //myApplication.setStatus(false);
-           new SpeakingDialog(this, R.style.dialog, "快让家长帮忙吧", new SpeakingDialog.OnCloseListener() {
+           new VerifyDialog(this, R.style.dialog, "快让家长帮忙吧", new VerifyDialog.OnCloseListener() {
                @Override
                public void onClick(Dialog dialog, boolean confirm) {
 

@@ -22,14 +22,20 @@ import java.util.List;
  * Created by lz on 2019/9/15.
  */
 
+
+/**
+ * 图像识别listview 的adapter
+ */
 public class ImageRecognitionAdapter extends ArrayAdapter<ImageRecognitionBean> {
 
     private int resourceId;
     private List<ImageRecognitionBean> list;
+
     public ImageRecognitionAdapter(@NonNull Context context, int resource, @NonNull List<ImageRecognitionBean> objects) {
         super(context, resource, objects);
         resourceId = resource;
     }
+
     /**
      * 刷新数据源
      *
@@ -44,12 +50,12 @@ public class ImageRecognitionAdapter extends ArrayAdapter<ImageRecognitionBean> 
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         ImageRecognitionBean imageRecognitionBean = getItem(position);
-        View view = LayoutInflater.from(getContext()).inflate(resourceId,parent,false);
-        TextView name_tv=(TextView) view.findViewById((R.id.name_tv));
-        TextView score_tv=(TextView) view.findViewById((R.id.score_tv));
+        View view = LayoutInflater.from(getContext()).inflate(resourceId, parent, false);
+        TextView name_tv = (TextView) view.findViewById((R.id.name_tv));
+        TextView score_tv = (TextView) view.findViewById((R.id.score_tv));
         name_tv.setText(imageRecognitionBean.getName());
         score_tv.setText(imageRecognitionBean.getScore());
-        WebView webView =(WebView)view.findViewById(R.id.webview);
+        WebView webView = (WebView) view.findViewById(R.id.webview);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient());
         webView.getSettings().setSupportZoom(true);
@@ -58,9 +64,9 @@ public class ImageRecognitionAdapter extends ArrayAdapter<ImageRecognitionBean> 
         webView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
         webView.getSettings().setLoadWithOverviewMode(true);
 
-        String url = "https://baike.baidu.com/item/"+imageRecognitionBean.getName();
+        String url = "https://wapbaike.baidu.com/item/" + imageRecognitionBean.getName();
         webView.loadUrl(url);
-        Log.i("web","百度百科url:"+url);
+        Log.i("web", "百度百科url:" + url);
         return view;
     }
 }

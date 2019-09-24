@@ -159,6 +159,7 @@ public class SpeakingActivity extends BaseActivity implements View.OnClickListen
            // myApplication.setStatus(false);
             Intent intent=new Intent(this,YuleActivity.class);
             startActivity(intent);
+            finish();
         }
     }
     @Override

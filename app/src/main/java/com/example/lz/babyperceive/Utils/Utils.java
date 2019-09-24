@@ -41,6 +41,7 @@ public class Utils {
     }
 
     public String getAsstesTxt(String filename){
+
         try {
             InputStream is = this.getClass().getClassLoader().getResourceAsStream("assets/" + filename);
             byte[] buffer = new byte[is.available()];

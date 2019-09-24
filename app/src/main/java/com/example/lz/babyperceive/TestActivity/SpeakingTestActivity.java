@@ -176,6 +176,7 @@ public class SpeakingTestActivity extends BaseActivity {
         tv3 = $(R.id.tv3);
         tv4 = $(R.id.tv4);
         imageView = $(R.id.image);
+        imageView.setTextSize(35);
         titleView = $(R.id.titleview);
         image_answer = $(R.id.image_answer);
         image_answer.setVisibility(View.GONE);
@@ -204,5 +205,11 @@ public class SpeakingTestActivity extends BaseActivity {
     @Override
     public void doBusiness(Context mContext) {
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        finish();
+        super.onDestroy();
     }
 }

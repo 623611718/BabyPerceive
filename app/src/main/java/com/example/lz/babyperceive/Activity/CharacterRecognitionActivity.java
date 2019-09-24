@@ -17,7 +17,6 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.PopupMenu;
 import android.util.Log;
 import android.view.MenuItem;
@@ -30,10 +29,8 @@ import android.widget.Toast;
 import com.example.lz.babyperceive.Bean.CharacterAsrJson;
 import com.example.lz.babyperceive.Bean.CharacterBean;
 import com.example.lz.babyperceive.CharacterRecognition.FileUtil;
-import com.example.lz.babyperceive.CharacterRecognition.IDCardActivity;
 import com.example.lz.babyperceive.CharacterRecognition.RecognizeService;
 import com.example.lz.babyperceive.Dialog.CharacterDialog;
-import com.example.lz.babyperceive.Dialog.SpeakingDialog;
 import com.example.lz.babyperceive.R;
 import com.example.lz.babyperceive.Utils.ButtonUtils;
 import com.example.lz.babyperceive.Utils.Speek;
@@ -76,7 +73,6 @@ public class CharacterRecognitionActivity extends BaseActivity {
 
     private TextView name_tv, spell_tv;
     private Button next_bt, previous_bt, play_bt;
-
     private TitleView titleView;
     private String result;
     private List<CharacterBean> list = new ArrayList<>();
@@ -228,7 +224,12 @@ public class CharacterRecognitionActivity extends BaseActivity {
         }, "aip.license", getApplicationContext());
     }
 
-
+    /**
+     * 获取权限失败的弹出框
+     *
+     * @param title
+     * @param message
+     */
     private void alertText(final String title, final String message) {
         this.runOnUiThread(new Runnable() {
             @Override
@@ -344,11 +345,8 @@ public class CharacterRecognitionActivity extends BaseActivity {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.quit1:
+                    case R.id.quit1:  //右上角菜单,打开摄像机
                         try {
-                           /* Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                            intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
-                            startActivityForResult(intent, 2);*/
                             Intent intent = new Intent(CharacterRecognitionActivity.this, CameraActivity.class);
                             intent.putExtra(CameraActivity.KEY_OUTPUT_FILE_PATH,
                                     FileUtil.getSaveFile(getApplication()).getAbsolutePath());
@@ -427,9 +425,11 @@ public class CharacterRecognitionActivity extends BaseActivity {
                 Matcher m = p.matcher(chinese.substring(i - 1, i));
                 if (m.matches()) {
                     stringBuffer.append(utils.getChineseSpell(chinese.substring(i - 1, i)));
+                } else {
+                    stringBuffer.append(chinese.substring(i - 1, i));
                 }
                 // stringBuffer.append(utils.getChineseSpell(chinese.substring(i - 1, i)));
-                stringBuffer.append(chinese.substring(i - 1, i));
+                stringBuffer.append(" ");
             }
         }
         chineseSpell = stringBuffer.toString();

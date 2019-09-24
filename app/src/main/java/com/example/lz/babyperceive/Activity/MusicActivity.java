@@ -2,12 +2,13 @@ package com.example.lz.babyperceive.Activity;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.IntentFilter;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,18 +16,17 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.lz.Broadcast.IntentBroadReceiver;
 import com.example.lz.babyperceive.Application.MyApplication;
-import com.example.lz.babyperceive.Dialog.SpeakingDialog;
+import com.example.lz.babyperceive.Dialog.VerifyDialog;
 import com.example.lz.babyperceive.R;
 import com.example.lz.babyperceive.Utils.UtilsGetUrl;
 import com.example.lz.babyperceive.Utils.Utils_play;
-import com.example.lz.babyperceive.View.ButtonView;
 import com.example.lz.babyperceive.View.TitleView;
 
 import java.util.ArrayList;
@@ -165,9 +165,15 @@ public class MusicActivity extends BaseActivity {
 
     }
 
+    private IntentBroadReceiver receiver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //断网提示退出
+        receiver = new IntentBroadReceiver();
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(receiver, filter);
+
         initUrl();
         utils_play = new Utils_play();
         intSpinner();
@@ -189,7 +195,7 @@ public class MusicActivity extends BaseActivity {
     }
 
     private void showDialog(){
-        new SpeakingDialog(this, R.style.dialog, "快让家长帮忙吧", new SpeakingDialog.OnCloseListener() {
+        new VerifyDialog(this, R.style.dialog, "快让家长帮忙吧", new VerifyDialog.OnCloseListener() {
             @Override
             public void onClick(Dialog dialog, boolean confirm) {
 
@@ -459,6 +465,7 @@ public class MusicActivity extends BaseActivity {
         }
         handler.removeMessages(PROGRESS);
         handlerTime.removeMessages(TIME);
+        unregisterReceiver(receiver);//注销广播
         super.onDestroy();
     }
 }

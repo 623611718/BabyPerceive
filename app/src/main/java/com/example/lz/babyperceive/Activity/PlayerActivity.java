@@ -12,7 +12,6 @@ import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -31,11 +30,10 @@ import android.widget.Toast;
 
 
 import com.example.lz.babyperceive.Application.MyApplication;
-import com.example.lz.babyperceive.Dialog.SpeakingDialog;
+import com.example.lz.babyperceive.Dialog.VerifyDialog;
 import com.example.lz.babyperceive.R;
 import com.example.lz.babyperceive.Speed.NetSpeed;
 import com.example.lz.babyperceive.Speed.NetSpeedTimer;
-import com.example.lz.babyperceive.Utils.Utils;
 import com.example.lz.babyperceive.Utils.Utils_play;
 import com.example.lz.babyperceive.View.Play_title;
 
@@ -189,7 +187,7 @@ public class PlayerActivity extends Activity implements View.OnClickListener {
     }
 
     private void showDialog() {
-        new SpeakingDialog(this, R.style.dialog, "快让家长帮忙吧", new SpeakingDialog.OnCloseListener() {
+        new VerifyDialog(this, R.style.dialog, "快让家长帮忙吧", new VerifyDialog.OnCloseListener() {
             @Override
             public void onClick(Dialog dialog, boolean confirm) {
 

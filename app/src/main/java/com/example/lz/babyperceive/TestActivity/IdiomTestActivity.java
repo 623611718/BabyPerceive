@@ -217,4 +217,10 @@ public class IdiomTestActivity extends BaseActivity {
     public void doBusiness(Context mContext) {
 
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        finish();
+    }
 }

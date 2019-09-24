@@ -18,6 +18,7 @@ import java.util.List;
 
 /**
  * Created by lz on 2019/9/15.
+ * 电影listview 的adapter
  */
 
 public class MoviesAdapter  extends ArrayAdapter<MoviesBean> {

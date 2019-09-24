@@ -17,12 +17,13 @@ import java.util.List;
 
 /**
  * Created by lz on 2019/9/22.
+ * 文字识别listview 的adapter
  */
 
 public class CharaectAdapter extends ArrayAdapter<CharacterBean> {
 
     private int resourceId;
-    private List<MoviesBean> list;
+    private List<CharacterBean> list;
     public CharaectAdapter(@NonNull Context context, int resource, @NonNull List<CharacterBean> objects) {
         super(context, resource, objects);
         resourceId = resource;
@@ -32,7 +33,7 @@ public class CharaectAdapter extends ArrayAdapter<CharacterBean> {
      *
      * @param list
      */
-    public void refresh(List<MoviesBean> list) {
+    public void refresh(List<CharacterBean> list) {
         this.list = list;
         notifyDataSetChanged();
     }

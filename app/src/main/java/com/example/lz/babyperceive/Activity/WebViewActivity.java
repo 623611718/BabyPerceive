@@ -61,7 +61,7 @@ public class WebViewActivity extends BaseActivity {
         webView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
         webView.getSettings().setLoadWithOverviewMode(true);
 
-        String url = "https://baike.baidu.com/item/" + name;
+        String url = "https://wapbaike.baidu.com/item/" + name;
         webView.loadUrl(url);
         Log.i("web","百度百科url:"+url);
 

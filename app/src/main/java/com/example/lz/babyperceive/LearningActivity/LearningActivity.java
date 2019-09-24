@@ -82,8 +82,10 @@ public class LearningActivity extends BaseActivity implements View.OnClickListen
     /**
      * android 6.0 以上需要动态申请权限
      */
+
     private void initPermission() {
-        String permissions[] = {Manifest.permission.RECORD_AUDIO,
+        String permissions[] = {
+                Manifest.permission.RECORD_AUDIO,
                 Manifest.permission.ACCESS_NETWORK_STATE,
                 Manifest.permission.INTERNET,
                 Manifest.permission.READ_PHONE_STATE,
@@ -91,6 +93,7 @@ public class LearningActivity extends BaseActivity implements View.OnClickListen
                 Manifest.permission.CAMERA,
                 Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS,
                 Manifest.permission.READ_PHONE_STATE
+
         };
 
         ArrayList<String> toApplyList = new ArrayList<String>();

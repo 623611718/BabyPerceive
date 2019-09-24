@@ -31,9 +31,14 @@ import com.example.lz.babyperceive.Bean.Object;
 import com.example.lz.babyperceive.R;
 import com.example.lz.babyperceive.TestActivity.EnglishTestActivity;
 import com.example.lz.babyperceive.Utils.Utils;
+import com.example.lz.babyperceive.Utils.UtilsGetGroup;
 import com.example.lz.babyperceive.Utils.UtilsGetUrl;
 import com.example.lz.babyperceive.View.TitleView;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,7 +53,7 @@ public class GroupActivity extends BaseActivity {
     private String answer = " ";
     private TextView textView;
     private MyApplication myApplication;
-    private UtilsGetUrl utilsGetUrl;
+    private UtilsGetGroup utilsGetGroup;
     private MyAsyncTaskQuery myAsyncTaskQuery;
     private ListView listView;
     private List<GroupBean> groupBeanList = new ArrayList<>();
@@ -87,6 +92,7 @@ public class GroupActivity extends BaseActivity {
             //  myApplication.setStatus(false);
             Intent intent = new Intent(this, YuleActivity.class);
             startActivity(intent);
+            finish();
             myAsyncTaskQuery.cancel(true);
         }
     }
@@ -148,6 +154,9 @@ public class GroupActivity extends BaseActivity {
         }
     }
 
+    /**
+     * 采用异步加载数据
+     */
     @SuppressLint("NewApi")
     class MyAsyncTask extends AsyncTask<String, Void, String> {
 
@@ -181,8 +190,8 @@ public class GroupActivity extends BaseActivity {
         /**
          * 获取配置文件URL 名称
          */
-        utilsGetUrl = new UtilsGetUrl(this, "group.txt");
-        groupList = utilsGetUrl.getUrls();
+        utilsGetGroup = new UtilsGetGroup(this, "group.txt");
+        groupList = utilsGetGroup.getUrls();
         AsrJson asrJson = new AsrJson();
         Intent intent = getIntent();
         intent.getStringExtra("data");

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/yellow"
     tools:context="com.example.lz.babyperceive.Activity.MoviesActivity">
 
     <com.example.lz.babyperceive.View.TitleView

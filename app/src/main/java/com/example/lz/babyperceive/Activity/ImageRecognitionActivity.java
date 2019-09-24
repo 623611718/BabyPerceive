@@ -398,35 +398,42 @@ public class ImageRecognitionActivity extends BaseActivity {
             String name = " ";
             Intent intent = getIntent();
             JSONObject jsonObject = new JSONObject(jsonData);
+            //如果是地标,特殊处理
             if (intent.getStringExtra("type").equals("landmark")) {
-                name = jsonData.substring(jsonData.lastIndexOf(":")+3, jsonData.lastIndexOf("") - 3);
-                score1 = score1 * 100;
-                Log.i("test","name:"+name);
-            } else {
-                JSONArray jsonArray = jsonObject.getJSONArray("result");
-                for (int i = 0; i < jsonArray.length(); i++) {
-                    JSONObject object = jsonArray.getJSONObject(i);
-                    if (intent.getStringExtra("type").equals("landmark")) {
-                        score1 = 1;
-                    } else {
-                        score1 = Float.parseFloat(object.getString("score")) * 100;
-                    }
-
-
-                    if (intent.getStringExtra("type").equals("advanced_general")) {
-                        name = object.getString("keyword");
-                    } else {
-                        name = object.getString("name");
-                    }
+                name = jsonData.substring(jsonData.lastIndexOf(":") + 3, jsonData.lastIndexOf("") - 3);
+                if (name.length() == 0) {
+                    name = "无法识别";
                 }
-            }
+                score1 = score1 * 100;
+                score = String.format("%.2f", score1);
+                Log.i("test", "name:" + name);
                 Log.i("test", "11111111::::::" + name);
                 content += "\n 名称: " + name + " 可信度: " + score + "%";
                 ImageRecognitionBean imageRecognitionBean = new ImageRecognitionBean();
                 imageRecognitionBean.setName(name);
                 imageRecognitionBean.setScore(score);
                 list.add(imageRecognitionBean);
-            handler.post(runnableUi);
+                handler.post(runnableUi);
+            } else {
+                JSONArray jsonArray = jsonObject.getJSONArray("result");
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject object = jsonArray.getJSONObject(i);
+                    score = String.valueOf(Float.parseFloat(object.getString("score")) * 100);
+                    if (intent.getStringExtra("type").equals("advanced_general")) {
+                        name = object.getString("keyword");
+                    } else {
+                        name = object.getString("name");
+                    }
+                    Log.i("test", "11111111::::::" + name);
+                    content += "\n 名称: " + name + " 可信度: " + score + "%";
+                    ImageRecognitionBean imageRecognitionBean = new ImageRecognitionBean();
+                    imageRecognitionBean.setName(name);
+                    imageRecognitionBean.setScore(score);
+                    list.add(imageRecognitionBean);
+                    handler.post(runnableUi);
+                }
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }

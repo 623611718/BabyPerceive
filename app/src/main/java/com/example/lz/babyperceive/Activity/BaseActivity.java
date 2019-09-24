@@ -22,7 +22,8 @@ import com.example.lz.babyperceive.Application.MyApplication;
 import java.util.ArrayList;
 
 /**
- * Created by Administrator on 2019/8/27.
+ * Created by lz on 2019/8/27.
+ * 基础ACTIVITY 本项目所有Activity都继承这个类
  */
 
 public abstract class BaseActivity extends Activity implements View.OnClickListener {
@@ -49,16 +50,16 @@ public abstract class BaseActivity extends Activity implements View.OnClickListe
         Bundle bundle = getIntent().getExtras();
         initParms(bundle);
         View mView = bindView();
-        if (null == mView) {
+        if (null == mView) {   //如果调用binView方法触发
             mContextView = LayoutInflater.from(this)
                     .inflate(bindLayout(), null);
         } else
             mContextView = mView;
         if (mAllowFullScreen) {
-            requestWindowFeature(Window.FEATURE_NO_TITLE);
+            requestWindowFeature(Window.FEATURE_NO_TITLE);  //设置全屏
         }
         if (isSetStatusBar) {
-            steepStatusBar();
+            steepStatusBar();    //设置是否沉浸式状态栏
         }
         setContentView(mContextView);
        /* if (!isAllowScreenRoate) {
@@ -72,11 +73,15 @@ public abstract class BaseActivity extends Activity implements View.OnClickListe
      * android 6.0 以上需要动态申请权限
      */
     private void initPermission() {
-        String permissions[] = {Manifest.permission.RECORD_AUDIO,
+        String permissions[] = {
+                Manifest.permission.RECORD_AUDIO,
                 Manifest.permission.ACCESS_NETWORK_STATE,
                 Manifest.permission.INTERNET,
                 Manifest.permission.READ_PHONE_STATE,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.CAMERA,
+                Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS,
+                Manifest.permission.READ_PHONE_STATE
         };
 
         ArrayList<String> toApplyList = new ArrayList<String>();
@@ -261,6 +266,7 @@ public abstract class BaseActivity extends Activity implements View.OnClickListe
     protected void onDestroy() {
         super.onDestroy();
         Log.i(TAG, "onDestroy()");
+        finish();
     }
 
     /**
@@ -271,17 +277,6 @@ public abstract class BaseActivity extends Activity implements View.OnClickListe
         Toast.makeText(this,msg,Toast.LENGTH_SHORT).show();
     }
 
-
-    /**
-     * [是否允许屏幕旋转]
-     *
-     * @param isAllowScreenRoate
-     */
-  /*  public void setScreenRoate(boolean isAllowScreenRoate) {
-        this.isAllowScreenRoate = isAllowScreenRoate;
-    }
-
-}*/
     /**
      * [是否允许全屏]
      *
@@ -308,20 +303,5 @@ public abstract class BaseActivity extends Activity implements View.OnClickListe
     public void setScreenRoate(boolean isAllowScreenRoate) {
         this.isAllowScreenRoate = isAllowScreenRoate;
     }
-
-//}[是否设置沉浸状态栏]
-        /*
-        * @param isSetStatusBar
-        */
-/*public void setSteepStatusBar(boolean isSetStatusBar) {
-        this.isSetStatusBar = isSetStatusBar;
-        }*/
-
-/**
- * [是否允许屏幕旋转]
- *
- * @param isAllowScreenRoate
- */
-
 
         }

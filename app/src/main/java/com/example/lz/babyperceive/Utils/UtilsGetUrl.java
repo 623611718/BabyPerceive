@@ -32,6 +32,7 @@ public class UtilsGetUrl {
         url = "/data/data/com.example.lz.babyperceive/"+URIConfigName;
         init();
     }
+
     public List<String> getUrls(){
         return URIConfig;
     }

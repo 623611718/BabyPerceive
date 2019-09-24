@@ -177,5 +177,6 @@ public class EnglishSpellTestActivity extends BaseActivity {
             myHandler.removeCallbacksAndMessages(null);
             myHandler = null;
         }
+        finish();
     }
 }
