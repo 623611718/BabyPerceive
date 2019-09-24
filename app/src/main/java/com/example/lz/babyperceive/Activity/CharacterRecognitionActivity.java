@@ -429,7 +429,7 @@ public class CharacterRecognitionActivity extends BaseActivity {
                     stringBuffer.append(utils.getChineseSpell(chinese.substring(i - 1, i)));
                 }
                 // stringBuffer.append(utils.getChineseSpell(chinese.substring(i - 1, i)));
-                stringBuffer.append(" ");
+                stringBuffer.append(chinese.substring(i - 1, i));
             }
         }
         chineseSpell = stringBuffer.toString();

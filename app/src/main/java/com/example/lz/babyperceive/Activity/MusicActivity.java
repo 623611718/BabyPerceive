@@ -362,6 +362,7 @@ public class MusicActivity extends BaseActivity {
      */
     private void intSpinner() {
         videos.add("  ");
+        urls.add(" ");
         Spinner spinner = findViewById(R.id.spinner);
         // 为下拉列表定义一个适配器，使用到上面定义的turtleList
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, videos);

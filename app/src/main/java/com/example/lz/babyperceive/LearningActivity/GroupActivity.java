@@ -53,6 +53,7 @@ public class GroupActivity extends BaseActivity {
     private ListView listView;
     private List<GroupBean> groupBeanList = new ArrayList<>();
 
+    @SuppressLint("NewApi")
     @Override
     public void widgetClick(View v) {
         switch (v.getId()) {
@@ -66,6 +67,7 @@ public class GroupActivity extends BaseActivity {
         }
     }
 
+    @SuppressLint("NewApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,6 +81,7 @@ public class GroupActivity extends BaseActivity {
         //  initData();
     }
 
+    @SuppressLint("NewApi")
     private void getStatus() {
         if (myApplication.isStatus()) {
             //  myApplication.setStatus(false);
@@ -88,6 +91,7 @@ public class GroupActivity extends BaseActivity {
         }
     }
 
+    @SuppressLint("NewApi")
     class MyAsyncTaskQuery extends AsyncTask<String, Void, String> {
 
         //onPreExecute用于异步处理前的操作
@@ -144,6 +148,7 @@ public class GroupActivity extends BaseActivity {
         }
     }
 
+    @SuppressLint("NewApi")
     class MyAsyncTask extends AsyncTask<String, Void, String> {
 
         //onPreExecute用于异步处理前的操作
@@ -211,6 +216,7 @@ public class GroupActivity extends BaseActivity {
         confirm_bt.setOnClickListener(this);
         confirm_bt.setOnTouchListener(new View.OnTouchListener() {
 
+            @SuppressLint("NewApi")
             public boolean onTouch(View v, MotionEvent event) {
                 int action = event.getAction();
                 switch (action) {
