@@ -236,7 +236,7 @@ public class MusicActivity extends BaseActivity {
             mediaPlayer.prepareAsync();
         } catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(this, "加载错误！", Toast.LENGTH_LONG).show();
+            //Toast.makeText(this, "加载错误！", Toast.LENGTH_LONG).show();
         }
 
     }
