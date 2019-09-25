@@ -132,6 +132,9 @@ public class ObjectActivity extends BaseActivity implements View.OnClickListener
                 startActivity(intent_fruit);
                 break;
             case R.id.vegetables_bt:
+			    Intent intent_vegetables = new Intent(this, AnimalActivity.class);
+                intent_vegetables.putExtra("data","vegetables.txt");
+                startActivity(intent_vegetables);
                 break;
 
         }
