@@ -401,6 +401,7 @@ public class ImageRecognitionActivity extends BaseActivity {
             //如果是地标,特殊处理
             if (intent.getStringExtra("type").equals("landmark")) {
                 name = jsonData.substring(jsonData.lastIndexOf(":") + 3, jsonData.lastIndexOf("") - 3);
+                Log.i("test","11"+name+"1");
                 if (name.length() == 0) {
                     name = "无法识别";
                 }
