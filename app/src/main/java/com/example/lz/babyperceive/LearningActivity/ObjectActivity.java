@@ -107,7 +107,7 @@ public class ObjectActivity extends BaseActivity implements View.OnClickListener
         titleView = (TitleView) findViewById(R.id.titleview);
         animal_bt.setOnClickListener(this);
         fruit_bt.setOnClickListener(this);
-        fruit_bt.setOnClickListener(this);
+        vegetables_bt.setOnClickListener(this);
         titleView.setTitleView(1);
         titleView.setCustomOnClickListener(new TitleView.ClickListener() {
             @Override
