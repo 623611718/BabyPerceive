@@ -9,6 +9,7 @@ import android.content.IntentFilter;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
+import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Message;
@@ -126,6 +127,7 @@ public class MoviesActivity extends BaseActivity {
                     if (myApplication.getYuletime() >= myApplication.yuleTime_end && !myApplication.isShow()) {  //如果娱乐状态为false 弹出验证
                         myApplication.setShow(true);
                         myApplication.setStatus(false);
+                        Log.i("test","设置setStatus");
                         showDialog();
                         // myApplication.setYueleStatus(false);
                     }
@@ -179,10 +181,11 @@ public class MoviesActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //断网提示退出
-        receiver = new IntentBroadReceiver();
+        receiver = new IntentBroadReceiver(MoviesActivity.this);
         IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        filter.addAction(WifiManager.NETWORK_STATE_CHANGED_ACTION);
+        filter.addAction(WifiManager.WIFI_STATE_CHANGED_ACTION);
         registerReceiver(receiver, filter);
-
 
         /**
          * 获取学习状态,判断是否弹出验证框
@@ -563,6 +566,7 @@ public class MoviesActivity extends BaseActivity {
         if (mediaPlayer != null) {
             mediaPlayer.pause();
             mediaPlayer.stop();
+            mediaPlayer.reset();
             mediaPlayer.release();
             mediaPlayer = null;
         }

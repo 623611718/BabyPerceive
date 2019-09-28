@@ -1,6 +1,7 @@
 package com.example.lz.babyperceive.LearningActivity;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -15,6 +16,8 @@ import android.widget.Button;
 
 import com.example.lz.babyperceive.Activity.BaseActivity;
 import com.example.lz.babyperceive.Activity.TranslateActivity;
+import com.example.lz.babyperceive.Dialog.ParentDialog;
+import com.example.lz.babyperceive.MainActivity;
 import com.example.lz.babyperceive.R;
 import com.example.lz.babyperceive.View.TitleView;
 
@@ -201,7 +204,14 @@ public class LearningActivity extends BaseActivity implements View.OnClickListen
                         Intent intent1 = new Intent(LearningActivity.this, TranslateActivity.class);
                         startActivity(intent1);
                         break;
+                    case R.id.quit2:
+                        new ParentDialog(LearningActivity.this, R.style.dialog, "快让家长帮忙吧", new ParentDialog.OnCloseListener() {
+                            @Override
+                            public void onClick(Dialog dialog, boolean confirm) {
 
+                            }
+                        }).setTitle("进入家长模式需要验证").show();
+                        break;
                 }
                 return false;
             }

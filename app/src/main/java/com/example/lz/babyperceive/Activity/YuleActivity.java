@@ -33,6 +33,7 @@ public class YuleActivity extends BaseActivity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.i("test","onCreate");
         //setContentView(R.layout.activity_yule);
        // getSupportActionBar().hide();//隐藏掉整个ActionBar，包括下面的Tabs
        // changeStatusBarTextColor(true);
@@ -40,6 +41,7 @@ public class YuleActivity extends BaseActivity implements View.OnClickListener {
         initPermission();  //初始化权限
         initView();//初始化View
 
+        Log.i("test","isStatus:"+myApplication.isStatus());
         if (!myApplication.isStatus()){
            //myApplication.setStatus(false);
            new VerifyDialog(this, R.style.dialog, "快让家长帮忙吧", new VerifyDialog.OnCloseListener() {

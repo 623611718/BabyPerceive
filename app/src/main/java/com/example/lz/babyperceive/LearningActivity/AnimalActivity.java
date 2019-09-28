@@ -57,6 +57,10 @@ public class AnimalActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent intent = getIntent();
+        if (intent.getStringExtra("data").equals("english.txt")) {
+            iamage_layout.setVisibility(View.GONE);
+        }
         utils = new Utils(this);
         myApplication = (MyApplication) getApplication();
         myApplication.sendEmptyMessage();

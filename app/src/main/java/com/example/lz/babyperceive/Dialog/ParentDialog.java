@@ -13,54 +13,54 @@ import android.widget.TextView;
 import com.example.lz.babyperceive.Application.MyApplication;
 import com.example.lz.babyperceive.Bean.AsrJson;
 import com.example.lz.babyperceive.Bean.Object;
+import com.example.lz.babyperceive.MainActivity;
 import com.example.lz.babyperceive.R;
-import com.example.lz.babyperceive.Utils.SharedPreferencesHelper;
 import com.example.lz.babyperceive.Utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by lz on 2019/8/21.
+ * Created by lz on 2019/9/28.
  */
 
-public class VerifyDialog extends Dialog implements View.OnClickListener {
+public class ParentDialog extends Dialog implements View.OnClickListener {
     private TextView contentTxt;
     private TextView titleTxt;
 
 
     private Context mContext;
     private String content;
-    private OnCloseListener listener;
+    private ParentDialog.OnCloseListener listener;
     private String positiveName;
     private String negativeName;
     private String title;
     private int answer_number = 0;
-    private SharedPreferencesHelper sharedPreferencesHelper;
-    public VerifyDialog(Context context) {
+
+    public ParentDialog(Context context) {
         super(context);
         this.mContext = context;
     }
 
-    public VerifyDialog(Context context, int themeResId, String content) {
+    public ParentDialog(Context context, int themeResId, String content) {
         super(context, themeResId);
         this.mContext = context;
         this.content = content;
     }
 
-    public VerifyDialog(Context context, int themeResId, String content, OnCloseListener listener) {
+    public ParentDialog(Context context, int themeResId, String content, ParentDialog.OnCloseListener listener) {
         super(context, themeResId);
         this.mContext = context;
         this.content = content;
         this.listener = listener;
     }
 
-    protected VerifyDialog(Context context, boolean cancelable, OnCancelListener cancelListener) {
+    protected ParentDialog(Context context, boolean cancelable, OnCancelListener cancelListener) {
         super(context, cancelable, cancelListener);
         this.mContext = context;
     }
 
-    public VerifyDialog setTitle(String title) {
+    public ParentDialog setTitle(String title) {
         this.title = title;
         return this;
     }
@@ -83,7 +83,6 @@ public class VerifyDialog extends Dialog implements View.OnClickListener {
         setCanceledOnTouchOutside(false);   //dialog弹出后会点击屏幕，dialog不消失；点击物理返回键dialog消失
         setCancelable(false);//dialog弹出后点击物理返回键dialog不消失
         myApplication=(MyApplication) mContext.getApplicationContext();
-        sharedPreferencesHelper = new SharedPreferencesHelper(mContext,"MyApplication");
         utils = new Utils(mContext);
         initView(); //初始化view
         initData();  //初始化数据
@@ -206,8 +205,6 @@ public class VerifyDialog extends Dialog implements View.OnClickListener {
         contentTxt = (TextView) findViewById(R.id.content);
         titleTxt = (TextView) findViewById(R.id.title);
         contentTxt.setText(content);
-
-
     }
 
     private void GoneView(){
@@ -220,11 +217,12 @@ public class VerifyDialog extends Dialog implements View.OnClickListener {
         setData();
     }
     private void correct(){
-        myApplication.setStatus(true);
-       // myApplication.setYueleStatus(true);
-        myApplication.setTime(0);
-        myApplication.setYuletime(0);
-        myApplication.setShow(false);
+        new CommomDialog(mContext, R.style.dialog, "111", new CommomDialog.OnCloseListener() {
+            @Override
+            public void onClick(Dialog dialog, boolean confirm) {
+
+            }
+        }).setTitle("家长模式").show();
         dismiss();
     }
     @Override
@@ -297,11 +295,7 @@ public class VerifyDialog extends Dialog implements View.OnClickListener {
                 }
                 break;
             case R.id.button:
-                 myApplication.setStatus(false);
-                sharedPreferencesHelper.put("status",false);
-                //dismiss();
-             //   myApplication.setYueleStatus(false);
-                android.os.Process.killProcess(android.os.Process.myPid());
+                dismiss();
                 break;
             case R.id.v0:
                 break;

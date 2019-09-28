@@ -18,6 +18,7 @@ import android.widget.Button;
 
 import com.example.lz.babyperceive.Activity.BaseActivity;
 import com.example.lz.babyperceive.Activity.IdentifyActivity;
+import com.example.lz.babyperceive.Dialog.ParentDialog;
 import com.example.lz.babyperceive.LearningActivity.LearningActivity;
 import com.example.lz.babyperceive.TestActivity.TestActivity;
 import com.example.lz.babyperceive.Activity.TranslateActivity;
@@ -203,12 +204,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                         startActivity(intent1);
                         break;
                     case R.id.quit2:
-                        new CommomDialog(MainActivity.this, R.style.dialog, "111", new CommomDialog.OnCloseListener() {
+                        new ParentDialog(MainActivity.this, R.style.dialog, "快让家长帮忙吧", new ParentDialog.OnCloseListener() {
                             @Override
                             public void onClick(Dialog dialog, boolean confirm) {
 
                             }
-                        }).setTitle("家长模式").show();
+                        }).setTitle("进入家长模式需要验证").show();
                         break;
 
 

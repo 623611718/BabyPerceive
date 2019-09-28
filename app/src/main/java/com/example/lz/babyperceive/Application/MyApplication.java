@@ -62,6 +62,8 @@ public class MyApplication extends Application {
         sharedPreferencesHelper = new SharedPreferencesHelper(this,"MyApplication");
         yuleTime_end = (int)sharedPreferencesHelper.getSharedPreference("yuleTime",18);
         learningTime_end=(int)sharedPreferencesHelper.getSharedPreference("learnTime",18);
+        status = (boolean) sharedPreferencesHelper.getSharedPreference("status",false);
+        Log.i(TAG,"status:"+status);
     }
 
     public void sendEmptyMessage() {
@@ -88,6 +90,7 @@ public class MyApplication extends Application {
 
     public void setStatus(boolean status) {
         this.status = status;
+        Log.i(TAG,"setStatus"+status);
     }
 
    /* public boolean isYueleStatus() {
@@ -156,8 +159,10 @@ public class MyApplication extends Application {
     @Override
     public void onTrimMemory(int level) {
 
+        Log.i(TAG,"onTrimMemory");
         sharedPreferencesHelper.put("yuleTime",yuleTime_end);
         sharedPreferencesHelper.put("learnTime",learningTime_end);
+        sharedPreferencesHelper.put("status",status);
         super.onTrimMemory(level);
     }
 }

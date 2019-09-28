@@ -65,7 +65,6 @@
                 android:layout_marginTop="10dp"
                 android:layout_weight="0.25"
                 android:background="@drawable/bg_read_text"
-                android:text="这是一个简介"
                 android:textSize="20sp" />
 
             <LinearLayout
@@ -84,7 +83,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="拼音"></TextView>
+                    ></TextView>
 
                 <TextView
                     android:id="@+id/name_tv"
@@ -93,7 +92,6 @@
                     android:layout_gravity="center"
                     android:background="@drawable/bg_read_title"
                     android:gravity="center"
-                    android:text="狗"
                     android:textSize="25sp"></TextView>
             </LinearLayout>
 
