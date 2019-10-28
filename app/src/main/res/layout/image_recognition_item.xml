@@ -12,8 +12,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:layout_marginLeft="10dp"
-        android:orientation="vertical">
+        android:layout_margin="10dp"
+        android:orientation="vertical"
+        >
 
         <TextView
             android:layout_width="80dp"
@@ -76,6 +77,7 @@
         android:layout_width="0dp"
         android:layout_height="164dp"
         android:layout_weight="1"
+        android:layout_margin="10dp"
         android:background="@drawable/gk_bg"
         android:focusable="false"></WebView>
 </LinearLayout>
