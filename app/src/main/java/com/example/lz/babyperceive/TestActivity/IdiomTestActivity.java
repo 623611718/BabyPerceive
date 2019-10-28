@@ -18,6 +18,7 @@ import com.example.lz.babyperceive.Activity.BaseActivity;
 import com.example.lz.babyperceive.Bean.AsrJson;
 import com.example.lz.babyperceive.Bean.Object;
 import com.example.lz.babyperceive.R;
+import com.example.lz.babyperceive.Utils.SharedPreferencesHelper;
 import com.example.lz.babyperceive.Utils.Utils;
 import com.example.lz.babyperceive.View.TitleView;
 
@@ -26,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class IdiomTestActivity extends BaseActivity {
-    private static  final String TAG = "ObjectTest";
+    private static final String TAG = "ObjectTest";
     private List<Object> objectList = new ArrayList<>();
     private Utils utils;
     private TextView imageView;
@@ -41,6 +42,7 @@ public class IdiomTestActivity extends BaseActivity {
     private Button next_bt;
     private MyHandler myHandler;
     private Animation animation;
+
     static class MyHandler extends Handler {
         private final WeakReference<IdiomTestActivity> mActivty;
 
@@ -53,9 +55,10 @@ public class IdiomTestActivity extends BaseActivity {
             super.handleMessage(msg);
         }
     }
+
     @Override
     public void widgetClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.tv1:
                 setImageView_answer(tv1.getText().toString());
                 break;
@@ -83,20 +86,21 @@ public class IdiomTestActivity extends BaseActivity {
         setData();
     }
 
-    private void setImageView_answer(String s){
-        Log.i("test","选择的答案。。。"+s);
-        Log.i("test","正确的答案。。。"+name);
-        if (name.equals(s)){
+    private void setImageView_answer(String s) {
+        Log.i("test", "选择的答案。。。" + s);
+        Log.i("test", "正确的答案。。。" + name);
+        if (name.equals(s)) {
             image_answer.setBackgroundResource(R.drawable.ico_exam_correct);
             image_answer.setVisibility(View.VISIBLE);
             image_answer.startAnimation(animation);
-        }else {
+        } else {
             image_answer.setBackgroundResource(R.drawable.ico_exam_error);
             image_answer.setVisibility(View.VISIBLE);
             image_answer.startAnimation(animation);
         }
         image_answer.setVisibility(View.VISIBLE);
     }
+
     @SuppressLint("NewApi")
     private void setData() {
         int max = objectList.size() - 1;
@@ -135,8 +139,8 @@ public class IdiomTestActivity extends BaseActivity {
                 optionsList.add(index_option,allOptionsList.get(index));
             } else {*/
         //如果没有就加入
-        while (optionsList.size()<4) {
-            Log.i("test"," 加载。。。"+optionsList.indexOf(allOptionsList.get(index_error)));
+        while (optionsList.size() < 4) {
+            Log.i("test", " 加载。。。" + optionsList.indexOf(allOptionsList.get(index_error)));
             if (optionsList.indexOf(allOptionsList.get(index_error)) == -1) {
                 optionsList.add(allOptionsList.get(index_error));
             }
@@ -145,11 +149,11 @@ public class IdiomTestActivity extends BaseActivity {
 
         // }
         //  }
-        if (optionsList.indexOf(allOptionsList.get(index)) == -1){
-            optionsList.add(index_option,allOptionsList.get(index));
+        if (optionsList.indexOf(allOptionsList.get(index)) == -1) {
+            optionsList.add(index_option, allOptionsList.get(index));
         }
-        for (String s : optionsList){
-            Log.i("test"," name is:"+s);
+        for (String s : optionsList) {
+            Log.i("test", " name is:" + s);
         }
         tv1.setText(optionsList.get(0));
         tv2.setText(optionsList.get(1));
@@ -162,7 +166,20 @@ public class IdiomTestActivity extends BaseActivity {
         AsrJson asrJson = new AsrJson();
         Intent intent = getIntent();
         intent.getStringExtra("data");
-        objectList = asrJson.parseJSONobject(utils.getAsstesTxt("idiom.txt"));
+        SharedPreferencesHelper sharedPreferencesHelper =
+                new SharedPreferencesHelper(this, "idiom.txt");  //获取学习记录
+        int number = (int) sharedPreferencesHelper.getSharedPreference("number", 0); //获取学习记录的位置
+
+        Log.i("test", "number:" + number);
+        List<Object> objectList1 = new ArrayList<>();
+        objectList1 = asrJson.parseJSONobject(utils.getAsstesTxt("idiom.txt"));
+        if (number > 3) {
+            for (int i = 0; i <= number; i++) {
+                objectList.add(objectList1.get(i));
+            }
+        } else {
+            objectList = asrJson.parseJSONobject(utils.getAsstesTxt("idiom.txt"));
+        }
     }
 
 
@@ -191,7 +208,7 @@ public class IdiomTestActivity extends BaseActivity {
         titleView = $(R.id.titleview);
         image_answer = $(R.id.image_answer);
         image_answer.setVisibility(View.GONE);
-        animation = AnimationUtils.loadAnimation(this,R.anim.narrow);
+        animation = AnimationUtils.loadAnimation(this, R.anim.narrow);
         next_bt = $(R.id.next_bt);
         titleView.setCustomOnClickListener(new TitleView.ClickListener() {
             @Override

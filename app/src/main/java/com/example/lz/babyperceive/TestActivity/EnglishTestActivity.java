@@ -25,6 +25,7 @@ import com.example.lz.babyperceive.Activity.BaseActivity;
 import com.example.lz.babyperceive.Bean.AsrJson;
 import com.example.lz.babyperceive.Bean.Object;
 import com.example.lz.babyperceive.R;
+import com.example.lz.babyperceive.Utils.SharedPreferencesHelper;
 import com.example.lz.babyperceive.Utils.SpeechRecognizerTool;
 import com.example.lz.babyperceive.Utils.Speek;
 import com.example.lz.babyperceive.Utils.Utils;
@@ -146,8 +147,23 @@ public class EnglishTestActivity extends BaseActivity implements EventListener {
         AsrJson asrJson = new AsrJson();
         Intent intent = getIntent();
         intent.getStringExtra("data");
-        objectList = asrJson.parseJSONobject(utils.getAsstesTxt("english.txt"));
+        //objectList = asrJson.parseJSONobject(utils.getAsstesTxt("english.txt"));
+
+
+        SharedPreferencesHelper sharedPreferencesHelper =
+                new SharedPreferencesHelper(this, "english.txt");  //获取学习记录
+        int number = (int) sharedPreferencesHelper.getSharedPreference("number", 0); //获取学习记录的位置
+        List<Object> objectList1 = new ArrayList<>();
+        objectList1 = asrJson.parseJSONobject(utils.getAsstesTxt("english.txt"));
+        if (number > 3) {
+            for (int i = 0; i <= number; i++) {
+                objectList.add(objectList1.get(i));
+            }
+        } else {
+            objectList = asrJson.parseJSONobject(utils.getAsstesTxt("english.txt"));
+        }
     }
+
     @Override
     public void initParms(Bundle parms) {
 

@@ -95,7 +95,8 @@
             android:screenOrientation="landscape" />
         <activity
             android:name=".Activity.MoviesActivity"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+           />
         <activity
             android:name=".Activity.PlayerActivity"
             android:hardwareAccelerated="true"

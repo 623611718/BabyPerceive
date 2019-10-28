@@ -43,16 +43,13 @@ public class YuleActivity extends BaseActivity implements View.OnClickListener {
 
         Log.i("test","isStatus:"+myApplication.isStatus());
         if (!myApplication.isStatus()){
-           //myApplication.setStatus(false);
            new VerifyDialog(this, R.style.dialog, "快让家长帮忙吧", new VerifyDialog.OnCloseListener() {
                @Override
-               public void onClick(Dialog dialog, boolean confirm) {
-
+               public void onClick(View view) {
+                   finish();
                }
            }).setTitle("不能玩了").show();
        }else {
-            myApplication.setTime(0);
-            //myApplication.setStatus(false);
         }
     }
     //改变状态栏字体颜色
@@ -145,12 +142,10 @@ public class YuleActivity extends BaseActivity implements View.OnClickListener {
         switch (v.getId()){
             case R.id.animal_bt:
                 Intent intent = new Intent(this, MusicActivity.class);
-                //intent.putExtra("data","animal.txt");
                 startActivity(intent);
                 break;
             case R.id.fruit_bt:
                 Intent intent_fruit = new Intent(this, MoviesActivity.class);
-              //  intent_fruit.putExtra("data","fruit.txt");
                 startActivity(intent_fruit);
                 break;
             case R.id.vegetables_bt:

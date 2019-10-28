@@ -27,19 +27,6 @@ public class IntentBroadReceiver extends BroadcastReceiver{
 	public void onReceive(Context context, Intent intent) {
 		Log.e(TAG, "BroadcastReceiver-intent" + intent.getAction());
 		// TODO Auto-generated method stub
-	/*	if (WifiManager.WIFI_STATE_CHANGED_ACTION.equals(intent.getAction())) {
-			int wifiState = intent.getIntExtra(WifiManager.EXTRA_WIFI_STATE, 0);
-			Log.e(TAG, "wifiState-" + wifiState);
-			switch (wifiState) {
-				case WifiManager.WIFI_STATE_DISABLED:
-					Log.e(TAG, "wifiState------WIFI_STATE_DISABLED");
-					break;
-				case WifiManager.WIFI_STATE_DISABLING:
-					Log.e(TAG, "wifiState-----WIFI_STATE_DISABLING");
-					break;
-				//
-			}
-		}*/
 		//wifi连接上与否
 		if (intent.getAction().equals(WifiManager.NETWORK_STATE_CHANGED_ACTION)) {
 
@@ -53,18 +40,9 @@ public class IntentBroadReceiver extends BroadcastReceiver{
 				//获取当前wifi名称
 				Log.i(TAG, "连接到WIFI " + wifiInfo.getSSID());
 				Toast.makeText(context,"当前连接的是WIFI",Toast.LENGTH_LONG).show();
-			//	TtsManager ttsManager = new TtsManager();
-			//	ttsManager.checkTtsJet(context.getApplicationContext());
 			}
 		}
-		/*ConnectivityManager manager =(ConnectivityManager) context.getSystemService(context.CONNECTIVITY_SERVICE);
-		NetworkInfo wifiNetworkInfo = manager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
-		Log.i("dsa","IntentBroadReceiver networkInfo  "+wifiNetworkInfo);
-		if( wifiNetworkInfo!=null&&wifiNetworkInfo.isAvailable()){
-			Toast.makeText(context,"当前连接的是WIFI",Toast.LENGTH_LONG).show();
-		}else{
-			Dialog(context);
-		}*/
+
 	}
 	private void Dialog( Context context){
 		AlertDialog.Builder builder =new AlertDialog.Builder(context);

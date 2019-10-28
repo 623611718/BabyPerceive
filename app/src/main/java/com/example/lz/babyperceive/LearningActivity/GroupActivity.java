@@ -77,7 +77,9 @@ public class GroupActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         myApplication = (MyApplication) getApplication();
-        myApplication.sendEmptyMessage();
+        if (!myApplication.status) {
+            myApplication.sendEmptyMessage();
+        }
         utils = new Utils(this);
         confirm_bt.setEnabled(false);
         textView.setText("加载词库中...");

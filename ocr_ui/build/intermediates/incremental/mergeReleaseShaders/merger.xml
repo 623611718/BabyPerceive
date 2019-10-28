@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="E:\studio workplace\BabyPerceive\ocr_ui\src\main\shaders"/></dataSet><dataSet config="release"><source path="E:\studio workplace\BabyPerceive\ocr_ui\src\release\shaders"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="F:\workplace\BabyPerceive\ocr_ui\src\main\shaders"/></dataSet><dataSet config="release"><source path="F:\workplace\BabyPerceive\ocr_ui\src\release\shaders"/></dataSet></merger>

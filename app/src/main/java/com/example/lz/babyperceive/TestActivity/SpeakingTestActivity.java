@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.example.lz.babyperceive.Activity.BaseActivity;
 import com.example.lz.babyperceive.Bean.AsrJson;
 import com.example.lz.babyperceive.R;
+import com.example.lz.babyperceive.Utils.SharedPreferencesHelper;
 import com.example.lz.babyperceive.Utils.Utils;
 import com.example.lz.babyperceive.View.TitleView;
 
@@ -86,10 +87,11 @@ public class SpeakingTestActivity extends BaseActivity {
     @SuppressLint("NewApi")
     private void setData() {
         int max = objectList.size() - 1;
-        random_number = utils.getRandomNumber(max);
+        Log.i("test","max:"+max);
+            random_number = utils.getRandomNumber(max);
 
        // object = objectList.get(random_number).getObject();
-        name = utils.getChinese();
+        name = utils.getChineseRandom(max);
        // imageId = objectList.get(random_number).getImageId();
        // introduction = objectList.get(random_number).getIntroduction();
         StringBuffer stringBuffer = new StringBuffer();
@@ -106,6 +108,7 @@ public class SpeakingTestActivity extends BaseActivity {
          */
         allOptionsList.clear();
         optionsList.clear();
+        Log.i("test"," 正确答案。。。"+name);
         for (String object : objectList) {
             if (name.equals(object)) {
 
@@ -113,13 +116,10 @@ public class SpeakingTestActivity extends BaseActivity {
             allOptionsList.add(object);
         }
         int index = allOptionsList.indexOf(name);   // 获取答案在所有选项中的位置
+        Log.i("test"," 答案在所有选项中的位置。。。"+index);
+        Log.i("test"," allOptionsList长度。。。"+allOptionsList.size());
         int index_option = utils.getRandomNumber(3);  //设置答案在4个显示的选项中的位置
         int index_error = utils.getRandomNumber(max);
-        //optionsList.add(index_option,allOptionsList.get(index));
-        // for (int i = 0; i < 4; i++) {
-           /* if (i == index_option) {
-                optionsList.add(index_option,allOptionsList.get(index));
-            } else {*/
         //如果没有就加入
         while (optionsList.size()<4) {
             Log.i("test"," 加载。。。"+optionsList.indexOf(allOptionsList.get(index_error)));
@@ -148,9 +148,17 @@ public class SpeakingTestActivity extends BaseActivity {
         AsrJson asrJson = new AsrJson();
         Intent intent = getIntent();
         intent.getStringExtra("data");
+        SharedPreferencesHelper sharedPreferencesHelper =
+                new SharedPreferencesHelper(this, "chinese.txt");  //获取学习记录
+        int number = (int) sharedPreferencesHelper.getSharedPreference("number", 1); //获取学习记录的位置
+
         //objectList = asrJson.parseJSONobject(utils.getAsstesTxt("idiom.txt"));
         String[] arr = utils.getAsstesTxt("chinese.txt").split(",");
-        objectList = java.util.Arrays.asList(arr);
+        String[] arr1 = new String[number];
+        System.arraycopy(arr,0,arr1,0,number);
+        objectList = java.util.Arrays.asList(arr1);
+        Log.i("test","objectList长度:"+objectList.size());
+
     }
 
 

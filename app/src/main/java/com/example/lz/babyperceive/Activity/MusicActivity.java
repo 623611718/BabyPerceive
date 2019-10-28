@@ -63,8 +63,13 @@ public class MusicActivity extends BaseActivity {
             switch (msg.what) {
                 case PROGRESS:
                     if (mediaPlayer != null) {
-                        time +=1;
-
+                      /*  time +=1;
+                        if (!myApplication.status && !myApplication.isShow()) {  //如果娱乐状态为false 弹出验证
+                            myApplication.setShow(true);
+                            //myApplication.setStatus(false);
+                            showDialog();
+                            // myApplication.setYueleStatus(false);
+                        }*/
                         // 1.得到当前的视频播放进度
                         currenposition = mediaPlayer.getCurrentPosition();
                         // 2.Seekbar.setprogress(当前进度);
@@ -90,14 +95,9 @@ public class MusicActivity extends BaseActivity {
             super.handleMessage(msg);
             switch (msg.what) {
                 case TIME:
-                    int time = myApplication.getYuletime();
-                    time += 1;
-                    myApplication.setYuletime(time);
-                    if (myApplication.getYuletime() >= myApplication.yuleTime_end && !myApplication.isShow()) {  //如果娱乐状态为false 弹出验证
+                    if (!myApplication.status && !myApplication.isShow()) {  //如果娱乐状态为false 弹出验证
                         myApplication.setShow(true);
-                        myApplication.setStatus(false);
                         showDialog();
-                        // myApplication.setYueleStatus(false);
                     }
                     removeMessages(TIME);
                     sendEmptyMessageDelayed(TIME, 1000);
@@ -184,6 +184,8 @@ public class MusicActivity extends BaseActivity {
         if (!myApplication.isStatus()) {
             showDialog();
             // myApplication.setYueleStatus(false);
+        }else {
+            myApplication.sendYuleEmptyMessage();
         }
         handlerTime.sendEmptyMessageDelayed(TIME, 0);
     }
@@ -200,8 +202,8 @@ public class MusicActivity extends BaseActivity {
     private void showDialog(){
         new VerifyDialog(this, R.style.dialog, "快让家长帮忙吧", new VerifyDialog.OnCloseListener() {
             @Override
-            public void onClick(Dialog dialog, boolean confirm) {
-
+            public void onClick(View view) {
+                finish();
             }
         }).setTitle("不能玩了").show();
     }
@@ -468,6 +470,7 @@ public class MusicActivity extends BaseActivity {
         }
         handler.removeMessages(PROGRESS);
         handlerTime.removeMessages(TIME);
+        myApplication.removeYuleEmptyMessage();
         unregisterReceiver(receiver);//注销广播
         super.onDestroy();
     }

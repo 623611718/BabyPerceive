@@ -33,16 +33,16 @@ import java.util.Random;
 public class SpeakingActivity extends BaseActivity implements View.OnClickListener {
     private List<String> objectList = new ArrayList<>();
     private Random random;
-    private TextView chinese_tv,chineseSpell_tv;
-    private int number =1;
+    private TextView chinese_tv, chineseSpell_tv;
+    private int number = 1;
     private String chinses;  //单个汉字
     private String previous_number = "";//上一个汉字
     private Speek speek;  //文字转语音类
-    private Button previous_bt,next_bt,play_bt;
+    private Button previous_bt, next_bt, play_bt;
     private String[] spell = new String[0];
     private String chineseSpell = "";
     private TitleView titleView;
-    private int  length;
+    private int length;
 
     private SharedPreferencesHelper sharedPreferencesHelper;
     private Utils utils;
@@ -57,14 +57,16 @@ public class SpeakingActivity extends BaseActivity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         myApplication = (MyApplication) getApplication();
-        myApplication.sendEmptyMessage();
+        if (!myApplication.status) {
+            myApplication.sendEmptyMessage();
+        }
         utils = new Utils(this);
         String[] arr = utils.getAsstesTxt("chinese.txt").split(",");
         objectList = java.util.Arrays.asList(arr);
         length = objectList.size();
         sharedPreferencesHelper = new SharedPreferencesHelper(this, "chinese.txt");
-        number = (int) sharedPreferencesHelper.getSharedPreference("chinese.txt",1);
-        Log.i("test","number:"+number);
+        number = (int) sharedPreferencesHelper.getSharedPreference("number", 1);
+        Log.i("test", "number:" + number);
         initView();
         initData(number);
         speek = new Speek(this);
@@ -72,7 +74,7 @@ public class SpeakingActivity extends BaseActivity implements View.OnClickListen
 
     }
 
-    private String getChineseSpell(String chinese){
+    private String getChineseSpell(String chinese) {
         String[] pyStrs = PinyinHelper.toHanyuPinyinStringArray('重');
 
         for (String s : pyStrs) {
@@ -106,17 +108,14 @@ public class SpeakingActivity extends BaseActivity implements View.OnClickListen
     }
 
 
-
     /**
      * \
-     * 随机指定位置的汉字
+     * 指定位置的汉字
      */
     private void initData(int position) {
         number = position;
-        Log.i("test", "位置:" + number);
-        chinses = utils.getChinese(number);      //随机指定位置的汉字
+        chinses = utils.getChinese(number);      //指定位置的汉字
         chineseSpell = utils.getChineseSpell(chinses);                          //获取拼音
-        Log.i("test", "内容:" + chinses+"拼音:"+chineseSpell);
         chinese_tv.setText(chinses);
         chineseSpell_tv.setText(chineseSpell);
     }
@@ -145,7 +144,7 @@ public class SpeakingActivity extends BaseActivity implements View.OnClickListen
         titleView.setCustomOnClickListener(new TitleView.ClickListener() {
             @Override
             public void onClick(View v) {
-                switch (v.getId()){
+                switch (v.getId()) {
                     case R.id.back_bt:
                         finish();
                         break;
@@ -154,14 +153,15 @@ public class SpeakingActivity extends BaseActivity implements View.OnClickListen
         });
     }
 
-    private void getStatus(){
-        if (myApplication.isStatus()){
-           // myApplication.setStatus(false);
-            Intent intent=new Intent(this,YuleActivity.class);
+    private void getStatus() {
+        if (myApplication.isStatus()) {
+            // myApplication.setStatus(false);
+            Intent intent = new Intent(this, YuleActivity.class);
             startActivity(intent);
             finish();
         }
     }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -171,17 +171,17 @@ public class SpeakingActivity extends BaseActivity implements View.OnClickListen
             case R.id.next_bt:
                 if (myApplication.isStatus()) {
                     getStatus();
-                } else if (number<length-2) {
+                } else if (number < length - 2) {
                     previous_number = chinses;
-                    initData(number+1);
+                    initData(number + 1);
                     speek.Speeking(chinses);
                 }
                 break;
             case R.id.previous_bt:
                 if (myApplication.isStatus()) {
                     getStatus();
-                } else if (number>1) {
-                    initData(number-1);
+                } else if (number > 1) {
+                    initData(number - 1);
                     speek.Speeking(chinses);
                 }
                 break;
@@ -234,13 +234,17 @@ public class SpeakingActivity extends BaseActivity implements View.OnClickListen
 
     @Override
     protected void onStop() {
-        sharedPreferencesHelper.put("chinese.txt",number);
+        if (number > (int) sharedPreferencesHelper.getSharedPreference("chinese", 1)) {
+            sharedPreferencesHelper.put("number", number);
+        }
         super.onStop();
     }
 
     @Override
     protected void onDestroy() {
-        sharedPreferencesHelper.put("chinese.txt",number);
+        if (number > (int) sharedPreferencesHelper.getSharedPreference("chinese", 1)) {
+            sharedPreferencesHelper.put("number", number);
+        }
         myApplication.removeEmptyMessage();
         speek.Destory();
         super.onDestroy();

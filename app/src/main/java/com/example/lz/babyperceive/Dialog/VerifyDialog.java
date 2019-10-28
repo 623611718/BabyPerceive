@@ -16,6 +16,7 @@ import com.example.lz.babyperceive.Bean.Object;
 import com.example.lz.babyperceive.R;
 import com.example.lz.babyperceive.Utils.SharedPreferencesHelper;
 import com.example.lz.babyperceive.Utils.Utils;
+import com.example.lz.babyperceive.View.ButtonView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -202,14 +203,23 @@ public class VerifyDialog extends Dialog implements View.OnClickListener {
         v5.setOnClickListener(this);
         v0.setOnClickListener(this);
         button = (Button) findViewById(R.id.button);
-        button.setOnClickListener(this);
+        button.setOnClickListener(new ButtonViewClistener());
+
         contentTxt = (TextView) findViewById(R.id.content);
         titleTxt = (TextView) findViewById(R.id.title);
         contentTxt.setText(content);
 
 
     }
+    class ButtonViewClistener implements View.OnClickListener {
 
+        @Override
+        public void onClick(View v) {
+            if (listener !=null){
+                listener.onClick(v);
+            }
+        }
+    }
     private void GoneView(){
         v4.setVisibility(View.GONE);
         v0.setVisibility(View.GONE);
@@ -225,7 +235,9 @@ public class VerifyDialog extends Dialog implements View.OnClickListener {
         myApplication.setTime(0);
         myApplication.setYuletime(0);
         myApplication.setShow(false);
+        myApplication.sendYuleEmptyMessage();
         dismiss();
+     //   getOwnerActivity().finish();
     }
     @Override
     public void onClick(View v) {
@@ -301,7 +313,7 @@ public class VerifyDialog extends Dialog implements View.OnClickListener {
                 sharedPreferencesHelper.put("status",false);
                 //dismiss();
              //   myApplication.setYueleStatus(false);
-                android.os.Process.killProcess(android.os.Process.myPid());
+             //   android.os.Process.killProcess(android.os.Process.myPid());
                 break;
             case R.id.v0:
                 break;
@@ -320,7 +332,14 @@ public class VerifyDialog extends Dialog implements View.OnClickListener {
     }
 
     public interface OnCloseListener {
-        void onClick(Dialog dialog, boolean confirm);
+        void onClick(View view);
     }
-
+    /**
+     * 这个方法等同于setOnClickListener
+     *
+     * @param clickListener 这个接口就是OnClickListener
+     */
+    public void setCustomOnClickListener(OnCloseListener clickListener){
+        this.listener =clickListener;
+    }
 }

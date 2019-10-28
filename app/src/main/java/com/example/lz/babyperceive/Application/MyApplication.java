@@ -10,6 +10,7 @@ import android.util.Log;
 import com.example.lz.babyperceive.Activity.YuleActivity;
 import com.example.lz.babyperceive.R;
 import com.example.lz.babyperceive.Utils.SharedPreferencesHelper;
+import com.example.lz.babyperceive.Utils.TTSUtils;
 
 import org.w3c.dom.ProcessingInstruction;
 
@@ -22,14 +23,14 @@ public class MyApplication extends Application {
     public  boolean status =false;
     // public boolean yueleStatus =true;
     public  int time = 0;  //计时
-    public  int learningTime_end=18; //学习时间
+    public  int learningTime_end=1800; //学习时间
     public  int yuletime = 0;  //计时
-    public  int yuleTime_end=18;   //娱乐时间
+    public  int yuleTime_end=1800;   //娱乐时间
     public final static int yuleStart = 0;  //娱乐计时
     public final static int learnStart = 1;      //学习计时
     private String TAG = "MyApplication";
     private boolean isShow =false;
-
+    private static Context context;
     private SharedPreferencesHelper sharedPreferencesHelper;
     private Handler handler = new Handler() {
 
@@ -50,20 +51,38 @@ public class MyApplication extends Application {
                     Log.i(TAG, "time  " + time);
                     break;
 
+                case yuleStart:
+                    time +=1;
+                    removeMessages(yuleStart);
+                    if (time >= yuleTime_end){
+                        status = false;
+                        time =0;
+                    }else {
+                        sendEmptyMessageDelayed(yuleStart,1000);
+                        Log.i(TAG, "time  " + time);
+                    }
+                    break;
             }
         }
     };
 
+    public static Context getContext() {
+        return context;
+    }
+
     @Override
     public void onCreate() {
-        Log.i("test", "MyApplication onCreate");
+        Log.i(TAG, "MyApplication onCreate");
         //handler.sendEmptyMessageDelayed(start, 0);
         super.onCreate();
         sharedPreferencesHelper = new SharedPreferencesHelper(this,"MyApplication");
-        yuleTime_end = (int)sharedPreferencesHelper.getSharedPreference("yuleTime",18);
-        learningTime_end=(int)sharedPreferencesHelper.getSharedPreference("learnTime",18);
+        yuleTime_end = (int)sharedPreferencesHelper.getSharedPreference("yuleTime",1800);
+        learningTime_end=(int)sharedPreferencesHelper.getSharedPreference("learnTime",1800);
         status = (boolean) sharedPreferencesHelper.getSharedPreference("status",false);
+        time = (int) sharedPreferencesHelper.getSharedPreference("time",0);
         Log.i(TAG,"status:"+status);
+        context = getApplicationContext();
+        TTSUtils.getInstance().init();
     }
 
     public void sendEmptyMessage() {
@@ -163,6 +182,7 @@ public class MyApplication extends Application {
         sharedPreferencesHelper.put("yuleTime",yuleTime_end);
         sharedPreferencesHelper.put("learnTime",learningTime_end);
         sharedPreferencesHelper.put("status",status);
+        sharedPreferencesHelper.put("time",time);
         super.onTrimMemory(level);
     }
 }

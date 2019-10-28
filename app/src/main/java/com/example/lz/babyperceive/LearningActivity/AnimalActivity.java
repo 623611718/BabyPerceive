@@ -63,7 +63,9 @@ public class AnimalActivity extends BaseActivity {
         }
         utils = new Utils(this);
         myApplication = (MyApplication) getApplication();
-        myApplication.sendEmptyMessage();
+        if (!myApplication.status) {
+            myApplication.sendEmptyMessage();
+        }
         MyAsyncTask myAsyncTask = new MyAsyncTask();
         myAsyncTask.execute();
         /*if (isEnglish){
@@ -307,7 +309,9 @@ public class AnimalActivity extends BaseActivity {
 
     @Override
     protected void onStop() {
-        sharedPreferencesHelper.put("number", number);
+        if (number > (int) sharedPreferencesHelper.getSharedPreference("number", 0)) {
+            sharedPreferencesHelper.put("number", number);
+        }
         super.onStop();
     }
 

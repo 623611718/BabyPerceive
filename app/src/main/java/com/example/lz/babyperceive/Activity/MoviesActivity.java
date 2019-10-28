@@ -14,12 +14,14 @@ import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -49,7 +51,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MoviesActivity extends BaseActivity {
+public class MoviesActivity extends AppCompatActivity implements View.OnClickListener {
     private TitleView titleView;
     private ListView listViewl;
     private List<MoviesBean> list = new ArrayList<>();
@@ -62,10 +64,6 @@ public class MoviesActivity extends BaseActivity {
     private LinearLayout Linear_layout;
     private FrameLayout Frame_layout;
 
-    @Override
-    public void widgetClick(View v) {
-
-    }
 
     protected static final int PROGRESS = 1;
     protected static final int isplaying = 2;
@@ -121,13 +119,18 @@ public class MoviesActivity extends BaseActivity {
             super.handleMessage(msg);
             switch (msg.what) {
                 case TIME:
-                    int time = myApplication.getYuletime();
+                   /* int time = myApplication.getYuletime();
                     time += 1;
                     myApplication.setYuletime(time);
-                    if (myApplication.getYuletime() >= myApplication.yuleTime_end && !myApplication.isShow()) {  //如果娱乐状态为false 弹出验证
+                    if (!myApplication.status && !myApplication.isShow()) {  //如果娱乐状态为false 弹出验证
                         myApplication.setShow(true);
-                        myApplication.setStatus(false);
-                        Log.i("test","设置setStatus");
+                        //myApplication.setStatus(false);
+                        showDialog();
+                        // myApplication.setYueleStatus(false);
+                    }*/
+                    if (!myApplication.status && !myApplication.isShow()) {  //如果娱乐状态为false 弹出验证
+                        myApplication.setShow(true);
+                        //myApplication.setStatus(false);
                         showDialog();
                         // myApplication.setYueleStatus(false);
                     }
@@ -137,6 +140,8 @@ public class MoviesActivity extends BaseActivity {
             }
         }
     };
+
+
 
 
     //对快进 和快退进行异步处理
@@ -180,6 +185,15 @@ public class MoviesActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //去除title
+      if (getSupportActionBar() != null){
+            getSupportActionBar().hide();
+        }
+        //去掉Activity上面的状态栏
+       getWindow().setFlags(WindowManager.LayoutParams. FLAG_FULLSCREEN ,
+        WindowManager.LayoutParams. FLAG_FULLSCREEN);
+        setContentView(R.layout.activity_movies);
         //断网提示退出
         receiver = new IntentBroadReceiver(MoviesActivity.this);
         IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
@@ -193,6 +207,9 @@ public class MoviesActivity extends BaseActivity {
         myApplication = (MyApplication) getApplication();
         if (!myApplication.isStatus()) {
             showDialog();
+            // myApplication.setYueleStatus(false);
+        } else {
+            myApplication.sendYuleEmptyMessage();
         }
         handlerTime.sendEmptyMessageDelayed(TIME, 0);//发送消息计时娱乐时间
 
@@ -233,69 +250,15 @@ public class MoviesActivity extends BaseActivity {
         }
     }
 
-    @Override
-    public void initParms(Bundle parms) {
-    }
 
-    @Override
-    public View bindView() {
-        return null;
-    }
 
-    @Override
-    public int bindLayout() {
-        return R.layout.activity_movies;
-    }
 
-    @Override
-    public void initView(View view) {
-        titleView = $(R.id.titleview);
-        titleView.setCustomOnClickListener(new TitleView.ClickListener() {
-            @Override
-            public void onClick(View v) {
-                switch (v.getId()) {
-                    case R.id.mote_bt:
-                        break;
-                    case R.id.back_bt:
-                        finish();
-                        break;
-                }
-            }
-        });
-        titleView.setTitle_tv("视频列表");
-        adapter = new MoviesAdapter(this, R.layout.movies_item, list);
-        listViewl = $(R.id.listview);
-        listViewl.setAdapter(adapter);
-        listViewl.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-               /*Intent intent = new Intent(MoviesActivity.this, PlayerActivity.class);
-                intent.putExtra("data", list.get(position).getName()); // URL
-                intent.putExtra("url", urls.get(position));  //名称
-                startActivity(intent);*/
-                play(urls.get(position));
-                name = list.get(position).getName();
-                path = urls.get(position);
-
-            }
-        });
-    }
-
-    @Override
-    public void setListener() {
-
-    }
-
-    @Override
-    public void doBusiness(Context mContext) {
-
-    }
 
     private void showDialog() {
         new VerifyDialog(this, R.style.dialog, "快让家长帮忙吧", new VerifyDialog.OnCloseListener() {
             @Override
-            public void onClick(Dialog dialog, boolean confirm) {
-
+            public void onClick(View view) {
+                finish();
             }
         }).setTitle("不能玩了").show();
     }
@@ -370,6 +333,37 @@ public class MoviesActivity extends BaseActivity {
         pb_main.setOnClickListener(this);
         play_title = (Play_title) findViewById(R.id.play_title);
         play_title.setTitle_name(name);
+        titleView = (TitleView) findViewById(R.id.titleview);
+        titleView.setCustomOnClickListener(new TitleView.ClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()) {
+                    case R.id.mote_bt:
+                        break;
+                    case R.id.back_bt:
+                        finish();
+                        break;
+                }
+            }
+        });
+        titleView.setTitle_tv("视频列表");
+        adapter = new MoviesAdapter(this, R.layout.movies_item, list);
+        listViewl = (ListView) findViewById(R.id.listview);
+        listViewl.setAdapter(adapter);
+        listViewl.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+               /*Intent intent = new Intent(MoviesActivity.this, PlayerActivity.class);
+                intent.putExtra("data", list.get(position).getName()); // URL
+                intent.putExtra("url", urls.get(position));  //名称
+                startActivity(intent);*/
+                play(urls.get(position));
+                name = list.get(position).getName();
+                path = urls.get(position);
+                play_title.setTitle_name(name);
+
+            }
+        });
         surfaceview.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -504,26 +498,7 @@ public class MoviesActivity extends BaseActivity {
                     Frame_layout.setPadding(12, 12, 12, 12);
                     Linear_layout.setPadding(12, 12, 12, 12);
                 }
-              /*  int height = surfaceview.getLayoutParams().height;
-                int width = surfaceview.getLayoutParams().width;
-                if (height == -1 && width == -1) {
-                    FrameLayout.LayoutParams params =new FrameLayout.LayoutParams(0,ViewGroup.LayoutParams.MATCH_PARENT,);
-                    params.gravity = Gravity.CENTER;
-                    surfaceview.setLayoutParams(params);
-                } else if (height == 540 && width == 960) {
-                    height = 360;
-                    width = 640;
-                } else if (height == 360 && width == 640) {
-                    height = 180;
-                    width = 320;
-                }else if (height == 180 && width == 320){
-                    height =720;
-                    width =1280;
-                }
 
-                FrameLayout.LayoutParams params =new FrameLayout.LayoutParams(width,height);
-                params.gravity = Gravity.CENTER;
-                surfaceview.setLayoutParams(params);*/
                 break;
         }
     }
@@ -729,103 +704,35 @@ public class MoviesActivity extends BaseActivity {
     }
 
     public void isPlayingVideo() {
-        if (mediaPlayer.isPlaying()) {
-            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-            mediaPlayer.pause();
-            Log.i("localplayer", "暂停");
-            btn_play.setBackgroundResource(R.drawable.play_play);
-            btn_play.setVisibility(View.VISIBLE);
-            playing.setBackgroundResource(R.drawable.play_play);
-            playing.setVisibility(View.VISIBLE);
-            Log.i("TAG", "STOP");
+        if (mediaPlayer != null) {
+            if (mediaPlayer.isPlaying()) {
+                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+                mediaPlayer.pause();
+                Log.i("localplayer", "暂停");
+                btn_play.setBackgroundResource(R.drawable.play_play);
+                btn_play.setVisibility(View.VISIBLE);
+                playing.setBackgroundResource(R.drawable.play_play);
+                playing.setVisibility(View.VISIBLE);
+                Log.i("TAG", "STOP");
 
-        } else {
-            Log.i("TAG", "PLAY");
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-            mediaPlayer.start();
-            btn_play.setBackgroundResource(R.drawable.play_pause);
-            playing.setBackgroundResource(R.drawable.play_pause);
-            // 1秒过后自动消失
-            Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    btn_play.setVisibility(View.GONE);
-                }
-            }, 1000);
+            } else {
+                Log.i("TAG", "PLAY" );
+                getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+                mediaPlayer.start();
+                btn_play.setBackgroundResource(R.drawable.play_pause);
+                playing.setBackgroundResource(R.drawable.play_pause);
+                // 1秒过后自动消失
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        btn_play.setVisibility(View.GONE);
+                    }
+                }, 1000);
+            }
         }
     }
 
-    /**
-     * 给back键添加监听事件
-     */
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-
-        Log.i("dsa", "keyCode  " + keyCode);
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            if (mediaPlayer != null) {
-                mediaPlayer.stop();
-                mediaPlayer.release();
-                mediaPlayer = null;
-            }
-            finish();
-            return false;
-        } else if (keyCode == KeyEvent.KEYCODE_DPAD_LEFT) {
-            if (mediaPlayer.isPlaying()) {
-                if (mediaPlayer.getCurrentPosition() > 0) {
-                    int pos = mediaPlayer.getCurrentPosition();
-                    if (pos < 5000) {
-                        mediaPlayer.seekTo(pos);
-                    } else {
-                        // 毫秒 5秒
-                        pos -= 5000;
-                        mediaPlayer.seekTo(pos);
-                        mediaPlayer.start();
-                        btn_play.setBackgroundResource(R.drawable.btn_pause_selector);
-                        // 1秒过后自动消失
-                        Handler handler = new Handler();
-                        handler.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                btn_play.setVisibility(View.GONE);
-                            }
-                        }, 1000);
-                        Log.i("TAG", "left！");
-                    }
-                }
-            } else {
-                Log.i("TAG", "按左键了！");
-            }
-            return true;
-        } else if (keyCode == KeyEvent.KEYCODE_DPAD_RIGHT) {
-            if (mediaPlayer.isPlaying()) {
-                if (mediaPlayer.getCurrentPosition() > 0) {
-                    int pos = mediaPlayer.getCurrentPosition();
-                    int druation = mediaPlayer.getDuration();
-                    Log.i("TAG", "pos" + pos);
-                    Log.i("TAG", "druation" + druation);
-                    if (pos < druation) {
-                        // 5秒
-                        pos += 5000;
-                        mediaPlayer.seekTo(pos);
-                        Log.i("TAG", "pos" + pos);
-                        Log.i("TAG", "druation" + druation);
-                    } else {
-                        mediaPlayer.seekTo(druation);
-                    }
-                }
-            } else {
-                Log.i("TAG", "按右键了！");
-            }
-            return true;
-        } else if (keyCode == KeyEvent.KEYCODE_DPAD_CENTER) {
-            if (errorcode != 100) {
-                // isPlayingVideo();
-            }
-        }
-        return super.onKeyDown(keyCode, event);
-    }
 
     public void display(View v) throws IllegalArgumentException,
             SecurityException, IllegalStateException, IOException {
@@ -843,6 +750,7 @@ public class MoviesActivity extends BaseActivity {
             unregisterReceiver(mBatInfoReceiver);
         }
         handlerTime.removeMessages(TIME);
+        myApplication.removeYuleEmptyMessage();
         unregisterReceiver(receiver);//注销广播
         super.onDestroy();
     }

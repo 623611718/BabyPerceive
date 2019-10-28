@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.lz.babyperceive.Application.MyApplication;
 import com.example.lz.babyperceive.R;
+import com.example.lz.babyperceive.Utils.SharedPreferencesHelper;
 
 /**
  * Created by lz on 2019/9/19.
@@ -123,11 +124,17 @@ public class CommomDialog   extends Dialog implements View.OnClickListener{
                 if(listener != null){
                     listener.onClick(this, true);
                 }
+                SharedPreferencesHelper sharedPreferencesHelper = new SharedPreferencesHelper(getContext(),"MyApplication");
                 if (et2.getText().toString()!=null) {
                     myApplication.setYuleTime_end(Integer.parseInt(et2.getText().toString()) *60);
+                    sharedPreferencesHelper.put("yuleTime",Integer.parseInt(et2.getText().toString()) *60);
+                    sharedPreferencesHelper.put("status",myApplication.status);
+
                 }
                 if (et1.getText().toString()!=null) {
                     myApplication.setLearningTime_end(Integer.parseInt(et1.getText().toString()) * 60);
+                    sharedPreferencesHelper.put("learnTime",Integer.parseInt(et2.getText().toString()) *60);
+                    sharedPreferencesHelper.put("status",myApplication.status);
                 }
                 this.dismiss();
                 break;

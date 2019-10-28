@@ -82,14 +82,6 @@ public class ImageRecognitionActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         handler = new Handler();
-        //进入此界面自动打开相机 CameraActivity
-     /*   Intent intent = new Intent(ImageRecognitionActivity.this, CameraActivity.class);
-        intent.putExtra(CameraActivity.KEY_OUTPUT_FILE_PATH,
-                FileUtil.getSaveFile(getApplication()).getAbsolutePath());
-        intent.putExtra(CameraActivity.KEY_CONTENT_TYPE,
-                CameraActivity.CONTENT_TYPE_GENERAL);
-        startActivityForResult(intent, 2);*/
-        //  ImageRecognitionAdapter adapter = new ImageRecognitionAdapter(this,R.layout.image_recognition_item);
     }
 
     @Override
@@ -163,9 +155,6 @@ public class ImageRecognitionActivity extends BaseActivity {
                 switch (item.getItemId()) {
                     case R.id.quit1:
                         try {
-                           /* Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                            intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
-                            startActivityForResult(intent, 2);*/
                             list.clear();
                             Intent intent = new Intent(ImageRecognitionActivity.this, CameraActivity.class);
                             intent.putExtra(CameraActivity.KEY_OUTPUT_FILE_PATH,

@@ -15,6 +15,7 @@ import com.example.lz.babyperceive.Activity.BaseActivity;
 import com.example.lz.babyperceive.Bean.AsrJson;
 import com.example.lz.babyperceive.Bean.Object;
 import com.example.lz.babyperceive.R;
+import com.example.lz.babyperceive.Utils.SharedPreferencesHelper;
 import com.example.lz.babyperceive.Utils.Speek;
 import com.example.lz.babyperceive.Utils.Utils;
 import com.example.lz.babyperceive.View.TitleView;
@@ -138,11 +139,54 @@ public class ObjectTestActivity extends BaseActivity {
         AsrJson asrJson = new AsrJson();
         Intent intent = getIntent();
         intent.getStringExtra("data");
-        objectList = asrJson.parseJSONobject(utils.getAsstesTxt("animal.txt"));
+        List<Object> objectList_a = new ArrayList<>();
+        List<Object> objectList_b = new ArrayList<>();
+        List<Object> objectList_c = new ArrayList<>();
+
+       /* objectList = asrJson.parseJSONobject(utils.getAsstesTxt("animal.txt"));
         objectList.addAll(asrJson.parseJSONobject(utils.getAsstesTxt("fruit.txt")));
+        objectList.addAll(asrJson.parseJSONobject(utils.getAsstesTxt("vegetables.txt")));*/
+        SharedPreferencesHelper sharedPreferencesHelper_a =
+                new SharedPreferencesHelper(this, "animal.txt");  //获取学习记录
+        int number_a = (int) sharedPreferencesHelper_a.getSharedPreference("number", 0); //获取学习记录的位置
+
+        SharedPreferencesHelper sharedPreferencesHelper_b =
+                new SharedPreferencesHelper(this, "fruit.txt");  //获取学习记录
+        int number_b = (int) sharedPreferencesHelper_a.getSharedPreference("number", 0); //获取学习记录的位置
+
+        SharedPreferencesHelper sharedPreferencesHelper_c =
+                new SharedPreferencesHelper(this, "vegetables.txt");  //获取学习记录
+        int number_c = (int) sharedPreferencesHelper_a.getSharedPreference("number", 0); //获取学习记录的位置
+        int number = number_a + number_b + number_c;  //总数
+        objectList_a = asrJson.parseJSONobject(utils.getAsstesTxt("animal.txt"), number_a);
+        objectList_b = asrJson.parseJSONobject(utils.getAsstesTxt("fruit.txt"), number_b);
+        objectList_c = asrJson.parseJSONobject(utils.getAsstesTxt("vegetables.txt"), number_c);
+        objectList.addAll(objectList_a);
+        objectList.addAll(objectList_b);
+        objectList.addAll(objectList_c);
+        Log.i("test", "objectList.size:" + objectList_a.size());
+
     }
 
+    /**
+     * 获取学习的总数
+     * @return
+     */
+    private int ObjectTestNumber() {
+        SharedPreferencesHelper sharedPreferencesHelper_a =
+                new SharedPreferencesHelper(this, "animal.txt");  //获取学习记录
+        int number_a = (int) sharedPreferencesHelper_a.getSharedPreference("number", 0); //获取学习记录的位置
 
+        SharedPreferencesHelper sharedPreferencesHelper_b =
+                new SharedPreferencesHelper(this, "fruit.txt");  //获取学习记录
+        int number_b = (int) sharedPreferencesHelper_a.getSharedPreference("number", 0); //获取学习记录的位置
+
+        SharedPreferencesHelper sharedPreferencesHelper_c =
+                new SharedPreferencesHelper(this, "vegetables.txt");  //获取学习记录
+        int number_c = (int) sharedPreferencesHelper_a.getSharedPreference("number", 0); //获取学习记录的位置
+        int number = number_a+number_b+number_c;  //总数
+        return number;
+    }
     @Override
     public void initParms(Bundle parms) {
 

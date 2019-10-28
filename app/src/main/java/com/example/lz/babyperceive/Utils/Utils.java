@@ -77,8 +77,8 @@ public class Utils {
      * 获取3500常用汉字随机一个
      * @return
      */
-    public String getChinese(){
-        int position = getRandomNumber(420);
+    public String getChineseRandom(int max){
+        int position = getRandomNumber(max);
        // String chinses = Chinesetext.substring(position, position+1);      //随机获取的汉字
         String[] arr = Chinesetext.split(",");
         List<String> list = java.util.Arrays.asList(arr);
@@ -124,11 +124,6 @@ public class Utils {
     public String getChineseSpell(String chinese){
         Log.i("test","chinese:"+chinese);
         String[] spell = new String[0];
-        String[] pyStrs = PinyinHelper.toHanyuPinyinStringArray('重');
-
-        for (String s : pyStrs) {
-            System.out.println(s);
-        }
 //-------------------指定格式转换----------------------------
         HanyuPinyinOutputFormat format = new HanyuPinyinOutputFormat();
 

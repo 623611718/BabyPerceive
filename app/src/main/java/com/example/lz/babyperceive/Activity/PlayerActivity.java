@@ -39,6 +39,9 @@ import com.example.lz.babyperceive.View.Play_title;
 
 import java.io.IOException;
 
+/**
+ * 暂时不用
+ */
 public class PlayerActivity extends Activity implements View.OnClickListener {
     protected static final int PROGRESS = 1;
     protected static final int isplaying = 2;
@@ -189,7 +192,7 @@ public class PlayerActivity extends Activity implements View.OnClickListener {
     private void showDialog() {
         new VerifyDialog(this, R.style.dialog, "快让家长帮忙吧", new VerifyDialog.OnCloseListener() {
             @Override
-            public void onClick(Dialog dialog, boolean confirm) {
+            public void onClick(View view) {
 
             }
         }).setTitle("不能玩了").show();
