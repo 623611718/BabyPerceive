@@ -1,5 +1,6 @@
 package com.example.lz.Broadcast;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -44,7 +45,7 @@ public class IntentBroadReceiver extends BroadcastReceiver{
 		}
 
 	}
-	private void Dialog( Context context){
+	private void Dialog(final Context context){
 		AlertDialog.Builder builder =new AlertDialog.Builder(context);
 		builder.setTitle("提示");
 		builder.setMessage("当前没有连接WIFI!!!");
@@ -53,7 +54,8 @@ public class IntentBroadReceiver extends BroadcastReceiver{
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				// TODO Auto-generated method stub
-				android.os.Process.killProcess(android.os.Process.myPid());
+				//android.os.Process.killProcess(android.os.Process.myPid());
+				((Activity)context).finish();
 			}
 			});
 	

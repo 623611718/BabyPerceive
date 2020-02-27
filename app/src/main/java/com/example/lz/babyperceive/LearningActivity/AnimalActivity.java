@@ -1,6 +1,7 @@
 package com.example.lz.babyperceive.LearningActivity;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,6 +18,10 @@ import com.example.lz.babyperceive.Activity.YuleActivity;
 import com.example.lz.babyperceive.Application.MyApplication;
 import com.example.lz.babyperceive.Bean.AsrJson;
 import com.example.lz.babyperceive.Bean.Object;
+import com.example.lz.babyperceive.Dialog.CommomDialog;
+import com.example.lz.babyperceive.Dialog.NoticeDialog;
+import com.example.lz.babyperceive.Dialog.ParentDialog;
+import com.example.lz.babyperceive.MainActivity;
 import com.example.lz.babyperceive.R;
 import com.example.lz.babyperceive.Utils.SharedPreferencesHelper;
 import com.example.lz.babyperceive.Utils.Speek;
@@ -24,6 +29,7 @@ import com.example.lz.babyperceive.Utils.Utils;
 import com.example.lz.babyperceive.View.ButtonView;
 import com.example.lz.babyperceive.View.TitleView;
 
+import java.security.acl.NotOwnerException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,6 +54,7 @@ public class AnimalActivity extends BaseActivity {
     private SharedPreferencesHelper sharedPreferencesHelper;
     private MyApplication myApplication;
     private FrameLayout iamage_layout;
+    private boolean isShowNotice = false;
 
     @Override
     public void widgetClick(View v) {
@@ -219,10 +226,14 @@ public class AnimalActivity extends BaseActivity {
      * 判断是否打开娱乐模式
      */
     private void getStatus() {
-        if (myApplication.isStatus()) {
-            Intent intent = new Intent(this, YuleActivity.class);
-            startActivity(intent);
-            finish();
+        if (myApplication.isStatus() && !isShowNotice) {
+            isShowNotice = true;
+            new NoticeDialog(this, R.style.dialog, "111", new NoticeDialog.OnCloseListener() {
+                @Override
+                public void onClick(Dialog dialog, boolean confirm) {
+
+                }
+            }).setTitle("学习完成啦").show();
         }
     }
 
@@ -232,7 +243,7 @@ public class AnimalActivity extends BaseActivity {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.previous_bt:
-                        if (myApplication.isStatus()) {
+                        if (myApplication.isStatus() &&!isShowNotice) {
                             getStatus();
                         } else if (number > 0) {
                             initData(number - 1);
@@ -255,7 +266,7 @@ public class AnimalActivity extends BaseActivity {
                         break;
                     case R.id.next_bt:
                         // setData();
-                        if (myApplication.isStatus()) {
+                        if (myApplication.isStatus() &&!isShowNotice) {
                             getStatus();
                         } else if (number < objectList.size() - 1) {
                             initData(number + 1);

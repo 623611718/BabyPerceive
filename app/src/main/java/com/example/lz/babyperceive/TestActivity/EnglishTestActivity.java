@@ -297,7 +297,7 @@ public class EnglishTestActivity extends BaseActivity implements EventListener {
         Map<String, java.lang.Object> params = new LinkedHashMap<String, java.lang.Object>();
         String event = null;
         event = SpeechConstant.ASR_START;
-        params.put(SpeechConstant.PID, 1536); // 默认1536
+        params.put(SpeechConstant.PID, 1737); // 默认1536 1737english
         params.put(SpeechConstant.DECODER, 2); // 0纯在线(默认) 2离在线,在线优先
         params.put(SpeechConstant.VAD, SpeechConstant.VAD_DNN); // 语音活动检测
         params.put(SpeechConstant.VAD_ENDPOINT_TIMEOUT, 2000); // 不开启长语音。开启VAD尾点检测，即静音判断的毫秒数。建议设置800ms-3000ms

@@ -1,5 +1,6 @@
 package com.example.lz.babyperceive.LearningActivity;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import com.example.lz.babyperceive.Activity.BaseActivity;
 import com.example.lz.babyperceive.Activity.YuleActivity;
 import com.example.lz.babyperceive.Application.MyApplication;
+import com.example.lz.babyperceive.Dialog.NoticeDialog;
 import com.example.lz.babyperceive.R;
 import com.example.lz.babyperceive.Utils.SharedPreferencesHelper;
 import com.example.lz.babyperceive.Utils.Speek;
@@ -43,7 +45,7 @@ public class SpeakingActivity extends BaseActivity implements View.OnClickListen
     private String chineseSpell = "";
     private TitleView titleView;
     private int length;
-
+    private boolean isShowNotice = false;
     private SharedPreferencesHelper sharedPreferencesHelper;
     private Utils utils;
     private MyApplication myApplication;
@@ -155,10 +157,13 @@ public class SpeakingActivity extends BaseActivity implements View.OnClickListen
 
     private void getStatus() {
         if (myApplication.isStatus()) {
-            // myApplication.setStatus(false);
-            Intent intent = new Intent(this, YuleActivity.class);
-            startActivity(intent);
-            finish();
+            isShowNotice = true;
+            new NoticeDialog(this, R.style.dialog, "111", new NoticeDialog.OnCloseListener() {
+                @Override
+                public void onClick(Dialog dialog, boolean confirm) {
+
+                }
+            }).setTitle("学习完成啦").show();
         }
     }
 
@@ -169,7 +174,7 @@ public class SpeakingActivity extends BaseActivity implements View.OnClickListen
                 speek.Speeking(chinses);
                 break;
             case R.id.next_bt:
-                if (myApplication.isStatus()) {
+                if (myApplication.isStatus() &&!isShowNotice) {
                     getStatus();
                 } else if (number < length - 2) {
                     previous_number = chinses;
@@ -178,7 +183,7 @@ public class SpeakingActivity extends BaseActivity implements View.OnClickListen
                 }
                 break;
             case R.id.previous_bt:
-                if (myApplication.isStatus()) {
+                if (myApplication.isStatus() &&!isShowNotice) {
                     getStatus();
                 } else if (number > 1) {
                     initData(number - 1);
